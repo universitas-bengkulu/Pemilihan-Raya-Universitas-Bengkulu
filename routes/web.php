@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CekDptController;
 use App\Models\Jadwal;
 use App\Models\Kandidat;
 use App\Models\Rekapitulasi;
@@ -10,6 +11,7 @@ use App\Http\Controllers\PandaController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KandidatController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RekapitulasiController;
 use App\Http\Controllers\DashboardPemilihController;
 
@@ -28,36 +30,14 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/dashboard', function () {
-    $jumlahKandidat = Kandidat::count();
-    $jadwalPemilihan = Jadwal::first();
-    $totalPemilih = Rekapitulasi::count();
-    $jumlahPemilih1 = Rekapitulasi::where('kandidat_id',1)->count();
-    $jumlahPemilih3 = Rekapitulasi::where('kandidat_id',3)->count();
+Route::get('/cek_dpt', [CekDptController::class, 'cekDpt'])
+    ->name('cekDpt');
+Route::get('/cek_status_dpt', [CekDptController::class, 'cekStatusDpt'])->name('cek_status_dpt');
 
-    $rekapitulasiData = Rekapitulasi::join('kandidats', 'rekapitulasis.kandidat_id', '=', 'kandidats.id')
-    ->select('kandidats.nomor_urut', DB::raw('count(rekapitulasis.id) as jumlah'))
-    ->groupBy('kandidats.id')
-    ->get();
 
-    if ($totalPemilih > 0) {
-        $persentasePemilih1 = ($jumlahPemilih1 / $totalPemilih) * 100;
-        $persentasePemilih3 = ($jumlahPemilih3 / $totalPemilih) * 100;
-    } else {
-        $persentasePemilih1 = 0; // Hindari pembagian oleh nol
-    }
-    return view('dashboard',[
-        'jadwalPemilihan'    =>  $jadwalPemilihan,
-        'jumlahKandidat'    =>  $jumlahKandidat,
-        'jadwalPemilihan'    =>  $jadwalPemilihan,
-        'jumlahPemilih1'    =>  $jumlahPemilih1,
-        'jumlahPemilih3'    =>  $jumlahPemilih3,
-        'persentasePemilih1'    =>  $persentasePemilih1,
-        'persentasePemilih3'    =>  $persentasePemilih3,
-        'rekapitulasiData'    =>  $rekapitulasiData,
-        'totalPemilih'    =>  $totalPemilih,
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

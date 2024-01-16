@@ -15,17 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('kandidat_id');
             $table->unsignedBigInteger('jadwal_id');
-            $table->string('nama_pemilih');
-            $table->string('npm_pemilih');
-            $table->enum('jenis_kelamin',['L','P']);
-            $table->string('jenjang')->nullable();
-            $table->string('prodi_pemilih');
-            $table->string('fakultas_pemilih');
-            $table->string('angkatan_pemilih');
+            $table->string('dpt_npm');
             $table->timestamps();
 
             $table->foreign('kandidat_id')->references('id')->on('kandidats');
             $table->foreign('jadwal_id')->references('id')->on('jadwals');
+            $table->foreign('dpt_npm')->references('npm')->on('dpts');
         });
     }
 

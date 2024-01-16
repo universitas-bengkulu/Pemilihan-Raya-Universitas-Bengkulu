@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Pemilihan Raya | @yield('halaman')</title>
-        <link rel="icon" href="{{ asset('assets/img/logo.svg') }}" type="image/png">
+        <link rel="icon" href="{{ asset('assets/frontend/Logo.svg') }}" type="image/png">
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
@@ -19,7 +19,7 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
             folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="{{ asset('assets/application/dist/css/skins/_all-skins.min.css') }}">
-        
+
         <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -87,7 +87,7 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel" style="padding: 14px 10px !important;">
                     <div class="pull-left image">
-                      <img src="{{ asset('assets/img/logo.svg') }}" alt="User Image">
+                      <img src="{{ asset('assets/frontend/Logo.svg') }}" alt="User Image">
                     </div>
                     <div class="pull-left info" style="padding: 7px 5px 5px 15px;">
                       <p>Welcome,</p>
@@ -121,7 +121,7 @@
                 <!-- Main content -->
                 <section class="content">
                     @yield('content')
-                    
+
                 </section>
                 <!-- /.content -->
             </div>
@@ -138,7 +138,7 @@
             <!-- /.control-sidebar -->
             <!-- Add the sidebar's background. This div must be placed
             immediately after the control sidebar -->
-   
+
 
         <!-- jQuery 3 -->
         <script src="{{ asset('assets/application/bower_components/jquery/dist/jquery.min.js') }}"></script>
