@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="flex-auto pt-4 pr-6 pb-6 pl-6">
-                                <form action="{{ route('login') }}" method="POST">
+                                <form action="{{ route('login') }}" method="POST" class="form">
                                     {{ csrf_field() }} {{ method_field('POST') }}
                                     <label class="mb-2 ml-1 font-bold text-xs text-slate-700">Email</label>
                                     <div class="mb-2">
@@ -103,50 +103,34 @@
 
 </html>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).on('submit','.form',function (event){
+        event.preventDefault();
+        $(".btnSubmit"). attr("disabled", true);
+        $('.btnSubmit').html('<i class="fa fa-check-circle"></i>&nbsp; Menyimpan');  // Mengembalikan teks tombol
 
-{{-- <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout> --}}
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            typeData: "JSON",
+            data: new FormData(this),
+            processData:false,
+            contentType:false,
+            success : function(res) {
+                $(".btnSubmit"). attr("disabled", true);
+                toastr.success(res.text, 'Success: Submit data berhasil');
+                setTimeout(function () {
+                    window.location.href=res.url;
+                } , 500);
+            },
+            error:function(xhr){
+                toastr.error(xhr.responseJSON.text, 'Oops, An Error Occurred');
+                setTimeout(function() {
+                    $(".btnSubmit").prop('disabled', false);  // Mengaktifkan tombol kembali
+                    $(".btnSubmit").html('<i class="fa fa-check-circle"></i>&nbsp; Simpan');  // Mengembalikan teks tombol
+                }, 1000); // Waktu dalam milidetik (2000 ms = 2 detik)
+            }
+        })
+    });
+</script>

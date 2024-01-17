@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use GuzzleHttp\Exception\BadResponseException;
 
 class PandaController extends Controller
@@ -59,6 +60,21 @@ class PandaController extends Controller
     }
 
     public function pandaLogin(Request $request){
+        $rules = [
+            'username' => 'required',
+            'password' => 'required',
+        ];
+
+        $text = [
+            'username.required' => 'Username harus diisi.',
+            'password.required' => 'Password harus diisi.',
+        ];
+
+        $validasi = Validator::make($request->all(), $rules, $text);
+        if ($validasi->fails()) {
+            return redirect()->back()->withErrors($validasi)->withInput();
+        }
+
     	$username = $request->username;
         $password = $request->password;
         // $count =  preg_match_all( "/[0-9]/", $username );
@@ -91,6 +107,7 @@ class PandaController extends Controller
         ';
 
         $accessData = $this->panda($query)['portallogin'];
+        return $accessData;
         if ($accessData[0]['is_access'] == 1) {
             if ($accessData[0]['tusrThakrId'] == 1) {
                 $mahasiswaData = $this->panda($queryMahasiswa);
@@ -105,9 +122,9 @@ class PandaController extends Controller
                         'jenis_kelamin' => $mahasiswaData['mahasiswa'][0]['mhsJenisKelamin'],
                         'isLogin' => 1,
                     ];
-                    
+
                     Session::put($sessionData);
-                    
+
                     // Perhatikan perubahan di baris berikut
                     if (Session::get('isLogin', 0) == 1) {
                         return redirect()->route('mahasiswa.dashboard');
@@ -133,9 +150,9 @@ class PandaController extends Controller
                     'jenis_kelamin' => $mahasiswaData['mahasiswa'][0]['mhsJenisKelamin'],
                     'isLogin' => 1,
                 ];
-                
+
                 Session::put($sessionData);
-                
+
                 // Perhatikan perubahan di baris berikut
                 if (Session::get('isLogin', 0) == 1) {
                     return redirect()->route('mahasiswa.dashboard');
