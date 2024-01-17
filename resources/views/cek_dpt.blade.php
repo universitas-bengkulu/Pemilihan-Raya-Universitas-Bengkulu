@@ -207,17 +207,18 @@
                                  " placeholder="Nomor Pokok Mahasiswa" />
                         </div>
                     </form>
-                    <div style="display: none;" id="sedangMencari" class="p-4 mb-4 lg:mx-24 md:mx-20 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <div class="mt-5"></div>
+                    <div style="display: none;" id="sedangMencari" class="p-4 mb-4   text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                         <i class="fa fa-refresh fa-spin"></i>&nbsp;<span class="font-medium">Sedang Mencari!</span> Proses Pencarian Sedang Dilakukan
                     </div>
-                    <div style="display: none;" id="tidakDitemukan" class="p-4 mb-4 lg:mx-24 md:mx-20 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <div style="display: none;" id="tidakDitemukan" class="p-4 mb-4   text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                         <span class="font-medium">Mohon Maaf!</span> Data anda tidak ditemukan dan belum terdaftar sebagai Daftar Pemilih Tetap (DPT), silahkan hubungi KPU Universitas Bengkulu pada kontak narahubung tersedia.
                     </div>
-                    <div style="display: none;" id="ditemukan" class="p-4 mb-4 lg:mx-24 md:mx-20 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                    <div style="display: none;" id="ditemukan" class="p-4 mb-4   text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
                         <span class="font-medium">Data Ditemukan, !</span> Data anda ditemukan dan sudah terdaftar sebagai Daftar Pemilih Tetap (DPT)
                       </div>
 
-                    <div class="relative lg:mx-24 md:mx-20 overflow-x-auto shadow-md sm:rounded-lg" id="tableDitemukan" style="display: none;">
+                    <div class="relative   overflow-x-auto shadow-md sm:rounded-lg" id="tableDitemukan" style="display: none;">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">

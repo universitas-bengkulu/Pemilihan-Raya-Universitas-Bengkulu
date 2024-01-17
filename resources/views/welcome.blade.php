@@ -38,7 +38,9 @@
         <div id="top-bar" class="w-full     bg-gray-900 duration-500">
             <div class="flex   w-full     text-gray-300 space-x-4 text-sm py-2">
                 <marquee behavior="" direction="">
-                    <p>email@email.com</p>
+                    <p>
+                        Kontak Narahubung KPU Universitas Bengkulu, E-mail : Kpu.unib22@gmail.com, WhatsApp : +62 831-8716-1914, +62 813-6962-1347
+                    </p>
                 </marquee>
 
             </div>
@@ -82,6 +84,8 @@
                         <a href="#cara" class="px-3 py-2 mx-2 mt-2  text-gray-100 text-[14px] transition-colors
                             duration-300 transform rounded-md lg:mt-0 hover:text-[#EAB308] ">Cara Memilih</a>
                         <a href="#waktu" class="px-3 py-2 mx-2 mt-2  text-gray-100 text-[14px] transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-[#EAB308] ">Waktu Pelaksanaan</a>
+                        <a href="{{ route('cekDpt') }}" class="px-3 py-2 mx-2 mt-2  text-gray-100 text-[14px] transition-colors
+                            duration-300 transform rounded-md lg:mt-0 hover:text-[#EAB308] ">Cek DPT</a>
                         @if(empty(Session::get('npm')))
                         <a href="{{ route('panda.login') }}" class=" py-2 mx-4 mt-2 text-white text-[14px] transition-colors duration-300 transform
                             lg:mt-0 bg-gradient-to-r from-orange-500 to-yellow-500 border border-white rounded-lg
