@@ -28,6 +28,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+
+
 Route::get('/dashboard', function () {
     $jumlahKandidat = Kandidat::count();
     $jadwalPemilihan = Jadwal::first();
@@ -69,9 +71,14 @@ Route::get('/masuk',[PandaController::class,'showLoginForm'])->name('panda.login
 Route::post('/pandalogin',[PandaController::class, 'pandaLogin'])->name('panda.login.post');
 Route::get('/logout', [PandaController::class, 'pandaLogout'])->name('panda.logout');
 
+Route::get('/verifikasi-data', [DashboardPemilihController::class, 'verifikasiData'])->name('mahasiswa.verifikasi');
+Route::get('/quick-count', [DashboardPemilihController::class, 'quickCount'])->name('mahasiswa.quick-count');
+
 Route::group(['prefix' => 'mahasiswa', 'middleware' => 'isPandaLogin'], function () {
     Route::get('/dashboard', [DashboardPemilihController::class, 'dashboard'])->name('mahasiswa.dashboard');
-    Route::post('/{kandidat}/pilih', [DashboardPemilihController::class, 'pemilihPost'])->name('mahasiswa.pilih');
+    Route::get('/pilih-kandidat', [DashboardPemilihController::class, 'voting'])->name('mahasiswa.voting');
+    Route::get('/{kandidat}/pilih', [DashboardPemilihController::class, 'pemilihPost'])->name('mahasiswa.pilih');
+    Route::get('/{kandidat}/visi-misi-kandidat', [DashboardPemilihController::class, 'visiMisi'])->name('mahasiswa.visi-misi');
 });
 
 Route::controller(KandidatController::class)->middleware(['auth','web'])->prefix('/kandidat')->group(function () {
