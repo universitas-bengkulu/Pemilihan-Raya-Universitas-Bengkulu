@@ -277,6 +277,7 @@
                         <li><b>Rahasia</b>  berarti suara yang diberikan oleh pemilih bersifat rahasia hanya diketahui
                             oleh si pemilih
                     itu sendiri.</li>
+                        <li><b>Adil</b> Asas Adil menjamin bahwa setiap pemilih dan peserta pemira akan diperlakukan secara sama dan bebas dari kecurangan pihak manapun dalam penyelenggaraan pemira.</li>
                     </ul>
                 </div>
                 <div>

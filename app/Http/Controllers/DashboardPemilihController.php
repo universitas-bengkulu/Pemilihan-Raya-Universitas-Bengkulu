@@ -28,10 +28,10 @@ class DashboardPemilihController extends Controller
         $jadwal = Jadwal::first();
         if (!$sudah) {
             Rekapitulasi::create([
-                'kandidat_id'    =>  $kandidat->id, 
+                'kandidat_id'    =>  $kandidat->id,
                 'jadwal_id' =>    $jadwal->id,
-                'npm_pemilih' =>    session('npm'),  
-                'nama_pemilih' =>    session('nama'),  
+                'npm_pemilih' =>    session('npm'),
+                'nama_pemilih' =>    session('nama'),
                 'prodi_pemilih' =>  session('prodi_nama'),
                 'fakultas_pemilih' =>   session('fakultas_nama'),
                 'angkatan_pemilih' =>   session('angkatan'),

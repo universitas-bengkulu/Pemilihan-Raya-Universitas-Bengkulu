@@ -49,7 +49,7 @@ Route::get('/masuk',[PandaController::class,'showLoginForm'])->name('panda.login
 Route::post('/pandalogin',[PandaController::class, 'pandaLogin'])->name('panda.login.post');
 Route::get('/logout', [PandaController::class, 'pandaLogout'])->name('panda.logout');
 
-Route::group(['prefix' => 'mahasiswa', 'middleware' => 'isPandaLogin'], function () {
+Route::group(['prefix' => 'mahasiswa'], function () {
     Route::get('/dashboard', [DashboardPemilihController::class, 'dashboard'])->name('mahasiswa.dashboard');
     Route::post('/{kandidat}/pilih', [DashboardPemilihController::class, 'pemilihPost'])->name('mahasiswa.pilih');
 });

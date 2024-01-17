@@ -208,7 +208,7 @@
                         </div>
                     </form>
                     <div style="display: none;" id="sedangMencari" class="p-4 mb-4 lg:mx-24 md:mx-20 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                        <i class="fa fa-refresh fa-spin"></i>&nbsp;<span class="font-medium">Sedang Mencari!</span> Proses Pencarian Sedang Dilakukan
+                        <i class="fa fa-refresh fa-spin"></i><span class="font-medium">Sedang Mencari!</span> Proses Pencarian Sedang Dilakukan
                     </div>
                     <div style="display: none;" id="tidakDitemukan" class="p-4 mb-4 lg:mx-24 md:mx-20 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                         <span class="font-medium">Mohon Maaf!</span> Data anda tidak ditemukan dan belum terdaftar sebagai Daftar Pemilih Tetap (DPT), silahkan hubungi KPU Universitas Bengkulu pada kontak narahubung tersedia.
@@ -275,12 +275,6 @@
             </div>
         </footer>
     </section>
-
-
-
-
-
-
 </body>
 
 <!-- script -->
@@ -292,35 +286,57 @@
     $(document).ready(function(){
         $(document).on('keyup','#npm',function(){
             var npm = $(this).val();
-            $('#ditemukan').hide();
-            $("#ditemukan").hide();
-            $("#sedangMencari").show();
-            $.ajax({
-            type :'get',
-            url: "{{ url('cek_status_dpt') }}",
-            data:{'npm':npm},
-                success:function(data){
-                    if (Object.keys(data).length > 0) {
-                        $('#sedangMencari').hide();
-                        $('#tidakDitemukan').hide();
-                        $("#defaultModal").removeClass("hidden");
-                        $("#ditemukan").show();
-                        $("#tableDitemukan").show();
-                        $('#npm_data').text(data.npm)
-                        $('#nama_data').text(data.nama_lengkap)
-                        $('#prodi_data').text(data.prodi)
-                        $('#jenjang_data').text(data.jenjang)
-                        $('#angkatan_data').text(data.angkatan)
-                        $('#fakultas_data').text(data.nama_lengkap_fakultas)
-                    } else {
-                        $('#tidakDitemukan').show();
-                        $("#tableDitemukan").hide();
-                        $("#sedangMencari").hide();
-                    }
-                },
+
+            // Jika npm kosong, sembunyikan semua elemen
+            if (npm.length === 0) {
+                $('#sedangMencari').hide();
+                $('#tidakDitemukan').hide();
+                $("#defaultModal").addClass("hidden");
+                $("#ditemukan").hide();
+                $("#tableDitemukan").hide();
+            } else if (npm.length < 9) {
+                // Jika panjang karakter NPM kurang dari 9, tampilkan sedang mencari dan sembunyikan elemen lainnya
+                $('#sedangMencari').show();
+                $('#tidakDitemukan').hide();
+                $("#defaultModal").addClass("hidden");
+                $("#ditemukan").hide();
+                $("#tableDitemukan").hide();
+            } else {
+                // Jika panjang karakter NPM adalah 9, lakukan permintaan Ajax
+                $('#sedangMencari').hide();
+                $("#tidakDitemukan").hide();
+                $("#defaultModal").addClass("hidden");
+                $("#ditemukan").hide();
+                $("#tableDitemukan").hide();
+
+                $.ajax({
+                    type :'get',
+                    url: "{{ url('cek_status_dpt') }}",
+                    data:{'npm':npm},
+                    success:function(data){
+                        if (Object.keys(data).length > 0) {
+                            $('#sedangMencari').hide();
+                            $('#tidakDitemukan').hide();
+                            $("#defaultModal").removeClass("hidden");
+                            $("#ditemukan").show();
+                            $("#tableDitemukan").show();
+                            $('#npm_data').text(data.npm)
+                            $('#nama_data').text(data.nama_lengkap)
+                            $('#prodi_data').text(data.prodi)
+                            $('#jenjang_data').text(data.jenjang)
+                            $('#angkatan_data').text(data.angkatan)
+                            $('#fakultas_data').text(data.nama_lengkap_fakultas)
+                        } else {
+                            $('#tidakDitemukan').show();
+                            $("#tableDitemukan").hide();
+                        }
+                    },
                     error:function(){
-                }
-            });
-        })
+                        // Handle error jika diperlukan
+                    }
+                });
+            }
+        });
     });
+
 </script>
