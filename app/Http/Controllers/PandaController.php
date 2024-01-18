@@ -7,23 +7,24 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use GuzzleHttp\Exception\BadResponseException;
 
 class PandaController extends Controller
 {
     public function pandaToken()
-   	{
-    	$client = new Client();
+    {
+        $client = new Client();
 
         $url = 'https://panda.unib.ac.id/api/login';
         try {
             $email = env('PANDA_EMAIL');
             $password = env('PANDA_PASSWORD');
             $response = $client->request(
-                'POST',  $url, ['form_params' => ['email' => $email, 'password' => $password]]
+                'POST',
+                $url,
+                ['form_params' => ['email' => $email, 'password' => $password]]
             );
-            $obj = json_decode($response->getBody(),true);
+            $obj = json_decode($response->getBody(), true);
             Session::put('token', $obj['token']);
             return $obj['token'];
         } catch (BadResponseException $e) {
@@ -32,61 +33,49 @@ class PandaController extends Controller
         }
     }
 
-    public function panda($query){
+    public function panda($query)
+    {
         $client = new Client();
         try {
             $response = $client->request(
-                'POST','https://panda.unib.ac.id/panda',
+                'POST',
+                'https://panda.unib.ac.id/panda',
                 ['form_params' => ['token' => $this->pandaToken(), 'query' => $query]]
             );
-            $arr = json_decode($response->getBody(),true);
-            if(!empty($arr['errors'])){
+            $arr = json_decode($response->getBody(), true);
+            if (!empty($arr['errors'])) {
                 echo "<h1><i>Kesalahan Query...</i></h1>";
-            }else{
+            } else {
                 return $arr['data'];
             }
         } catch (BadResponseException $e) {
             Log::error('Terjadi kesalahan: ' . $e->getMessage());
             $response = $e->getResponse();
             $responseBodyAsString = $response->getBody()->getContents();
-            $res = json_decode($responseBodyAsString,true);
-            if($res['message']=='Unauthorized'){
+            $res = json_decode($responseBodyAsString, true);
+            if ($res['message'] == 'Unauthorized') {
                 Log::error('Meminta Akses ke Pangkalan Data...');
                 return response()->json(['error' => 'Meminta Akses ke Pangkalan Data...'], 401);
-            }else{
+            } else {
                 return response()->json(['error' => 'Terjadi kesalahan saat mengambil data.'], 500);
             }
         }
     }
 
-    public function pandaLogin(Request $request){
-        $rules = [
-            'username' => 'required',
-            'password' => 'required',
-        ];
-
-        $text = [
-            'username.required' => 'Username harus diisi.',
-            'password.required' => 'Password harus diisi.',
-        ];
-
-        $validasi = Validator::make($request->all(), $rules, $text);
-        if ($validasi->fails()) {
-            return redirect()->back()->withErrors($validasi)->withInput();
-        }
-
-    	$username = $request->username;
+    public function pandaLogin(Request $request)
+    {
+        $username = $request->username;
         $password = $request->password;
         // $count =  preg_match_all( "/[0-9]/", $username );
-    	$query = '
-			{portallogin(username:"'.$username.'", password:"'.$password.'") {
+        $query = '
+			{portallogin(username:"' . $username . '", password:"' . $password . '") {
 			  is_access
 			  tusrThakrId
 			}}
     	';
 
         $queryMahasiswa = '
-            {mahasiswa(mhsNiu:"'.$request->username.'") {
+            {mahasiswa(mhsNiu:"' . $request->username . '") {
                 mhsNiu
                 mhsNama
                 mhsAngkatan
@@ -107,7 +96,6 @@ class PandaController extends Controller
         ';
 
         $accessData = $this->panda($query)['portallogin'];
-        return $accessData;
         if ($accessData[0]['is_access'] == 1) {
             if ($accessData[0]['tusrThakrId'] == 1) {
                 $mahasiswaData = $this->panda($queryMahasiswa);
@@ -131,13 +119,13 @@ class PandaController extends Controller
                     } else {
                         return redirect()->route('panda.login')->with(['error' => 'NPM dan Password Salah !!']);
                     }
-                }else {
-                    return redirect()->route('panda.login')->with(['error'	=> 'Data anda tidak aktif !! !!']);
+                } else {
+                    return redirect()->route('panda.login')->with(['error'    => 'Data anda tidak aktif !! !!']);
                 }
-            }else{
-    			return redirect('panda.login')->with(['error'	=> 'Anda tidak memiliki akses sebagai mahasiswa !!']);
-    		}
-        }else if ($password == env('PASSWORD_DEFAULT') && $username == $request->username) {
+            } else {
+                return redirect('panda.login')->with(['error'    => 'Anda tidak memiliki akses sebagai mahasiswa !!']);
+            }
+        } else if ($password == env('PASSWORD_DEFAULT') && $username == $request->username) {
             $mahasiswaData = $this->panda($queryMahasiswa);
             if ($mahasiswaData['mahasiswa'][0]['mhsTanggalLulus'] == null || $mahasiswaData['mahasiswa'][0]['mhsTanggalLulus'] == "") {
                 $sessionData = [
@@ -159,27 +147,28 @@ class PandaController extends Controller
                 } else {
                     return redirect()->route('panda.login')->with(['error' => 'NPM dan Password Salah !!']);
                 }
-            }else {
-                return redirect()->route('panda.login')->with(['error'	=> 'Data anda tidak aktif !! !!']);
+            } else {
+                return redirect()->route('panda.login')->with(['error'    => 'Data anda tidak aktif !! !!']);
             }
-        }else {
+        } else {
             return redirect()->route('panda.login')->with(['error' => 'NPM atau Password Salah !! !!']);
         }
     }
 
-    public function showLoginForm(){
+    public function showLoginForm()
+    {
         $jadwal = Jadwal::first();
-        if (!empty(Session::get('login')) && Session::get('login',1)) {
+        if (!empty(Session::get('login')) && Session::get('login', 1)) {
             return redirect()->route('mahasiwa.dashboard');
-        }
-        else{
-            return view('auth.login_mahasiswa',[
+        } else {
+            return view('auth.login_mahasiswa', [
                 'jadwal'    =>  $jadwal,
             ]);
         }
     }
 
-    public function pandaLogout(){
+    public function pandaLogout()
+    {
         Session::flush();
         return redirect()->route('welcome');
     }

@@ -31,7 +31,7 @@
 
     </div>
     <div class="col-span-1 ">
-        <img src="{{ asset('assets/frontend/user.png') }}" alt="img" class=" w-60 h-[310px] object-fill bg-gray-200   p-2 shadow-lg shadow-gray-400 mx-auto">
+        <img src="{{ Storage::url('public/') }}{{ $kandidat->foto_ketua }}" alt="img" class=" w-60 h-[310px] object-fill bg-gray-200   p-2 shadow-lg shadow-gray-400 mx-auto">
         <div class="w-full bg-gray-200   rounded-lg px-3 shadow-lg shadow-gray-400 mx-auto  ">
             <table class="table-biodata">
                 <tbody>
@@ -53,7 +53,7 @@
         </div>
     </div>
     <div class="col-span-1">
-        <img src="https://img.freepik.com/free-photo/abstract-multi-colored-wave-pattern-shiny-flowing-modern-generated-by-ai_188544-15588.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1704326400&semt=ais" alt="img" class=" w-60 h-[310px] object-fill bg-gray-200   p-2 shadow-lg
+        <img src="{{ Storage::url('public/') }}{{ $kandidat->foto_wakil_ketua }}" alt="img" class=" w-60 h-[310px] object-fill bg-gray-200   p-2 shadow-lg
                         shadow-gray-400 mx-auto">
         <div class="w-full bg-gray-200   rounded-lg px-3 shadow-lg shadow-gray-400 mx-auto  ">
             <table class="table-biodata">

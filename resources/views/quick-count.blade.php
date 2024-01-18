@@ -1,26 +1,17 @@
-@extends('layouts.users')
+@extends('layouts.guest')
 
-@section('quick-count','text-yellow-500')
+@section('quick-count','active-menu')
+@section('menu','/')
 @section('content')
-<div class=" container mx-auto   grid grid-cols-1 md:grid-cols-3">
-    <div class=" ">
-        <img src="{{ asset('assets/frontend/kotak.png') }}" alt="kotak-suara" style="filter: drop-shadow(2px 2px 5px #333);" class="w-1/3 ml-auto ">
-    </div>
-    <div class="md:col-span-2 h-full justify-center align-middle">
-        <p class="mt-2 text-2xl   lg:text-4xl   text-red-600 text-center md:text-left font-[arial] font-extrabold
-                            ">
-            Quick Count Suara Masuk
-        </p>
-        <p class="text-gray-800 mb-5   leading-6 md:leading-7 mt-5   mx-auto  md:text-sm 2xl:text-base 2xl:leading-7 text-xs text-center md:text-left ">
+
+<div class="  relative     overflow-hidden pt-32    grid   min-h-screen  ">
+    <div class=" container flex flex-col items-center px-4   mx-auto section-heading py-32  ">
+        <h2 data-aos="fade-down" class="mb-6 text-center font-sans text-4xl lg:text-5xl font-bold text-[#E73530]   " style="text-shadow:5px 5px 5px #38383863;">
+            Quick Count Suara Masuk</h2>
+        <p data-aos="fade-down" class="  mt-2   text-sm text-gray-700 dark:text-gray-300   text-justify leading-8">
             Quick Count menampilkan dan menghitung suara pemilih yang telah digunakan pada kandidat yang di pilih secara realtime.
         </p>
     </div>
-
-
-</div>
-<div class="min-h-[67vh]  relative     overflow-hidden pt-5
-                from-[#E73530] bg-gradient-to-t from-50%   grid
-                ">
 
     <div x-data class=" lg:flex w-full text-gray-800 mx-4 md:mx-auto place-self-center pb-20 px-10 justify-center
                     lg:flex-row md:grid md:grid-cols-2 flex-col gap-6">
@@ -28,14 +19,18 @@
         <div data-aos="fade-up">
             <div class="rounded-md  max-w-[240px] mx-auto   my-2 w-full bg-gray-100       shadow-black duration-300 transform content-div
                                       group shadow-lg hover:shadow-xl overflow-hidden hover:scale-110">
-                <div class="py-2 mb-3 bg-black   w-full text-center font-bold text-white text-xl  "><b class="text-yellow-500 text-xs mr-3">Kandidat Nomor Urut</b>{{ $kandidat->nomor_urut }}
+                <div class="py-2   bg-black   w-full text-center font-bold text-white text-xl  "><b class="text-yellow-500 text-xs mr-3">Kandidat Nomor Urut</b>{{ $kandidat->nomor_urut }}
                 </div>
-                <img class=" relative flex items-end overflow-hidden rounded-full      duration-300 transform  h-36 mx-auto   " src="{{ asset('assets/frontend/logo.webp') }}" alt="Img" />
-                <div class="   duration-200 transform mt-3 px-2 ">
-                    <div class="mt-3 flex items-end justify-between border-t-gray-800 border-t-2 ">
-                        <p class="text-gray-900 py-2 text-xs md:text-sm  text-center">
-                            {{ $kandidat->nama_calon_ketua.' ('.$kandidat->npm_calon_ketua.')' }} <br><b>&</b> <br> {{ $kandidat->npm_calon_wakil_ketua.' ('.$kandidat->npm_calon_wakil_ketua.')' }}
-                        </p>
+                <img class=" relative flex items-end overflow-hidden   duration-300 transform  h-48 object-cover mx-auto   " src="{{ Storage::url('public/') }}{{ $kandidat->banner }}" alt="Img" />
+                <div class="   duration-200 transform   ">
+                    <div class="  flex items-end justify-between border-t-gray-800 border-t-2 px-2">
+                        <div class="text-gray-900 py-2 text-xs md:text-sm w-full text-center  ">
+                            <p class="line-clamp-1 font-bold">{{$kandidat->nama_calon_ketua}}</p>
+                            <p class="text-yellow-600">({{$kandidat->npm_calon_ketua}})</p>
+                            <p class="  font-bold">&</p>
+                            <p class="line-clamp-1 font-bold">{{ $kandidat->npm_calon_wakil_ketua }}</p>
+                            <p class="text-yellow-600">({{$kandidat->npm_calon_wakil_ketua}})</p>
+                        </div>
                     </div>
                 </div>
                 <div class="   duration-200 transform   bg-black ">
@@ -50,7 +45,7 @@
         </div>
         @endforeach
     </div>
-    <div x-data="app()" x-cloak class="px-4 bg-[#E73530] pb-20">
+    <div x-data="app()" x-cloak class="px-4   pb-20" data-aos="fade-in">
         <div class=" max-w-5xl mx-auto py-10">
             <div class="  p-6 rounded-lg relative bg-white bg-opacity-90 shadow-inner shadow-black">
                 <div class="md:flex md:justify-between md:items-center">
@@ -69,7 +64,7 @@
                 </div>
 
 
-                <div class="line my-8   mx-auto max-w-5xl w-full ">
+                <div class="line my-8   mx-auto max-w-5xl w-full " >
                     <!-- Tooltip -->
                     <!-- <template x-if="tooltipOpen == true">
                         <div x-ref="tooltipContainer" class="  z-10 shadow-lg rounded-lg absolute h-auto block " :style="`  right:20px; top:60px`">
@@ -85,14 +80,15 @@
                     </template> -->
 
                     <!-- Bar Chart -->
-                    <div class="flex -mx-2 items-end   mt-20">
+                    <div class="flex -mx-2 items-end   mt-20" >
                         <template x-for="data in chartData">
 
-                            <div class="px-2 w-1/{{count($kandidats)}}">
+                            <div class="px-3 w-1/{{count($kandidats)}}">
 
-                                <div :style="`height: ${data}px`" class="transition ease-in duration-200 bg-orange-600 hover:bg-orange-400
-                                              relative"  data-tooltip-target="tooltip" @mouseenter="showTooltip($event); tooltipOpen = true" @mouseleave="hideTooltip($event)">
-                                    <div   class="text-center absolute top-0 left-0 right-0 -mt-6 text-gray-800 text-sm"><p ><b x-text="data" ></b> Suara</p>
+                                <div :style="`height: ${data*10}px`" class="transition ease-in duration-200 bg-orange-600 hover:bg-orange-400
+                                              relative" data-tooltip-target="tooltip" @mouseenter="showTooltip($event); tooltipOpen = true" @mouseleave="hideTooltip($event)">
+                                    <div class="text-center absolute top-0 left-0 right-0 -mt-6 text-gray-800 text-sm">
+                                        <p><b x-text="data"></b> Suara</p>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +114,16 @@
             </div>
         </div>
     </div>
-    <script>
+    <footer class="absolute bottom-0      z-50 bg-[#E73530]   w-full   ">
+        <div class="px-12 mx-auto py-3   flex flex-wrap flex-col sm:flex-row    ">
+            <p class="text-white mx-auto  text-xs md:text-sm text-center sm:text-left">Copyright&copy; 2023 |
+                <a href="#" class="text-yellow-500 font-bold">KPU UNIVERSITAS BENGKULU</a>. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+</div>
+<script>
         function app() {
 
             return {
@@ -145,5 +150,4 @@
         }
     </script>
 
-
-    @endsection
+@endsection

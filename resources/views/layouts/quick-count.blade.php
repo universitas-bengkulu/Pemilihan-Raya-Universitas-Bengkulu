@@ -136,7 +136,7 @@
     </nav>
     <!-- end navbar -->
 
-    @yield('content')
+    {{ $slot }}
 
 
 

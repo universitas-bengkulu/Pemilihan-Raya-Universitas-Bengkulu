@@ -15,7 +15,7 @@
             <label for="">Masukan Banner Surat Suara</label>
             <input type="file" name="banner" class="form-control">
         </div>
-        
+
         <div class="form-group col-md-12">
             <label for="">Masukan Visi Kandidat</label>
             <textarea name="visi" class="form-control" id="" cols="30" rows="3"></textarea>
@@ -37,7 +37,7 @@
             <label for="">Masukan NPM Calon Gubernur</label>
             <input type="text" name="npm_calon_ketua" class="form-control">
         </div>
-        
+
         <div class="form-group col-md-6">
             <label for="">Masukan Jenis Kelamin Calon Gubernur</label>
             <select name="jenis_kelamin_calon_ketua" class="form-control" id="">
@@ -70,6 +70,11 @@
             <label for="">Masukan Nomor HP Calon Gubernur</label>
             <input type="text" name="nomor_hp_calon_ketua" class="form-control">
         </div>
+
+        <div class="form-group col-md-12">
+            <label for="">Masukan Foto Calon Gubernur</label>
+            <input type="file" name="foto_ketua" class="form-control">
+        </div>
     </div>
 
     <div class="row">
@@ -87,7 +92,7 @@
             <label for="">Masukan NPM Calon Wakil Gubernur</label>
             <input type="text" name="npm_calon_wakil_ketua" class="form-control">
         </div>
-        
+
         <div class="form-group col-md-6">
             <label for="">Masukan Jenis Kelamin Calon Wakil Gubernur</label>
             <select name="jenis_kelamin_calon_wakil_ketua" class="form-control" id="">
@@ -119,6 +124,10 @@
         <div class="form-group col-md-6">
             <label for="">Masukan Nomor HP Calon Wakil Gubernur</label>
             <input type="text" name="nomor_hp_calon_wakil_ketua" class="form-control">
+        </div>
+        <div class="form-group col-md-12">
+            <label for="">Masukan Foto Calon Wakil Gubernur</label>
+            <input type="file" name="foto_wakil_ketua" class="form-control">
         </div>
     </div>
 

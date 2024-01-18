@@ -14,6 +14,7 @@ use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RekapitulasiController;
 use App\Http\Controllers\DashboardPemilihController;
+use App\Livewire\QuickCountLivewire;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,7 @@ Route::get('/logout', [PandaController::class, 'pandaLogout'])->name('panda.logo
 
 
 Route::get('/verifikasi-data', [DashboardPemilihController::class, 'verifikasiData'])->name('mahasiswa.verifikasi');
-Route::get('/quick-count', [DashboardPemilihController::class, 'quickCount'])->name('mahasiswa.quick-count');
+Route::get('/quick-count', QuickCountLivewire::class)->name('mahasiswa.quick-count');
 
 Route::group(['prefix' => 'mahasiswa', 'middleware' => 'isPandaLogin'], function () {
     Route::get('/dashboard', [DashboardPemilihController::class, 'dashboard'])->name('mahasiswa.dashboard');

@@ -21,19 +21,23 @@
         @foreach ($kandidats as $kandidat)
         <div>
             <div onclick="confirmAction({{ $kandidat->nomor_urut }}, {{ $kandidat->id }})">
-                <div class="rounded-md max-w-[240px] mx-auto mb-8  my-2 w-full cursor-pointer bg-gray-100 hover:bg-opacity-80 :hoverbg-black  shadow-black duration-300 transform content-div
+                <div class="rounded-md max-w-[240px] mx-auto mb-8  my-2 w-full cursor-pointer bg-gray-100   :hoverbg-black  shadow-black duration-300 transform content-div
                                       group shadow-lg hover:shadow-xl overflow-hidden hover:scale-110 relative">
                     <img src="{{ asset('assets/frontend/download-removebg-preview.png') }}" alt="img" class="absolute z-50 w-28 translate-x-full transform ml-32 group-hover:-ml-10
                                           group-hover:mt-10 group-active:-ml-10 group-active:mt-10
                                             duration-300">
-                    <div class="py-2 mb-3 bg-black   w-full text-center font-bold text-white text-xl  "><b class="text-yellow-500 text-xs mr-3">Kandidat Nomor Urut</b>{{ $kandidat->nomor_urut }}
+                    <div class="py-2   bg-black   w-full text-center font-bold text-white text-xl  "><b class="text-yellow-500 text-xs mr-3">Kandidat Nomor Urut</b>{{ $kandidat->nomor_urut }}
                     </div>
-                    <img class=" relative flex items-end overflow-hidden rounded-full      duration-300 transform  h-36 mx-auto   " src="{{ asset('assets/frontend/logo.webp') }}" alt="Img" />
-                    <div class="   duration-200 transform mt-3 px-2 ">
-                        <div class="mt-3 flex items-end justify-between border-t-gray-800 border-t-2 ">
-                            <p class="text-gray-900 py-2 text-xs md:text-sm  text-center">
-                                {{ $kandidat->nama_calon_ketua.' ('.$kandidat->npm_calon_ketua.')' }} <br><b>&</b> <br> {{ $kandidat->npm_calon_wakil_ketua.' ('.$kandidat->npm_calon_wakil_ketua.')' }}
-                            </p>
+                    <img class=" relative flex items-end overflow-hidden   duration-300 transform  h-48 object-cover mx-auto   " src="{{ Storage::url('public/') }}{{ $kandidat->banner }}" alt="Img" />
+                    <div class="   duration-200 transform    ">
+                        <div class="  flex items-end justify-between border-t-gray-800 border-t-2 ">
+                            <div class="text-gray-900 py-2 text-xs md:text-sm w-full text-center  px-2">
+                                <p class="line-clamp-1 font-bold">{{$kandidat->nama_calon_ketua}}</p>
+                                <p class="text-yellow-600">({{$kandidat->npm_calon_ketua}})</p>
+                                <p class="  font-bold">&</p>
+                                <p class="line-clamp-1 font-bold">{{ $kandidat->npm_calon_wakil_ketua }}</p>
+                                <p class="text-yellow-600">({{$kandidat->npm_calon_wakil_ketua}})</p>
+                            </div>
                         </div>
                     </div>
 
