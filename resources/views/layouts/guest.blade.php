@@ -39,7 +39,7 @@
             <div class="flex   w-full     text-gray-300 space-x-4 text-sm py-2">
                 <marquee behavior="" direction="">
                     <p>
-                        Kontak Narahubung KPU Universitas Bengkulu, E-mail : Kpu.unib22@gmail.com, WhatsApp : +62 831-8716-1914, +62 813-6962-1347
+                        {{ (!empty($contact))? $contact->marquee : 'Selamat Datang pada Sistem informasi Pemira - Universitas Bengkulu' }}
                     </p>
                 </marquee>
 

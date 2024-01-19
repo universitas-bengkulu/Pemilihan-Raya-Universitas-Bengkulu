@@ -11,7 +11,6 @@
                 <img src="{{ asset('assets/frontend/src/confirm.svg') }}" alt="img" class="w-2/3 h-2/3 place-self-center">
             </div>
 
-
         </div>
         <div class="col-span-1 grid min-h-screen  ">
             <div class="place-self-center px-6 max-w-lg   ">
@@ -35,13 +34,13 @@
                     </div>
                 </form>
                 <div class="mt-5"></div>
-                <div style="display: none;" id="sedangMencari" class="p-4    text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <div style="display: none;" id="sedangMencari" class="p-4    text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 mb-3" role="alert">
                     <i class="fa fa-refresh fa-spin"></i>&nbsp;<span class="font-medium">Sedang Mencari!</span> Proses Pencarian Sedang Dilakukan
                 </div>
-                <div style="display: none;" id="tidakDitemukan" class="p-4    text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                    <span class="font-medium">Mohon Maaf!</span> Data anda tidak ditemukan dan belum terdaftar sebagai Daftar Pemilih Tetap (DPT), silahkan hubungi KPU Universitas Bengkulu pada kontak narahubung tersedia.
+                <div style="display: none;" id="tidakDitemukan" class="p-4    text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-red-400 mb-20" role="alert">
+                    <span class="font-medium">Mohon Maaf!</span> Data anda tidak ditemukan dan belum terdaftar sebagai Daftar Pemilih Tetap (DPT), silahkan hubungi KPU Universitas Bengkulu pada kontak narahubung tersedia dapat dilihat <a href="/#contact" class="text-blue-500">disini</a>.
                 </div>
-                <div style="display: none;" id="ditemukan" class="p-4    text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                <div style="display: none;" id="ditemukan" class="p-4    text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mb-3" role="alert">
                     <span class="font-medium">Data Ditemukan, !</span> Data anda ditemukan dan sudah terdaftar sebagai Daftar Pemilih Tetap (DPT)
                 </div>
 

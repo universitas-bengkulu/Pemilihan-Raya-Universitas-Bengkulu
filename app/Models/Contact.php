@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Jadwal extends Model
+class Contact extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function contacts()
+    public function jadwal()
     {
-        return $this->hasMany(Contact::class);
+        return $this->belongsTo(Jadwal::class);
     }
 }

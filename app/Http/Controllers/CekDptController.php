@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dpt;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class CekDptController extends Controller
 {
     public function cekDpt(){
-        return view('cek_dpt');
+        $contact = Contact::orderBy('id', 'desc')->first();
+
+        return view('cek_dpt', compact('contact'));
     }
 
     public function cekStatusDpt(Request $request){

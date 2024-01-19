@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dpt;
 use App\Models\Jadwal;
+use App\Models\Contact;
 use App\Models\Kandidat;
 use App\Models\Rekapitulasi;
 use Illuminate\Http\Request;
@@ -11,6 +12,14 @@ use Illuminate\Support\Facades\Session;
 
 class DashboardPemilihController extends Controller
 {
+    public function welcome(Request $request)
+    {
+        $contact = Contact::orderBy('id', 'desc')->first();
+        $count_kandidat = Kandidat::count();
+        $count_dpt = Dpt::count();
+        $count_rekapitulasi = Rekapitulasi::count();
+        return view('welcome', compact('contact' , 'count_kandidat', 'count_dpt', 'count_rekapitulasi'));
+    }
     public function dashboard(){
         if (Session::has('npm')) {
             $npm = Session::get('npm');
@@ -76,6 +85,19 @@ class DashboardPemilihController extends Controller
         }
     }
 
+    public function guestVisiMisi(Request $request, Kandidat $kandidat)
+    {
+            $npm = Session::get('npm');
+            $contact = Contact::orderBy('id', 'desc')->first();
+
+            $sudah = Rekapitulasi::where('dpt_npm', $npm)->first();
+            $jadwal = Jadwal::count();
+            $kandidat = Kandidat::with(['misis'])->where('id', $kandidat->id)->first();
+            $allkandidats = Kandidat::get();
+            return view('guest-visimisi', compact('kandidat', 'allkandidats', 'sudah', 'jadwal', 'contact'));
+
+    }
+
     public function verifikasiData(Request $request )
     {
             $npm = Session::get('npm');
@@ -85,10 +107,4 @@ class DashboardPemilihController extends Controller
 
     }
 
-    public function quickCount(Request $request)
-    {
-        $npm = Session::get('npm');
-        $kandidats = Kandidat::withCount('rekapitulasis')->get();
-        return view('quick-count', compact('kandidats' ));
-    }
 }

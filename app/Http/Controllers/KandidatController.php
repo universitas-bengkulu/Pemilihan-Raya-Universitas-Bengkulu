@@ -37,8 +37,8 @@ class KandidatController extends Controller
             'prodi_calon_wakil_ketua' => 'required',
             'jenjang_prodi_calon_wakil_ketua' => 'required',
             'nomor_hp_calon_wakil_ketua' => 'required',
-            'foto_ketua' => 'required',
-            'foto_wakil_ketua' => 'required',
+            'foto_ketua' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'foto_wakil_ketua' => 'required|image|mimes:png,jpg,jpeg|max:2048',
         ];
 
         $text = [
@@ -144,6 +144,8 @@ class KandidatController extends Controller
             'prodi_calon_wakil_ketua' => 'required',
             'jenjang_prodi_calon_wakil_ketua' => 'required',
             'nomor_hp_calon_wakil_ketua' => 'required',
+            'foto_ketua' => 'image|mimes:png,jpg,jpeg|max:2048',
+            'foto_wakil_ketua' => 'image|mimes:png,jpg,jpeg|max:2048',
         ];
 
         $text = [
@@ -164,6 +166,14 @@ class KandidatController extends Controller
             'banner.image' => 'Banner harus berupa gambar.',
             'banner.mimes' => 'Banner harus berformat PNG, JPG, atau JPEG.',
             'banner.max' => 'Ukuran banner tidak boleh melebihi 2MB.',
+            'foto_ketua.required' => 'Foto Calon Ketua harus diisi.',
+            'foto_ketua.image' => 'Foto Calon Ketua harus berupa gambar.',
+            'foto_ketua.mimes' => 'Foto Calon Ketua harus berformat PNG, JPG, atau JPEG.',
+            'foto_ketua.max' => 'Ukuran Foto Calon Ketua tidak boleh melebihi 2MB.',
+            'foto_wakil_ketua.required' => 'Foto Calon Wakil Ketua harus diisi.',
+            'foto_wakil_ketua.image' => 'Foto Calon Wakil Ketua harus berupa gambar.',
+            'foto_wakil_ketua.mimes' => 'Foto Calon Wakil Ketua harus berformat PNG, JPG, atau JPEG.',
+            'foto_wakil_ketua.max' => 'Ukuran Foto Calon Wakil Ketua tidak boleh melebihi 2MB.',
         ];
 
         $validasi = Validator::make($request->all(), $rules, $text);
@@ -192,6 +202,17 @@ class KandidatController extends Controller
             $file = $request->file('banner');
             $fileName = $file->store('banners', 'public');
             $kandidatBaru['banner'] = $fileName;
+        }
+        if ($request->hasFile('foto_ketua')) {
+            $file = $request->file('foto_ketua');
+            $fileName = $file->store('foto_ketuas', 'public');
+            $kandidatBaru['foto_ketua'] = $fileName;
+        }
+
+        if ($request->hasFile('foto_wakil_ketua')) {
+            $file = $request->file('foto_wakil_ketua');
+            $fileName = $file->store('foto_wakil_ketuas', 'public');
+            $kandidatBaru['foto_wakil_ketua'] = $fileName;
         }
 
         $update = Kandidat::where('id',$kandidat->id)->update($kandidatBaru);

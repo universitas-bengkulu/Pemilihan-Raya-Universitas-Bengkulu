@@ -135,7 +135,7 @@
                             </path>
                         </svg>
                         <div class="space-y-2">
-                            <p class="text-slate-800 font-bold text-3xl">4</p>
+                            <p class="text-slate-800 font-bold text-3xl">{{ $count_kandidat }}</p>
                             <p class="text-[14px] ">Calon Kanidat</p>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                             </path>
                         </svg>
                         <div class="space-y-2">
-                            <p class="text-slate-800 font-bold text-3xl">2000</p>
+                            <p class="text-slate-800 font-bold text-3xl">{{ $count_dpt }}</p>
                             <p class="text-[14px] ">Daftar Pemilih (Terverifikasi)</p>
                         </div>
                     </div>
@@ -269,8 +269,22 @@
                             </g>
                         </svg>
                         <div class="space-y-2">
-                            <p class="text-slate-800 font-bold text-3xl">3000</p>
+                            <p class="text-slate-800 font-bold text-3xl">{{ $count_dpt }}</p>
                             <p class="text-[14px] ">Mahasiswa Aktif</p>
+                        </div>
+                    </div>
+                    <div data-aos="fade-right" class="  px-7 py-6   flex items-top justify-start space-x-4">
+                        <svg class="w-16 h-16" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 33.867 33.867" id="check-vote">
+                            <path fill="#06f" d="M28.846961 25.116652h-2.30285c-.732896 0-1.473364.605628-1.322917 1.322916l1.058333 5.045848c.150447.717288.590021 1.322917 1.322917 1.322917h1.244517c.732896 0 1.322917-.590021 1.322917-1.322917v-5.045848c0-.732896-.590021-1.322916-1.322917-1.322916zM5.027083 25.116652h2.3028505c.7328958 0 1.4733632.605628 1.3229167 1.322916L7.5945169 31.485416C7.4440704 32.202704 7.004496 32.808333 6.2716002 32.808333H5.027083c-.7328958 0-1.3229166-.590021-1.3229166-1.322917v-5.045848c0-.732896.5900208-1.322916 1.3229166-1.322916z" paint-order="fill markers stroke"></path>
+                            <path fill="#00a1ff" d="M 3.7041657,12.501561 H 30.162501 c 1.465792,0 2.645833,1.180042 2.645833,2.645833 v 11.310941 c 0,1.465792 -1.180041,2.645833 -2.645833,2.645833 H 3.7041657 c -1.4657916,0 -2.6458333,-1.180041 -2.6458333,-2.645833 V 15.147394 c 0,-1.465791 1.1800417,-2.645833 2.6458333,-2.645833 z" paint-order="fill markers stroke"></path>
+                            <path fill="#a8d0ff" d="m 8.2351562,1.0583333 c -1.4657916,0 -2.6458333,1.1800418 -2.6458333,2.6458333 l 0,14.0902024 c 0,0.732896 0.5900209,1.322917 1.3229167,1.322917 H 26.954427 c 0.732896,0 1.322916,-0.590021 1.322916,-1.322917 l 0,-14.0902024 c 0,-1.4657915 -1.180041,-2.6458333 -2.645833,-2.6458333 z" paint-order="fill markers stroke"></path>
+                            <path d="m 10.815488,22.234548 c -0.7309,-7.1e-4 -1.3239001,0.5914 -1.3242001,1.32228 3.9e-4,0.73088 0.5933001,1.32298 1.3242001,1.32226 h 12.23769 c 0.7301,-3.7e-4 1.3219,-0.59214 1.3222,-1.32226 -2.6e-4,-0.73013 -0.5921,-1.32191 -1.3222,-1.32228 z" style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1" fill="#fff" color="#000" enable-background="accumulate" font-family="sans-serif" font-weight="400" overflow="visible" paint-order="markers fill stroke"></path>
+                            <path fill="#06f" d="m 16.933337,3.7047385 c -3.525276,0 -6.383075,2.8577991 -6.383075,6.3830675 0,3.525276 2.857799,6.383075 6.383075,6.383075 3.525268,0 6.383067,-2.857799 6.383067,-6.383075 0,-3.5252684 -2.857799,-6.3830675 -6.383067,-6.3830675 z" paint-order="markers fill stroke"></path>
+                            <path d="M 19.523537,6.8568306 15.952432,9.4939719 14.2997,8.775098 c -1.057445,-0.5407465 -2.017515,0.3345102 -1.401481,1.401473 l 1.88562,2.819602 c 0.51601,0.723129 1.751167,0.763924 2.335419,0 L 20.923252,8.2582937 C 21.677271,7.2373183 20.488992,6.1270189 19.523537,6.8568306 Z" style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1" fill="#fff" color="#000" enable-background="accumulate" font-family="sans-serif" font-weight="400" overflow="visible" paint-order="markers fill stroke"></path>
+                        </svg>
+                        <div class="space-y-2">
+                            <p class="text-slate-800 font-bold text-3xl">{{ $count_rekapitulasi }}</p>
+                            <p class="text-[14px] ">Banyak Suara Masuk</p>
                         </div>
                     </div>
                 </div>
@@ -522,8 +536,8 @@
 
 
 <!-- Footer  -->
-<footer class="relative     ">
-    <div class="container px-5 pt-16 pb-16 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+<footer class="relative     " id="contact">
+    <div class=" container px-5 pt-16 pb-16 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div class="lg:w-2/4   w-full flex-shrink-0 md:mx-0 mx-auto  ">
             <a href="/" class="flex items-center text-black   mx-4  ">
                 <img src="{{ asset('assets/frontend/Logo.svg') }}">
@@ -546,46 +560,77 @@
 
         </div>
         <div class=" md:pl-10   ">
+            @if (!empty($contact))
             <h2 class="text-lg   font-bold  text-gray-700    ">Kontak Narahubung KPU Universitas Bengkulu </h2>
-
-            <a class="flex  my-3 group" href="https://wa.me/6283187161914">
+            @php
+            $arrayData = explode(";", $contact->no_tlp);
+            @endphp
+            @foreach($arrayData as $item)
+            <a class="flex  my-3 group" href="https://wa.me/{{ str_replace(' ', '', $item)  }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="fill-gray-600 group-hover:fill-red-500 w-5 h-5 mr-3 " width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
                     <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
                 </svg>
-
-
-                <span class="  text-sm text-gray-600 group-hover:text-red-500  duration-300 transform break-normal">+62 831-8716-1914</span>
+                <span class="  text-sm text-gray-600 group-hover:text-red-500  duration-300 transform break-normal">+{{ str_replace(' ', '', $item)  }}</span>
             </a>
-            <a class="flex  my-3 group" href="https://wa.me/6281369621347">
-                <svg xmlns="http://www.w3.org/2000/svg" class="fill-gray-600 group-hover:fill-red-500 w-5 h-5 mr-3 " width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-                    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
-                </svg>
+            @endforeach
 
-                <span class="  text-sm text-gray-600 group-hover:text-red-500  duration-300 transform break-normal">+62 813-6962-1347</span>
-            </a>
 
-            <a class="flex  my-3 group" href="mailto: Kpu.unib22@gmail.com">
+            <a class="flex  my-3 group" href="mailto: {{ $contact->email }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="fill-gray-600 group-hover:fill-red-500 w-5 h-5 mr-3  " fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
                     <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
                 </svg>
                 <span class=" text-sm text-gray-600 group-hover:text-red-500  duration-300 transform
-                            break-normal">Kpu.unib22@gmail.com</span>
+                            break-normal">{{ $contact->email }}</span>
             </a>
             <div class="  flex flex-wrap mt-5 gap-2">
-                <button class="bg-blue-500 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded">
+                <a href="{{$contact->facebook}}" title="Facebook" class="bg-blue-500   hover:bg-blue-600 duration-200 transform py-2 px-2.5 font-semibold text-white inline-flex items-center space-x-2 rounded">
                     <svg class="w-5 h-5 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                     </svg>
-                </button>
+                </a>
 
-                <button class="bg-blue-400 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded">
+                <a href="{{$contact->twitter}}" title="Twitter" class="bg-blue-400  hover:bg-blue-500 duration-200 transform   py-2 px-2.5 font-semibold text-white inline-flex items-center space-x-2 rounded">
                     <svg class="w-5 h-5 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                     </svg>
-                </button>
+                </a>
+
+                <a href="{{$contact->instagram}}" title="Instagram" class="  font-semibold text-white inline-flex items-center space-x-2 rounded">
+                    <svg class="w-[40px] h-[40px]  " viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#paint0_radial_87_7153)"></rect>
+                            <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#paint1_radial_87_7153)"></rect>
+                            <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#paint2_radial_87_7153)"></rect>
+                            <path d="M23 10.5C23 11.3284 22.3284 12 21.5 12C20.6716 12 20 11.3284 20 10.5C20 9.67157 20.6716 9 21.5 9C22.3284 9 23 9.67157 23 10.5Z" fill="white"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 21C18.7614 21 21 18.7614 21 16C21 13.2386 18.7614 11 16 11C13.2386 11 11 13.2386 11 16C11 18.7614 13.2386 21 16 21ZM16 19C17.6569 19 19 17.6569 19 16C19 14.3431 17.6569 13 16 13C14.3431 13 13 14.3431 13 16C13 17.6569 14.3431 19 16 19Z" fill="white"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6 15.6C6 12.2397 6 10.5595 6.65396 9.27606C7.2292 8.14708 8.14708 7.2292 9.27606 6.65396C10.5595 6 12.2397 6 15.6 6H16.4C19.7603 6 21.4405 6 22.7239 6.65396C23.8529 7.2292 24.7708 8.14708 25.346 9.27606C26 10.5595 26 12.2397 26 15.6V16.4C26 19.7603 26 21.4405 25.346 22.7239C24.7708 23.8529 23.8529 24.7708 22.7239 25.346C21.4405 26 19.7603 26 16.4 26H15.6C12.2397 26 10.5595 26 9.27606 25.346C8.14708 24.7708 7.2292 23.8529 6.65396 22.7239C6 21.4405 6 19.7603 6 16.4V15.6ZM15.6 8H16.4C18.1132 8 19.2777 8.00156 20.1779 8.0751C21.0548 8.14674 21.5032 8.27659 21.816 8.43597C22.5686 8.81947 23.1805 9.43139 23.564 10.184C23.7234 10.4968 23.8533 10.9452 23.9249 11.8221C23.9984 12.7223 24 13.8868 24 15.6V16.4C24 18.1132 23.9984 19.2777 23.9249 20.1779C23.8533 21.0548 23.7234 21.5032 23.564 21.816C23.1805 22.5686 22.5686 23.1805 21.816 23.564C21.5032 23.7234 21.0548 23.8533 20.1779 23.9249C19.2777 23.9984 18.1132 24 16.4 24H15.6C13.8868 24 12.7223 23.9984 11.8221 23.9249C10.9452 23.8533 10.4968 23.7234 10.184 23.564C9.43139 23.1805 8.81947 22.5686 8.43597 21.816C8.27659 21.5032 8.14674 21.0548 8.0751 20.1779C8.00156 19.2777 8 18.1132 8 16.4V15.6C8 13.8868 8.00156 12.7223 8.0751 11.8221C8.14674 10.9452 8.27659 10.4968 8.43597 10.184C8.81947 9.43139 9.43139 8.81947 10.184 8.43597C10.4968 8.27659 10.9452 8.14674 11.8221 8.0751C12.7223 8.00156 13.8868 8 15.6 8Z" fill="white"></path>
+                            <defs>
+                                <radialGradient id="paint0_radial_87_7153" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12 23) rotate(-55.3758) scale(25.5196)">
+                                    <stop stop-color="#B13589"></stop>
+                                    <stop offset="0.79309" stop-color="#C62F94"></stop>
+                                    <stop offset="1" stop-color="#8A3AC8"></stop>
+                                </radialGradient>
+                                <radialGradient id="paint1_radial_87_7153" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(11 31) rotate(-65.1363) scale(22.5942)">
+                                    <stop stop-color="#E0E8B7"></stop>
+                                    <stop offset="0.444662" stop-color="#FB8A2E"></stop>
+                                    <stop offset="0.71474" stop-color="#E2425C"></stop>
+                                    <stop offset="1" stop-color="#E2425C" stop-opacity="0"></stop>
+                                </radialGradient>
+                                <radialGradient id="paint2_radial_87_7153" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0.500002 3) rotate(-8.1301) scale(38.8909 8.31836)">
+                                    <stop offset="0.156701" stop-color="#406ADC"></stop>
+                                    <stop offset="0.467799" stop-color="#6A45BE"></stop>
+                                    <stop offset="1" stop-color="#6A45BE" stop-opacity="0"></stop>
+                                </radialGradient>
+                            </defs>
+                        </g>
+                    </svg>
+                </a>
 
 
             </div>
+            @endif
 
         </div>
     </div>

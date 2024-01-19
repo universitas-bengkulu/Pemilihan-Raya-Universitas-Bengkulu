@@ -5,7 +5,7 @@
 <div class="min-h-[33vh]     grid">
     <div class="place-self-center grid">
         <div class="flex space-x-2 mx-auto place-self-center ">
-            <img src="{{ asset('assets/frontend/kotak.png') }}" alt="kotak-suara" style="filter: drop-shadow(2px 2px 5px #333);" class="h-40 md:h-56 md:mt-10 animate-[bounce_3s_infinite]   ">
+            <img src="{{ asset('assets/frontend/logo.webp') }}" alt="kotak-suara" style="filter: drop-shadow(2px 2px 5px #333);" class="h-40 rounded-full md:h-56 md:mt-10 animate-[bounce_3s_infinite]   ">
         </div>
         <p class="text-gray-800 mb-5   leading-6 md:leading-7 mt-5  max-w-4xl mx-auto text-center md:text-sm 2xl:text-base 2xl:leading-7 text-xs px-6 ">
             E-voting merupakan sebuah sistem yang

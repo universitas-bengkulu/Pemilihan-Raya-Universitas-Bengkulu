@@ -6,7 +6,7 @@
     <div class="col-span-1  overflow-hidden rounded-md">
         <div x-data class=" flex w-full text-gray-800  mx-auto place-self-center    justify-center
                     flex-row   gap-2">
-            <a href="{{ route('mahasiswa.dashboard') }}" class="py-2 mb-3  duration-300 transform hover:scale-[99%] bg-gray-900 focus:scale-95   rounded-md  w-full pl-3   text-center  text-white text-sm    flex"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 mt-1" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <a href="{{ route('mahasiswa.dashboard') }}" class="py-2 mb-3  duration-300 transform hover:scale-[99%] bg-gray-900 focus:scale-95   rounded-md  w-full px-3    text-center  text-white text-sm    flex"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 mt-1" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                 </svg>
                 <p class="py-1">Kembali</p>

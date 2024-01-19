@@ -1,50 +1,64 @@
-<div wire:poll >
+<div>
     @section('quick-count','active-menu')
+    @push('marquee')
+    {{ (!empty($contact))? $contact->marquee : 'Selamat Datang pada Sistem informasi Pemira - Universitas Bengkulu'  }}
+    @endpush
+    @section('menu','/')
 
-    <div class="  relative     overflow-hidden pt-32    grid   min-h-screen  ">
-        <div class=" container flex flex-col items-center px-4   mx-auto section-heading py-32  ">
+    @if ($showData)
+    <div class="  relative     overflow-hidden    grid   min-h-screen  ">
+        <div class="     items-center px-4   mx-auto section-heading  pt-60    ">
             <h2 data-aos="fade-down" class="mb-6 text-center font-sans text-4xl lg:text-5xl font-bold text-[#E73530]   " style="text-shadow:5px 5px 5px #38383863;">
                 Quick Count Suara Masuk</h2>
-            <p data-aos="fade-down" class="  mt-2   text-sm text-gray-700 dark:text-gray-300   text-justify leading-8">
+            <p data-aos="fade-down" class="  mt-2   text-sm text-gray-700 dark:text-gray-300    text-justify leading-8">
                 Quick Count menampilkan dan menghitung suara pemilih yang telah digunakan pada kandidat yang di pilih secara realtime.
             </p>
-        </div>
-
-        <div x-data wire:poll class=" lg:flex w-full text-gray-800 mx-4 md:mx-auto place-self-center pb-20 px-10 justify-center
-                    lg:flex-row md:grid md:grid-cols-2 flex-col gap-6">
-            @foreach ($kandidats as $kandidat)
-            <div>
-                <div class="rounded-md  max-w-[240px] mx-auto   my-2 w-full bg-gray-100       shadow-black duration-300 transform content-div
-                                      group shadow-lg hover:shadow-xl overflow-hidden hover:scale-110">
-                    <div class="py-2   bg-black   w-full text-center font-bold text-white text-xl  "><b class="text-yellow-500 text-xs mr-3">Kandidat Nomor Urut</b>{{ $kandidat->nomor_urut }}
-                    </div>
-                    <img class=" relative flex items-end overflow-hidden   duration-300 transform  h-48 object-cover mx-auto   " src="{{ Storage::url('public/') }}{{ $kandidat->banner }}" alt="Img" />
-                    <div class="   duration-200 transform   ">
-                        <div class="  flex items-end justify-between border-t-gray-800 border-t-2 px-2">
-                            <div class="text-gray-900 py-2 text-xs md:text-sm w-full text-center  ">
-                                <p class="line-clamp-1 font-bold">{{$kandidat->nama_calon_ketua}}</p>
-                                <p class="text-yellow-600">({{$kandidat->npm_calon_ketua}})</p>
-                                <p class="  font-bold">&</p>
-                                <p class="line-clamp-1 font-bold">{{ $kandidat->npm_calon_wakil_ketua }}</p>
-                                <p class="text-yellow-600">({{$kandidat->npm_calon_wakil_ketua}})</p>
+            <div class=" lg:flex w-full text-gray-800 mx-4 md:mx-auto mt-12  pb-20 px-10 justify-center
+                        lg:flex-row md:grid md:grid-cols-2 flex-col gap-6">
+                @foreach ($kandidats as $kandidat)
+                <div>
+                    <div class="rounded-md  max-w-[240px] mx-auto mb-6   my-2 w-full bg-gray-100  hover:bg-opacity-80 hover:bg-black      shadow-black duration-300 transform content-div
+                                        group shadow-lg hover:shadow-xl overflow-hidden hover:scale-110">
+                        <div class="py-2   bg-black   w-full text-center font-bold text-white text-xl  "><b class="text-yellow-500 text-xs mr-3">Kandidat Nomor Urut</b>{{ $kandidat->nomor_urut }}
+                        </div>
+                        <img class=" relative flex items-end overflow-hidden group-hover:opacity-25  duration-300 transform  h-48 object-cover mx-auto   " src="{{ Storage::url('public/') }}{{ $kandidat->banner }}" alt="Img" />
+                        <div class="   duration-200 transform   ">
+                            <div class="  flex items-end justify-between border-t-gray-800 border-t-2 px-2">
+                                <div class="text-gray-900 group-hover:text-gray-400 py-2 text-xs md:text-sm w-full text-center  ">
+                                    <p class="line-clamp-1 font-bold">{{$kandidat->nama_calon_ketua}}</p>
+                                    <p class="text-yellow-600">({{$kandidat->npm_calon_ketua}})</p>
+                                    <p class="  font-bold">&</p>
+                                    <p class="line-clamp-1 font-bold">{{ $kandidat->npm_calon_wakil_ketua }}</p>
+                                    <p class="text-yellow-600">({{$kandidat->npm_calon_wakil_ketua}})</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="   duration-200 transform  bg-black ">
-                        <div class="mt-3     border-t-gray-800 border-t-2 ">
-                            <p class="text-white py-2 text-xs px-2  md:text-sm  text-center">
-                                <b class="text-yellow-500">{{ $kandidat->rekapitulasis_count  }}</b> Suara
-                            </p>
+                        <div class="absolute w-full top-0 left-0  text-center  grid  h-full  opacity-0
+                                             group-hover:opacity-100
+                                             duration-200 transform">
+                            <div class="  text-center   place-self-center  ">
+                                <a href="{{ route('visimisi',[$kandidat->id]) }}" class="text-center px-4 py-3 mx-auto   md:text-sm
+                                                     bg-[#cd514d] rounded-lg hover:bg-[#db6d6a] focus:ring
+                                                     focus:ring-gray-300 focus:ring-opacity-80 duration-300 transform inline-block
+                                                     text-white font-semibold text-xs ">Visi dan Misi</a>
+                            </div>
                         </div>
+                        <div class="   duration-200 transform  bg-black ">
+                            <div class="mt-3     border-t-gray-800 border-t-2 ">
+                                <p class="text-white py-2 text-xs px-2  md:text-sm  text-center">
+                                    <b class="text-yellow-500">{{ $kandidat->rekapitulasis_count  }}</b> Suara
+                                </p>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
-        <div x-data="app()" wire:poll x-cloak class="px-4   pb-20">
-            <div class=" max-w-5xl mx-auto py-10">
-                <div class="  p-6 rounded-lg relative bg-white bg-opacity-90 shadow-inner shadow-black">
+        <div class="px-4   pb-20">
+            <div class=" max-w-7xl mx-auto py-5">
+                <div class="  p-6 rounded-lg relative bg-white bg-opacity-90 shadow-lg shadow-gray-500">
                     <div class="md:flex md:justify-between md:items-center">
                         <div>
                             <h2 class="text-xl text-gray-800 font-bold leading-tight">Quick Count</h2>
@@ -59,99 +73,86 @@
                             </div>
                         </div>
                     </div>
+                    <canvas id="myChart" class="container mx-auto w-full px-4 py-6  "></canvas>
 
-
-                    <div class="line my-8   mx-auto max-w-5xl w-full ">
-                        <!-- Tooltip -->
-                        <!-- <template x-if="tooltipOpen == true">
-                        <div x-ref="tooltipContainer" class="  z-10 shadow-lg rounded-lg absolute h-auto block " :style="`  right:20px; top:60px`">
-                            <div class="shadow-xs rounded-lg bg-orange-500 p-2">
-                                <div class="flex items-center justify-between text-sm">
-                                    <div>Suara Masuk:</div>
-                                    <div class="font-bold ml-2">
-                                        <span x-html="tooltipContent"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </template> -->
-
-                        <!-- Bar Chart -->
-                        <div class="flex -mx-2 items-end   mt-20" wire:poll>
-                            <template x-for="data in chartData">
-
-                                <div class="px-3 w-1/{{count($kandidats)}}">
-
-                                    <div :style="`height: ${data*10}px`" class="transition ease-in duration-200 bg-orange-600 hover:bg-orange-400
-                                              relative" data-tooltip-target="tooltip" @mouseenter="showTooltip($event); tooltipOpen = true" @mouseleave="hideTooltip($event)">
-                                        <div class="text-center absolute top-0 left-0 right-0 -mt-6 text-gray-800 text-sm">
-                                            <p><b x-text="data"></b> Suara</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </template>
-                        </div>
-
-                        <!-- Labels -->
-                        <div class="  mx-auto border-t border-gray-400 " :style="`height: 1px;  "></div>
-                        <div class="flex -mx-2 items-end mb-20">
-                            <template x-for="data in labels">
-                                <div class="px-2 w-1/{{count($kandidats)}}">
-                                    <div class="bg-red-600 relative">
-                                        <div class="text-center absolute top-0 left-0 right-0 h-2 -mt-px bg-gray-400 mx-auto" style="width: 1px"></div>
-                                        <div x-html="data" class="text-center absolute top-0 left-0 right-0 mt-3   text-gray-700 text-sm">
-                                        </div>
-                                    </div>
-                                </div>
-                            </template>
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </div>
+
+
         <footer class="absolute bottom-0      z-50 bg-[#E73530]   w-full   ">
             <div class="px-12 mx-auto py-3   flex flex-wrap flex-col sm:flex-row    ">
                 <p class="text-white mx-auto  text-xs md:text-sm text-center sm:text-left">Copyright&copy; 2023 |
-                    <a href="#" class="text-yellow-500 font-bold">KPU UNIVERSITAS BENGKULU</a>. All rights reserved. {{ json_encode($chartData) }}
+                    <a href="#" class="text-yellow-500 font-bold">KPU UNIVERSITAS BENGKULU</a>. All rights reserved.
                 </p>
             </div>
         </footer>
-
     </div>
-    <script>
-        function app() {
-            return {
-                chartData: @json($chartData),
-                labels: @json($labels),
 
-                tooltipContent: '',
-                tooltipOpen: false,
-                tooltipX: 0,
-                tooltipY: 0,
-                showTooltip(e) {
-                    console.log(e);
-                    this.tooltipContent = e.target.textContent
-                    this.tooltipX = e.target.offsetLeft - e.target.clientWidth;
-                    this.tooltipY = e.target.clientHeight + e.target.clientWidth;
-                },
-                hideTooltip(e) {
-                    this.tooltipContent = '';
-                    this.tooltipOpen = false;
-                    this.tooltipX = 0;
-                    this.tooltipY = 0;
-                },
-                startAutoRefresh() {
-                    setInterval(() => {
-                        Livewire.emit('updateChartData'); // Emit a Livewire event to update data
-                    }, 5000); // Set the interval duration in milliseconds (e.g., 5000 for 5 seconds)
+    @push('js')
+    <script>
+        setInterval(() => Livewire.dispatch('updateData'), 5000);
+        var chartData = JSON.parse(`<?php echo $chart_quick_count ?>`);
+        console.log(chartData);
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartData.label,
+                datasets: [{
+                    label: 'Suara Masuk',
+                    data: chartData.data,
+                    backgroundColor: [
+                        'rgba(231,53,48, 0.6)',
+                    ],
+                    borderColor: [
+                        'rgba(231,53,48, 1)',
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-
-        document.addEventListener('livewire:load', function() {
-            app().startAutoRefresh(); // Start auto-refresh when the Livewire component is loaded
         });
+        Livewire.on('berhasilUpdate', event => {
+            var chartData = JSON.parse(event.data);
+            console.log(chartData);
+            myChart.data.labels = chartData.label;
+            myChart.data.datasets.forEach((dataset) => {
+                dataset.data = chartData.data;
+            });
+            myChart.update();
+        })
     </script>
+    @endpush
+    @else
+    <div class="h-screen grid">
+        <div class="place-self-center container md:mx-auto mx-4 bg-red-100 bg-opacity-50 shadow-md rounded-md shadow-gray-300 py-20 ">
+            <div class="px-10 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-44 w-44 mx-auto text-red-800" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
+                </svg>
+                <p class="mt-5 font-bold">Belum ada calon kandidat</p>
+            </div>
+        </div>
+
+        <footer class="absolute bottom-0      z-50 bg-[#E73530]   w-full   ">
+            <div class="px-12 mx-auto py-3   flex flex-wrap flex-col sm:flex-row    ">
+                <p class="text-white mx-auto  text-xs md:text-sm text-center sm:text-left">Copyright&copy; 2023 |
+                    <a href="#" class="text-yellow-500 font-bold">KPU UNIVERSITAS BENGKULU</a>. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
+    @endif
+
+
+
+
 </div>

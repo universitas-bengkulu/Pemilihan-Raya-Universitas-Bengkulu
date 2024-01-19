@@ -20,6 +20,13 @@
     </a>
 </li>
 
+<li class="{{ set_active(['contact', 'contact.edit', 'contact.create']) }}">
+    <a href="{{ route('contact') }}">
+        <i class="fa fa-gears"></i>
+        <span>Contact Setting</span>
+    </a>
+</li>
+
 <li class="{{ set_active(['user']) }}">
     <a href="{{ route('user') }}">
         <i class="fa fa-users"></i>
@@ -37,8 +44,7 @@
 
 <!-- Authentication -->
 <li>
-    <a class="dropdown-item" href="{{ route('logout') }}"
-        onclick="event.preventDefault();
+    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
         <i class="fa fa-sign-out text-danger"></i>
         <span>{{__('Logout') }}</span>

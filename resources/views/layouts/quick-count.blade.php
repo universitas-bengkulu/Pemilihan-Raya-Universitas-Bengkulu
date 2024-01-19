@@ -12,9 +12,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 
@@ -39,7 +41,7 @@
             <div class="flex   w-full     text-gray-300 space-x-4 text-sm py-2">
                 <marquee behavior="" direction="">
                     <p>
-                        Kontak Narahubung KPU Universitas Bengkulu, E-mail : Kpu.unib22@gmail.com, WhatsApp : +62 831-8716-1914, +62 813-6962-1347
+                        @stack('marquee')
                     </p>
                 </marquee>
 
@@ -148,5 +150,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('assets/frontend/scripts.js') }}"></script>
+@livewireScripts
+@stack('js')
 
 </html>
