@@ -99,6 +99,7 @@ class PandaController extends Controller
         if ($accessData[0]['is_access'] == 1) {
             if ($accessData[0]['tusrThakrId'] == 1) {
                 $mahasiswaData = $this->panda($queryMahasiswa);
+                return $mahasiswaData;
                 if ($mahasiswaData['mahasiswa'][0]['mhsTanggalLulus'] == null || $mahasiswaData['mahasiswa'][0]['mhsTanggalLulus'] == "") {
                     $sessionData = [
                         'npm' => $mahasiswaData['mahasiswa'][0]['mhsNiu'],

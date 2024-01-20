@@ -37,7 +37,7 @@
         <!-- Top Bar -->
         <div id="top-bar" class="w-full     bg-gray-900 duration-500">
             <div class="flex   w-full     text-gray-300 space-x-4 text-sm py-2">
-                <marquee behavior="" direction="">
+                <marquee behavior="" direction="" loop="infinite">
                     <p>
                         {{ (!empty($contact))? $contact->marquee : 'Selamat Datang pada Sistem informasi Pemira - Universitas Bengkulu' }}
                     </p>

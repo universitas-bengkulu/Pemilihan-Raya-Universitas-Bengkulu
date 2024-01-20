@@ -15,6 +15,7 @@ use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RekapitulasiController;
 use App\Http\Controllers\DashboardPemilihController;
+use App\Http\Controllers\DptController;
 use App\Livewire\QuickCountLivewire;
 
 /*
@@ -79,6 +80,15 @@ Route::controller(ContactController::class)->middleware(['auth', 'web'])->prefix
     Route::get('/{contact}/edit', 'edit')->name('contact.edit');
     Route::patch('/{contact}/edit', 'update')->name('contact.update');
     Route::delete('/{contact}/delete', 'destroy')->name('contact.destroy');
+});
+
+Route::controller(DptController::class)->middleware(['auth', 'web'])->prefix('/data-dpt')->group(function () {
+    Route::get('/', 'index')->name('dpt');
+    Route::get('/create', 'create')->name('dpt.create');
+    Route::post('/', 'store')->name('dpt.store');
+    Route::get('/{dpt}/edit-dpt', 'edit')->name('dpt.edit');
+    Route::patch('/{dpt}/edit', 'update')->name('dpt.update');
+    Route::delete('/{dpt}/delete', 'destroy')->name('dpt.destroy');
 });
 
 Route::controller(UserController::class)->middleware(['auth', 'web'])->prefix('/user')->group(function () {
