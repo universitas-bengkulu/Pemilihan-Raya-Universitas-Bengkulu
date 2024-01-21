@@ -15,4 +15,9 @@ class Kandidat extends Model
     {
         return $this->hasMany(Misi::class);
     }
+
+    public function rekapitulasis()
+    {
+        return $this->hasMany(Rekapitulasi::class);
+    }
 }

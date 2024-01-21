@@ -45,16 +45,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/masuk',[PandaController::class,'showLoginForm'])->name('panda.login');
-Route::post('/pandalogin',[PandaController::class, 'pandaLogin'])->name('panda.login.post');
+Route::get('/masuk', [PandaController::class, 'showLoginForm'])->name('panda.login');
+Route::post('/pandalogin', [PandaController::class, 'pandaLogin'])->name('panda.login.post');
 Route::get('/logout', [PandaController::class, 'pandaLogout'])->name('panda.logout');
 
-Route::group(['prefix' => 'mahasiswa'], function () {
+
+Route::get('/verifikasi-data', [DashboardPemilihController::class, 'verifikasiData'])->name('mahasiswa.verifikasi');
+Route::get('/quick-count', [DashboardPemilihController::class, 'quickCount'])->name('mahasiswa.quick-count');
+
+Route::group(['prefix' => 'mahasiswa', 'middleware' => 'isPandaLogin'], function () {
     Route::get('/dashboard', [DashboardPemilihController::class, 'dashboard'])->name('mahasiswa.dashboard');
-    Route::post('/{kandidat}/pilih', [DashboardPemilihController::class, 'pemilihPost'])->name('mahasiswa.pilih');
+    Route::get('/pilih-kandidat', [DashboardPemilihController::class, 'voting'])->name('mahasiswa.voting');
+    Route::get('/{kandidat}/pilih', [DashboardPemilihController::class, 'pemilihPost'])->name('mahasiswa.pilih');
+    Route::get('/{kandidat}/visi-misi-kandidat', [DashboardPemilihController::class, 'visiMisi'])->name('mahasiswa.visi-misi');
 });
 
-Route::controller(KandidatController::class)->middleware(['auth','web'])->prefix('/kandidat')->group(function () {
+Route::controller(KandidatController::class)->middleware(['auth', 'web'])->prefix('/kandidat')->group(function () {
     Route::get('/', 'index')->name('kandidat');
     Route::get('/create', 'create')->name('kandidat.create');
     Route::post('/', 'store')->name('kandidat.store');
@@ -65,7 +71,7 @@ Route::controller(KandidatController::class)->middleware(['auth','web'])->prefix
     Route::post('/{kandidat}/store_misi', 'storeMisi')->name('kandidat.storeMisi');
 });
 
-Route::controller(UserController::class)->middleware(['auth','web'])->prefix('/user')->group(function () {
+Route::controller(UserController::class)->middleware(['auth', 'web'])->prefix('/user')->group(function () {
     Route::get('/', 'index')->name('user');
     Route::get('/create', 'create')->name('user.create');
     Route::post('/', 'store')->name('user.store');
@@ -75,14 +81,14 @@ Route::controller(UserController::class)->middleware(['auth','web'])->prefix('/u
     Route::patch('/', 'updatePassword')->name('user.updatePassword');
 });
 
-Route::controller(JadwalController::class)->middleware(['auth','web'])->prefix('/jadwal')->group(function () {
+Route::controller(JadwalController::class)->middleware(['auth', 'web'])->prefix('/jadwal')->group(function () {
     Route::get('/', 'index')->name('jadwal');
     Route::patch('/{jadwal}/update', 'update')->name('jadwal.update');
 });
 
-Route::controller(RekapitulasiController::class)->middleware(['auth','web'])->prefix('/rekapitulasi')->group(function () {
+Route::controller(RekapitulasiController::class)->middleware(['auth', 'web'])->prefix('/rekapitulasi')->group(function () {
     Route::get('/', 'index')->name('rekapitulasi');
     Route::get('/download-excel', 'downloadExcel')->name('downloadExcel');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

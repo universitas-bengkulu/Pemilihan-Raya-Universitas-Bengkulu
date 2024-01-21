@@ -1,64 +1,62 @@
 @extends('layouts.users')
-@section('user-login')
-        {{ Session::get('nama') }}
-@endsection
-@section('user-login2')
-        {{ Session::get('nama') }}
-@endsection
-@section('logout')
-    <a href="{{ route('panda.logout') }}" class="btn btn-default btn-flat btn-danger" style="color: black">Logout</a>
-@endsection
+
+@section('kandidat','text-yellow-500')
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            @if ($sudah)
-                <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                    <i class="fa fa-success-circle"></i><strong>Selamat :</strong> pilihan anda berhasil disimpan, terimakasih sudah menggunakan hak suara anda !!
-                </div>
-                @else
-            @endif
-            @if ($jadwal <1)
-                <div class="alert alert-danger alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                    <i class="fa fa-success-circle"></i><strong>Mohon Maaf :</strong> Jadwal pemilihan raya belum ditambahkan, silahkan lakukan pemilihan hanya di jadwal pemilihan !!
-                </div>
-                @else
-            @endif
+<div class="min-h-[33vh]     grid">
+    <div class="place-self-center grid">
+        <div class="flex space-x-2 mx-auto place-self-center ">
+            <img src="{{ asset('assets/frontend/kotak.png') }}" alt="kotak-suara" style="filter: drop-shadow(2px 2px 5px #333);" class="h-40 md:h-56 md:mt-10 animate-[bounce_3s_infinite]   ">
         </div>
-        @foreach ($kandidats as $kandidat)
+        <p class="text-gray-800 mb-5   leading-6 md:leading-7 mt-5  max-w-4xl mx-auto text-center md:text-sm 2xl:text-base 2xl:leading-7 text-xs px-6 ">
+            E-voting merupakan sebuah sistem yang
+            memanfaatkan perangkat
+            elektronik dan mengolah informasi
+            digital untuk membuat surat suara, memberikan suara, menghitung perolehan suara, menayangkan
+            perolehan suara dan memelihara serta menghasilkan jejak audit.
+            Pemilihan berbasis online ini dilakukan sebagai alternatif proses pemilihan Universitas Bengkulu
+        </p>
 
-            <div class="col-md-4">
-                <!-- Profile Image -->
-                <div class="box box-primary">
-                    <div class="box-body box-profile">
-                        <label for="">Kandidat Nomor Urut  {{ $kandidat->nomor_urut }}</label>
-                        
-
-                        <ul class="list-group list-group-unbordered">
-                            <li class="list-group-item text-center" style="cursor: pointer">
-                                <img class="profile-user-img img-responsive" style="width: 100%" src="{{ asset('storage/'.$kandidat->banner) }}" alt="User profile picture">
-                        <h3 class="profile-username text-center" style="text-transform: uppercase">{{ $kandidat->nama_calon_ketua.' ('.$kandidat->npm_calon_ketua.' )' }} <br> & <br> {{ $kandidat->npm_calon_wakil_ketua.' ('.$kandidat->npm_calon_wakil_ketua.' )' }}</h3>
-
-                            </li>
-                        </ul>
-                        @if ($sudah)
-                            <button disabled class="btn btn-primary btn-block"><i class="fa fa-check-circle"></i>&nbsp; Pilih</button>
-                            @else
-                                @if ($jadwal <1)
-                                    <button disabled class="btn btn-primary btn-block"><i class="fa fa-check-circle"></i>&nbsp; Pilih</button>
-                                @else
-                                    <form action="{{ route('mahasiswa.pilih',[$kandidat->id]) }}" method="POST">
-                                        {{ csrf_field() }} {{ method_field('POST') }}
-                                        <button type="submit" name="submit" class="btn btn-primary btn-block"><i class="fa fa-check-circle"></i>&nbsp; Pilih</button>
-                                    </form>
-                                @endif
-                        @endif
-                    </div>
-                <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-            </div>    
-        @endforeach
     </div>
+</div>
+<div class="min-h-[67vh]  relative     overflow-hidden pt-5
+                from-[#E73530] bg-gradient-to-t from-50%   grid
+                ">
+
+    <div x-data class=" flex w-full text-gray-800 mx-4 md:mx-auto place-self-center pb-20 px-10 justify-center
+                    md:flex-row flex-col">
+        @foreach ($kandidats as $kandidat)
+        <div data-aos="fade-up">
+            <div class="rounded-md max-w-[240px] mx-auto md:mx-3 my-2 w-full bg-gray-100 hover:bg-opacity-80 hover:bg-black  shadow-black duration-300 transform content-div
+                                      group shadow-lg hover:shadow-xl overflow-hidden hover:scale-110">
+                <div class="py-2 mb-3 bg-black   w-full text-center font-bold text-white text-xl  "><b class="text-yellow-500 text-xs mr-3">Kandidat Nomor Urut</b>{{ $kandidat->nomor_urut }}
+                </div>
+                <img class=" relative flex items-end overflow-hidden rounded-full    group-hover:opacity-25 duration-300 transform  h-36 mx-auto   " src="{{ asset('assets/frontend/logo.webp') }}" alt="Img" />
+                <div class="   duration-200 transform mt-3 px-2 ">
+                    <div class="mt-3 flex items-end justify-between border-t-gray-800 border-t-2 ">
+                        <p class="text-gray-900 py-2 group-hover:text-white text-xs md:text-sm  text-center break-words">
+                            {{ $kandidat->nama_calon_ketua.' ('.$kandidat->npm_calon_ketua.')' }} <br><b>&</b> <br> {{ $kandidat->npm_calon_wakil_ketua.' ('.$kandidat->npm_calon_wakil_ketua.')' }}
+                        </p>
+                    </div>
+                </div>
+                <div class="absolute w-full top-0 left-0  text-center  grid  h-full  opacity-0
+                                             group-hover:opacity-100
+                                             duration-200 transform">
+                    <div class="  text-center   place-self-center  ">
+                        <a href="{{ route('mahasiswa.visi-misi',[$kandidat->id]) }}" class="text-center px-4 py-3 mx-auto   md:text-sm
+                                                     bg-[#cd514d] rounded-lg hover:bg-[#db6d6a] focus:ring
+                                                     focus:ring-gray-300 focus:ring-opacity-80 duration-300 transform inline-block
+                                                     text-white font-semibold text-xs ">Visi dan Misi</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @endforeach
+
+
+
+    </div>
+</div>
+
 @endsection
