@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CekDptController;
+use App\Http\Controllers\ContactController;
 use App\Models\Jadwal;
 use App\Models\Kandidat;
 use App\Models\Rekapitulasi;
@@ -14,6 +15,8 @@ use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RekapitulasiController;
 use App\Http\Controllers\DashboardPemilihController;
+use App\Http\Controllers\DptController;
+use App\Livewire\QuickCountLivewire;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +29,8 @@ use App\Http\Controllers\DashboardPemilihController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [DashboardPemilihController::class, 'welcome'])->name('welcome');
+Route::get('/{kandidat}/visimisi', [DashboardPemilihController::class, 'guestVisiMisi'])->name('visimisi');
 
 Route::get('/cek_dpt', [CekDptController::class, 'cekDpt'])
     ->name('cekDpt');
@@ -50,8 +52,8 @@ Route::post('/pandalogin', [PandaController::class, 'pandaLogin'])->name('panda.
 Route::get('/logout', [PandaController::class, 'pandaLogout'])->name('panda.logout');
 
 
-Route::get('/verifikasi-data', [DashboardPemilihController::class, 'verifikasiData'])->name('mahasiswa.verifikasi');
-Route::get('/quick-count', [DashboardPemilihController::class, 'quickCount'])->name('mahasiswa.quick-count');
+// Route::get('/verifikasi-data', [DashboardPemilihController::class, 'verifikasiData'])->name('mahasiswa.verifikasi');
+Route::get('/quick-count', QuickCountLivewire::class)->name('mahasiswa.quick-count');
 
 Route::group(['prefix' => 'mahasiswa', 'middleware' => 'isPandaLogin'], function () {
     Route::get('/dashboard', [DashboardPemilihController::class, 'dashboard'])->name('mahasiswa.dashboard');
@@ -69,6 +71,24 @@ Route::controller(KandidatController::class)->middleware(['auth', 'web'])->prefi
     Route::delete('/{kandidat}/delete', 'destroy')->name('kandidat.destroy');
     Route::get('/{kandidat}/create_misi', 'createMisi')->name('kandidat.createMisi');
     Route::post('/{kandidat}/store_misi', 'storeMisi')->name('kandidat.storeMisi');
+});
+
+Route::controller(ContactController::class)->middleware(['auth', 'web'])->prefix('/contact')->group(function () {
+    Route::get('/', 'index')->name('contact');
+    Route::get('/create', 'create')->name('contact.create');
+    Route::post('/', 'store')->name('contact.store');
+    Route::get('/{contact}/edit', 'edit')->name('contact.edit');
+    Route::patch('/{contact}/edit', 'update')->name('contact.update');
+    Route::delete('/{contact}/delete', 'destroy')->name('contact.destroy');
+});
+
+Route::controller(DptController::class)->middleware(['auth', 'web'])->prefix('/data-dpt')->group(function () {
+    Route::get('/', 'index')->name('dpt');
+    Route::get('/create', 'create')->name('dpt.create');
+    Route::post('/', 'store')->name('dpt.store');
+    Route::get('/{dpt}/edit-dpt', 'edit')->name('dpt.edit');
+    Route::patch('/{dpt}/edit', 'update')->name('dpt.update');
+    Route::delete('/{dpt}/delete', 'destroy')->name('dpt.destroy');
 });
 
 Route::controller(UserController::class)->middleware(['auth', 'web'])->prefix('/user')->group(function () {

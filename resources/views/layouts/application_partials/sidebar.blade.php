@@ -12,11 +12,23 @@
         <span>Data Kandidat</span>
     </a>
 </li>
-
+<li class="{{ set_active(['dpt','dpt.create','dpt.edit' ]) }}">
+    <a href="{{ route('dpt') }}">
+        <i class="fa fa-check-square-o"></i>
+        <span>Data DPT</span>
+    </a>
+</li>
 <li class="{{ set_active(['jadwal']) }}">
     <a href="{{ route('jadwal') }}">
         <i class="fa fa-clock-o"></i>
         <span>Jadwal Pemilihan</span>
+    </a>
+</li>
+
+<li class="{{ set_active(['contact', 'contact.edit', 'contact.create']) }}">
+    <a href="{{ route('contact') }}">
+        <i class="fa fa-gears"></i>
+        <span>Contact Setting</span>
     </a>
 </li>
 
@@ -37,8 +49,7 @@
 
 <!-- Authentication -->
 <li>
-    <a class="dropdown-item" href="{{ route('logout') }}"
-        onclick="event.preventDefault();
+    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
         <i class="fa fa-sign-out text-danger"></i>
         <span>{{__('Logout') }}</span>

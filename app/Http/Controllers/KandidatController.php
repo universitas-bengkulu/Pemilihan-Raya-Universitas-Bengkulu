@@ -37,6 +37,8 @@ class KandidatController extends Controller
             'prodi_calon_wakil_ketua' => 'required',
             'jenjang_prodi_calon_wakil_ketua' => 'required',
             'nomor_hp_calon_wakil_ketua' => 'required',
+            'foto_ketua' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'foto_wakil_ketua' => 'required|image|mimes:png,jpg,jpeg|max:2048',
         ];
 
         $text = [
@@ -58,8 +60,16 @@ class KandidatController extends Controller
             'banner.image' => 'Banner harus berupa gambar.',
             'banner.mimes' => 'Banner harus berformat PNG, JPG, atau JPEG.',
             'banner.max' => 'Ukuran banner tidak boleh melebihi 2MB.',
+            'foto_ketua.required' => 'Foto Calon Ketua harus diisi.',
+            'foto_ketua.image' => 'Foto Calon Ketua harus berupa gambar.',
+            'foto_ketua.mimes' => 'Foto Calon Ketua harus berformat PNG, JPG, atau JPEG.',
+            'foto_ketua.max' => 'Ukuran Foto Calon Ketua tidak boleh melebihi 2MB.',
+            'foto_wakil_ketua.required' => 'Foto Calon Wakil Ketua harus diisi.',
+            'foto_wakil_ketua.image' => 'Foto Calon Wakil Ketua harus berupa gambar.',
+            'foto_wakil_ketua.mimes' => 'Foto Calon Wakil Ketua harus berformat PNG, JPG, atau JPEG.',
+            'foto_wakil_ketua.max' => 'Ukuran Foto Calon Wakil Ketua tidak boleh melebihi 2MB.',
         ];
-        
+
         $validasi = Validator::make($request->all(), $rules, $text);
         if ($validasi->fails()) {
             return response()->json(['error'  =>  0, 'text'   =>  $validasi->errors()->first()],422);
@@ -87,7 +97,19 @@ class KandidatController extends Controller
             $fileName = $file->store('banners', 'public');
             $kandidat['banner'] = $fileName;
         }
-        
+
+        if ($request->hasFile('foto_ketua')) {
+            $file = $request->file('foto_ketua');
+            $fileName = $file->store('foto_ketuas', 'public');
+            $kandidat['foto_ketua'] = $fileName;
+        }
+
+        if ($request->hasFile('foto_wakil_ketua')) {
+            $file = $request->file('foto_wakil_ketua');
+            $fileName = $file->store('foto_wakil_ketuas', 'public');
+            $kandidat['foto_wakil_ketua'] = $fileName;
+        }
+
         $create = Kandidat::create($kandidat);
         if ($create) {
             return response()->json([
@@ -122,6 +144,8 @@ class KandidatController extends Controller
             'prodi_calon_wakil_ketua' => 'required',
             'jenjang_prodi_calon_wakil_ketua' => 'required',
             'nomor_hp_calon_wakil_ketua' => 'required',
+            'foto_ketua' => 'image|mimes:png,jpg,jpeg|max:2048',
+            'foto_wakil_ketua' => 'image|mimes:png,jpg,jpeg|max:2048',
         ];
 
         $text = [
@@ -142,8 +166,16 @@ class KandidatController extends Controller
             'banner.image' => 'Banner harus berupa gambar.',
             'banner.mimes' => 'Banner harus berformat PNG, JPG, atau JPEG.',
             'banner.max' => 'Ukuran banner tidak boleh melebihi 2MB.',
+            'foto_ketua.required' => 'Foto Calon Ketua harus diisi.',
+            'foto_ketua.image' => 'Foto Calon Ketua harus berupa gambar.',
+            'foto_ketua.mimes' => 'Foto Calon Ketua harus berformat PNG, JPG, atau JPEG.',
+            'foto_ketua.max' => 'Ukuran Foto Calon Ketua tidak boleh melebihi 2MB.',
+            'foto_wakil_ketua.required' => 'Foto Calon Wakil Ketua harus diisi.',
+            'foto_wakil_ketua.image' => 'Foto Calon Wakil Ketua harus berupa gambar.',
+            'foto_wakil_ketua.mimes' => 'Foto Calon Wakil Ketua harus berformat PNG, JPG, atau JPEG.',
+            'foto_wakil_ketua.max' => 'Ukuran Foto Calon Wakil Ketua tidak boleh melebihi 2MB.',
         ];
-        
+
         $validasi = Validator::make($request->all(), $rules, $text);
         if ($validasi->fails()) {
             return response()->json(['error'  =>  0, 'text'   =>  $validasi->errors()->first()],422);
@@ -171,7 +203,18 @@ class KandidatController extends Controller
             $fileName = $file->store('banners', 'public');
             $kandidatBaru['banner'] = $fileName;
         }
-        
+        if ($request->hasFile('foto_ketua')) {
+            $file = $request->file('foto_ketua');
+            $fileName = $file->store('foto_ketuas', 'public');
+            $kandidatBaru['foto_ketua'] = $fileName;
+        }
+
+        if ($request->hasFile('foto_wakil_ketua')) {
+            $file = $request->file('foto_wakil_ketua');
+            $fileName = $file->store('foto_wakil_ketuas', 'public');
+            $kandidatBaru['foto_wakil_ketua'] = $fileName;
+        }
+
         $update = Kandidat::where('id',$kandidat->id)->update($kandidatBaru);
         if ($update) {
             return response()->json([
@@ -214,12 +257,12 @@ class KandidatController extends Controller
         $text = [
             'misi.required' => 'Misi harus diisi.',
         ];
-        
+
         $validasi = Validator::make($request->all(), $rules, $text);
         if ($validasi->fails()) {
             return response()->json(['error'  =>  0, 'text'   =>  $validasi->errors()->first()],422);
         }
-        
+
         $create = Misi::create([
             'kandidat_id'   =>  $kandidat->id,
             'misi' => $request->input('misi'),

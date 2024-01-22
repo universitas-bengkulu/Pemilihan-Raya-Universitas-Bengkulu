@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pemira - Universitas Bengkulu</title>
-    <link rel="shortcut icon" href="{{ asset('assets/img/logo.svg') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/frontend/Logo.svg') }}">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -12,9 +12,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 
@@ -37,9 +39,9 @@
         <!-- Top Bar -->
         <div id="top-bar" class="w-full     bg-gray-900 duration-500">
             <div class="flex   w-full     text-gray-300 space-x-4 text-sm py-2">
-                <marquee behavior="" direction="" loop="infinite">
+                <marquee behavior="" direction="" loop="infinite" scrollamount="5">
                     <p>
-                        {{ (!empty($contact))? $contact->marquee : 'Selamat Datang pada Sistem informasi Pemira - Universitas Bengkulu' }}
+                        @stack('marquee')
                     </p>
                 </marquee>
 
@@ -136,7 +138,7 @@
     </nav>
     <!-- end navbar -->
 
-    @yield('content')
+    {{ $slot }}
 
 
 
@@ -148,5 +150,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('assets/frontend/scripts.js') }}"></script>
+@livewireScripts
+@stack('js')
 
 </html>

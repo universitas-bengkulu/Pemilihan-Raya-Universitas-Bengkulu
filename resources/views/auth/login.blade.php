@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login </title>
-    <link rel="shortcut icon" href="{{ asset('assets/img/logo.svg') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/frontend/Logo.svg') }}">
 
     <!-- stylesheets tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,7 +34,7 @@
                             <div
                             class=" flex flex-col break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border ">
                             <div class=" pb-0 mb-0 bg-transparent border-b-0 rounded-t-2xl w-full text-center ">
-                                <img src="{{ asset('assets/img/logo.svg') }}" class="h-28 w-28 mx-auto mb-5" alt="logo">
+                                <img src="{{ asset('assets/frontend/Logo.svg') }}" class="h-28 w-28 mx-auto mb-5" alt="logo">
                                 <h3
                                     class="md:text-xl text-xl  z-10  text-transparent bg-gradient-to-tl from-black to-green-500 font-bold  bg-clip-text">
                                     APLIKASI PEMILIHAN RAYA <br>

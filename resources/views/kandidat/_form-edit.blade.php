@@ -16,7 +16,7 @@
             <input type="file" name="banner" value="{{ $kandidat->banner }}" class="form-control">
             <small class="text-danger">File Lama : {{ $kandidat->banner }}</small>
         </div>
-        
+
         <div class="form-group col-md-12">
             <label for="">Masukan Visi Kandidat</label>
             <textarea name="visi" class="form-control" id="" cols="30" rows="3">{{ $kandidat->visi }}</textarea>
@@ -26,21 +26,21 @@
     <div class="row">
         <div class="col-md-12">
             <div class="alert alert-danger">
-                <strong>2. LENGKAPI DATA CALON GUBERNUR</strong>
+                <strong>2. LENGKAPI DATA CALON PRESIDEN MAHASISWA</strong>
             </div>
         </div>
         <div class="form-group col-md-6">
-            <label for="">Masukan Nama Calon Gubernur</label>
+            <label for="">Masukan Nama Calon Presiden Mahasiswa</label>
             <input type="text" name="nama_calon_ketua" value="{{ $kandidat->nama_calon_ketua }}" class="form-control">
         </div>
 
         <div class="form-group col-md-6">
-            <label for="">Masukan NPM Calon Gubernur</label>
+            <label for="">Masukan NPM Calon Presiden Mahasiswa</label>
             <input type="text" name="npm_calon_ketua" value="{{ $kandidat->npm_calon_ketua }}" class="form-control">
         </div>
-        
+
         <div class="form-group col-md-6">
-            <label for="">Masukan Jenis Kelamin Calon Gubernur</label>
+            <label for="">Masukan Jenis Kelamin Calon Presiden Mahasiswa</label>
             <select name="jenis_kelamin_calon_ketua" class="form-control" id="">
                 <option disabled selected>-- pilih jenis kelamin --</option>
                 <option value="L" {{ $kandidat->jenis_kelamin_calon_ketua == 'L' ? 'selected' : ''}}>Laki-Laki</option>
@@ -49,12 +49,12 @@
         </div>
 
         <div class="form-group col-md-6">
-            <label for="">Masukan Prodi Calon Gubernur</label>
+            <label for="">Masukan Prodi Calon Presiden Mahasiswa</label>
             <input type="text" name="prodi_calon_ketua" value="{{ $kandidat->prodi_calon_ketua }}" class="form-control">
         </div>
 
         <div class="form-group col-md-6">
-            <label for="">Masukan Jenjang Prodi Calon Gubernur</label>
+            <label for="">Masukan Jenjang Prodi Calon Presiden Mahasiswa</label>
             <select name="jenjang_prodi_calon_ketua" class="form-control" id="">
                 <option disabled selected>-- pilih jenjang prodi --</option>
                 <option {{ $kandidat->jenjang_prodi_calon_ketua == "DI" ? 'selected' : ''}} value="DI">DI</option>
@@ -68,29 +68,35 @@
         </div>
 
         <div class="form-group col-md-6">
-            <label for="">Masukan Nomor HP Calon Gubernur</label>
+            <label for="">Masukan Nomor HP Calon Presiden Mahasiswa</label>
             <input type="text" name="nomor_hp_calon_ketua" value="{{ $kandidat->nomor_hp_calon_ketua }}" class="form-control">
+        </div>
+        <div class="form-group col-md-12">
+            <label for="">Masukan Foto Calon Presiden Mahasiswa</label>
+            <input type="file" name="foto_ketua" class="form-control">
+            <small class="text-danger">File Lama : {{ $kandidat->foto_ketua }}</small>
+
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
             <div class="alert alert-danger">
-                <strong>3. LENGKAPI DATA CALON WAKIL GUBERNUR</strong>
+                <strong>3. LENGKAPI DATA CALON WAKIL PRESIDEN MAHASISWA</strong>
             </div>
         </div>
         <div class="form-group col-md-6">
-            <label for="">Masukan Nama Calon Wakil Gubernur</label>
+            <label for="">Masukan Nama Calon Wakil Presiden Mahasiswa</label>
             <input type="text" name="nama_calon_wakil_ketua" value="{{ $kandidat->nama_calon_wakil_ketua }}" class="form-control">
         </div>
 
         <div class="form-group col-md-6">
-            <label for="">Masukan NPM Calon Wakil Gubernur</label>
+            <label for="">Masukan NPM Calon Wakil Presiden Mahasiswa</label>
             <input type="text" name="npm_calon_wakil_ketua" value="{{ $kandidat->npm_calon_wakil_ketua }}" class="form-control">
         </div>
-        
+
         <div class="form-group col-md-6">
-            <label for="">Masukan Jenis Kelamin Calon Wakil Gubernur</label>
+            <label for="">Masukan Jenis Kelamin Calon Wakil Presiden Mahasiswa</label>
             <select name="jenis_kelamin_calon_wakil_ketua" value="{{ $kandidat->jenis_kelamin_calon_wakil_ketua }}" class="form-control" id="">
                 <option disabled selected>-- pilih jenis kelamin --</option>
                 <option value="L" {{ $kandidat->jenis_kelamin_calon_wakil_ketua == 'L' ? 'selected' : ''}}>Laki-Laki</option>
@@ -99,12 +105,12 @@
         </div>
 
         <div class="form-group col-md-6">
-            <label for="">Masukan Prodi Calon Wakil Gubernur</label>
+            <label for="">Masukan Prodi Calon Wakil Presiden Mahasiswa</label>
             <input type="text" name="prodi_calon_wakil_ketua" value="{{ $kandidat->prodi_calon_wakil_ketua }}" class="form-control">
         </div>
 
         <div class="form-group col-md-6">
-            <label for="">Masukan Jenjang Prodi Calon Wakil Gubernur</label>
+            <label for="">Masukan Jenjang Prodi Calon Wakil Presiden Mahasiswa</label>
             <select name="jenjang_prodi_calon_wakil_ketua" value="{{ $kandidat->jenjang_prodi_calon_wakil_ketua }}" class="form-control" id="">
                 <option disabled selected>-- pilih jenjang prodi --</option>
                 <option {{ $kandidat->jenjang_prodi_calon_wakil_ketua == "DI" ? 'selected' : ''}} value="DI">DI</option>
@@ -118,8 +124,15 @@
         </div>
 
         <div class="form-group col-md-6">
-            <label for="">Masukan Nomor HP Calon Wakil Gubernur</label>
+            <label for="">Masukan Nomor HP Calon Wakil Presiden Mahasiswa</label>
             <input type="text" name="nomor_hp_calon_wakil_ketua" value="{{ $kandidat->nomor_hp_calon_wakil_ketua }}" class="form-control">
+        </div>
+
+        <div class="form-group col-md-12">
+            <label for="">Masukan Foto Calon Wakil Presiden Mahasiswa</label>
+            <input type="file" name="foto_wakil_ketua" class="form-control">
+            <small class="text-danger">File Lama : {{ $kandidat->foto_wakil_ketua }}</small>
+
         </div>
     </div>
 

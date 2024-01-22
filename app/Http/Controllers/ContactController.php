@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dpt;
-
+use App\Models\Contact;
 use App\Models\Jadwal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class DptController extends Controller
+class ContactController extends Controller
 {
     public function index()
     {
-        $dpts = Dpt::get();
-        return view('dpt.index', [
-            'dpts' =>  $dpts,
+        $contacts = Contact::get();
+        return view('contact.index', [
+            'contacts' =>  $contacts,
         ]);
     }
 
     public function create()
     {
         $jadwals = Jadwal::get();
-        return view('dpt.create', [
+        return view('contact.create', [
             'jadwals' =>  $jadwals,
         ]);
     }
@@ -54,7 +53,7 @@ class DptController extends Controller
             return response()->json(['error'  =>  0, 'text'   =>  $validasi->errors()->first()], 422);
         }
 
-        $dpt = [
+        $contact = [
             'jadwal_id' => $request->input('jadwal_id'),
             'email' => $request->input('email'),
             'no_tlp' => $request->input('no_tlp'),
@@ -67,28 +66,28 @@ class DptController extends Controller
 
 
 
-        $create = Dpt::create($dpt);
+        $create = Contact::create($contact);
         if ($create) {
             return response()->json([
-                'text'  =>  'Yeay, data Dpt berhasil diinput',
-                'url'   =>  url('/dpt/'),
+                'text'  =>  'Yeay, data Contact berhasil diinput',
+                'url'   =>  url('/contact/'),
             ]);
         } else {
-            return response()->json(['text' =>  'Oopps, data dpt gagal diinput']);
+            return response()->json(['text' =>  'Oopps, data contact gagal diinput']);
         }
     }
 
-    public function edit(Dpt $dpt)
+    public function edit(Contact $contact)
     {
         $jadwals = Jadwal::get();
-        return view('dpt.edit', [
+        return view('contact.edit', [
             'jadwals'  =>  $jadwals,
-            'dpt'  =>  $dpt,
+            'contact'  =>  $contact,
 
         ]);
     }
 
-    public function update(Dpt $dpt, Request $request)
+    public function update(Contact $contact, Request $request)
     {
         $rules = [
             'jadwal_id' => 'required',
@@ -116,7 +115,7 @@ class DptController extends Controller
             return response()->json(['error'  =>  0, 'text'   =>  $validasi->errors()->first()], 422);
         }
 
-        $dptBaru = [
+        $contactBaru = [
             'jadwal_id' => $request->input('jadwal_id'),
             'email' => $request->input('email'),
             'no_tlp' => $request->input('no_tlp'),
@@ -128,20 +127,20 @@ class DptController extends Controller
 
 
 
-        $update = Dpt::where('id', $dpt->id)->update($dptBaru);
+        $update = Contact::where('id', $contact->id)->update($contactBaru);
         if ($update) {
             return response()->json([
-                'text'  =>  'Yeay, data dpt berhasil diinput',
-                'url'   =>  url('/dpt/'),
+                'text'  =>  'Yeay, data contact berhasil diinput',
+                'url'   =>  url('/contact/'),
             ]);
         } else {
-            return response()->json(['text' =>  'Oopps, data dpt gagal diinput']);
+            return response()->json(['text' =>  'Oopps, data contact gagal diinput']);
         }
     }
 
-    public function destroy(Dpt $dpt)
+    public function destroy(Contact $contact)
     {
-        $delete = $dpt->delete();
+        $delete = $contact->delete();
         if ($delete) {
             $notification = array(
                 'message' => 'Data berhasil dihapus!',
@@ -156,4 +155,5 @@ class DptController extends Controller
             return redirect()->back()->with($notification);
         }
     }
+
 }

@@ -41,7 +41,7 @@
                         <div class="inner">
                             <h3>{{ $totalPemilih }}</h3>
 
-                            <p>Jumlah Sudah Memiloh</p>
+                            <p>Jumlah Sudah Memilih</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
