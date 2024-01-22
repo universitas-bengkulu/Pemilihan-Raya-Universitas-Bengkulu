@@ -29,8 +29,6 @@
 
 @push('scripts')
     <script>
-        let table = new DataTable('#table');
-
         $('.show_confirm').click(function(event) {
             var form =  $(this).closest("form");
             var name = $(this).data("name");

@@ -18,6 +18,16 @@ class Rekapitulasi extends Model
     }
 
     /**
+     * Get the dpt that owns the Rekapitulasi
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function dpt(): BelongsTo
+    {
+        return $this->belongsTo(Dpt::class, 'dpt_npm', 'npm');
+    }
+
+    /**
      * Get the user that owns the Rekapitulasi
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

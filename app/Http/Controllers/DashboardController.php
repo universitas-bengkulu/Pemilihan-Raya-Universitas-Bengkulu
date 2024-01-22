@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dpt;
 use App\Models\Jadwal;
 use App\Models\Kandidat;
 use App\Models\Rekapitulasi;
@@ -16,27 +17,23 @@ class DashboardController extends Controller
         $jumlahKandidat = Kandidat::count();
         $jadwalPemilihan = Jadwal::first();
         $totalPemilih = Rekapitulasi::count();
-        $jumlahPemilih1 = Rekapitulasi::where('kandidat_id', 1)->count();
-        $jumlahPemilih3 = Rekapitulasi::where('kandidat_id', 3)->count();
+        // Menghitung total data dalam tabel dpts
+        $totalDpts = Dpt::count();
+
+        // Menghitung total pemilih yang belum memilih
+        $totalBelumMemilih = $totalDpts - $totalPemilih;
 
         $rekapitulasiData = Rekapitulasi::join('kandidats', 'rekapitulasis.kandidat_id', '=', 'kandidats.id')
-            ->select('kandidats.nomor_urut', DB::raw('count(rekapitulasis.id) as jumlah'))
+            ->select('kandidats.nomor_urut','kandidats.nama_calon_ketua','kandidats.nama_calon_wakil_ketua', DB::raw('count(rekapitulasis.id) as jumlah'))
             ->groupBy('kandidats.id')
             ->get();
-
-        // if ($totalPemilih > 0) {
-        //     $persentasePemilih1 = ($jumlahPemilih1 / $totalPemilih) * 100;
-        //     $persentasePemilih3 = ($jumlahPemilih3 / $totalPemilih) * 100;
-        // } else {
-        //     $persentasePemilih1 = 0; // Hindari pembagian oleh nol
-        // }
 
         return view('dashboard', [
             'jadwalPemilihan' => $jadwalPemilihan,
             'jumlahKandidat' => $jumlahKandidat,
             'jadwalPemilihan' => $jadwalPemilihan,
-            'jumlahPemilih1' => $jumlahPemilih1,
-            'jumlahPemilih3' => $jumlahPemilih3,
+            'totalDpts' => $totalDpts,
+            'totalBelumMemilih' => $totalBelumMemilih,
             // 'persentasePemilih1' => $persentasePemilih1,
             // 'persentasePemilih3' => $persentasePemilih3,
             'rekapitulasiData' => $rekapitulasiData,

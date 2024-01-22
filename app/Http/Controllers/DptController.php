@@ -12,7 +12,7 @@ class DptController extends Controller
 {
     public function index()
     {
-        $dpts = Dpt::get();
+        $dpts = Dpt::paginate(10);
         return view('dpt.index', [
             'dpts' =>  $dpts,
         ]);
@@ -155,5 +155,16 @@ class DptController extends Controller
             );
             return redirect()->back()->with($notification);
         }
+    }
+
+    public function dptCari(Request $request){
+        $nama_lengkap = $request->input('nama_lengkap');
+
+        $dpts = Dpt::where('nama_lengkap', 'like', '%' . $nama_lengkap . '%')
+                ->paginate(10);
+
+        return view('dpt.index',[
+            'dpts' =>  $dpts,
+        ]);
     }
 }

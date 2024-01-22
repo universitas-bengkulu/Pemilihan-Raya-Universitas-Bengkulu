@@ -12,7 +12,7 @@
         <span>Data Kandidat</span>
     </a>
 </li>
-<li class="{{ set_active(['dpt','dpt.create','dpt.edit' ]) }}">
+<li class="{{ set_active(['dpt','dpt.create','dpt.edit','dpt.cari' ]) }}">
     <a href="{{ route('dpt') }}">
         <i class="fa fa-check-square-o"></i>
         <span>Data DPT</span>
@@ -39,13 +39,19 @@
     </a>
 </li>
 
-<li class="{{ set_active(['rekapitulasi']) }}">
+<li class="{{ set_active(['rekapitulasi','rekapitulasi.cari']) }}">
     <a href="{{ route('rekapitulasi') }}">
         <i class="fa fa-line-chart"></i>
         <span>Rekapitulasi Data</span>
     </a>
 </li>
 
+<li class="{{ set_active(['statistik','statistik.cari']) }}">
+    <a href="{{ route('statistik') }}">
+        <i class="fa fa-line-chart"></i>
+        <span>Statistik Pemilihan</span>
+    </a>
+</li>
 
 <!-- Authentication -->
 <li>

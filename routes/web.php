@@ -16,6 +16,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RekapitulasiController;
 use App\Http\Controllers\DashboardPemilihController;
 use App\Http\Controllers\DptController;
+use App\Http\Controllers\StatistikController;
 use App\Livewire\QuickCountLivewire;
 
 /*
@@ -89,6 +90,8 @@ Route::controller(DptController::class)->middleware(['auth', 'web'])->prefix('/d
     Route::get('/{dpt}/edit-dpt', 'edit')->name('dpt.edit');
     Route::patch('/{dpt}/edit', 'update')->name('dpt.update');
     Route::delete('/{dpt}/delete', 'destroy')->name('dpt.destroy');
+    Route::get('/cari', 'dptCari')->name('dpt.cari');
+
 });
 
 Route::controller(UserController::class)->middleware(['auth', 'web'])->prefix('/user')->group(function () {
@@ -108,7 +111,13 @@ Route::controller(JadwalController::class)->middleware(['auth', 'web'])->prefix(
 
 Route::controller(RekapitulasiController::class)->middleware(['auth', 'web'])->prefix('/rekapitulasi')->group(function () {
     Route::get('/', 'index')->name('rekapitulasi');
+    Route::get('/_cari', 'rekapitulasiCari')->name('rekapitulasi.cari');
     Route::get('/download-excel', 'downloadExcel')->name('downloadExcel');
+});
+
+Route::controller(StatistikController::class)->middleware(['auth', 'web'])->prefix('/statistik')->group(function () {
+    Route::get('/', 'index')->name('statistik');
+    Route::get('/cari', 'cari')->name('statistik.cari');
 });
 
 require __DIR__ . '/auth.php';

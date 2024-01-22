@@ -5,7 +5,7 @@
     <style>
         #chartdiv {
             width: 100%;
-            height: 300px;
+            height: 500px;
         }
     </style>
 @endpush
@@ -31,7 +31,7 @@
                         <p>Jumlah Kandidat</p>
                         </div>
                         <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fa fa-users"></i>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                             <p>Jumlah Sudah Memilih</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="fa fa-user-check"></i>
                         </div>
                     </div>
                 </div>
@@ -53,10 +53,10 @@
                     <div class="small-box bg-yellow">
                         <div class="inner">
                             <h3>
-                                {{-- {{ $jumlahPemilih1 }}<sup style="font-size: 20px">({{ $persentasePemilih1 }}%)</sup> --}}
+                                {{ $totalBelumMemilih }}</sup>
                             </h3>
 
-                            <p>Jumlah Pemilih Nomor Urut 1</p>
+                            <p>Jumlah Belum Memilih</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
@@ -68,13 +68,13 @@
                     <div class="small-box bg-red">
                         <div class="inner">
                             <h3>
-                                {{-- {{ $jumlahPemilih3 }}<sup style="font-size: 20px">({{ $persentasePemilih3 }}%)</sup> --}}
+                                {{ $totalDpts }}
                             </h3>
 
-                            <p>Unique Visitors</p>
+                            <p>Jumlah Seluruh DPT</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
+                            <i class="fa fa-users"></i>
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                     var data = [
                         @foreach ($rekapitulasiData as $data)
                             {
-                                country: "{{ $data->nomor_urut }}",
+                                country: "{{ $data->nama_calon_ketua.' - '.$data->nama_calon_wakil_ketua }}",
                                 value: {{ $data->jumlah }}
                             },
                         @endforeach
