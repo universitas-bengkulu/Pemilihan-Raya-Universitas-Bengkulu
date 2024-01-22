@@ -1,63 +1,43 @@
-<form action="{{ route('contact.update',[$contact->id]) }}" method="POST" class="form" enctype="multipart/form-data">
+<form action="{{ route('dpt.update',[$dpt->npm]) }}" method="POST" class="form" enctype="multipart/form-data">
     @csrf @method('PATCH')
     <div class="row">
         <div class="form-group col-md-6">
-            <label for="">Jadwal/Periode Pemilihan</label>
-            <select name="jadwal_id" class="form-control" id="">
-                <option disabled selected>-- pilih Jadwal/Periode Pemilihan --</option>
-                @foreach ($jadwals as $jadwal )
-                <option value="{{ $jadwal->id }}" {{ $jadwal->id==$contact->jadwal_id? 'selected' : '' }}>{{ $jadwal->tanggal }}</option>
-                @endforeach
-            </select>
+            <label for="">NPM</label>
+            <input type="text" name="npm" value="{{$dpt->npm}}" disabled  id="npm" class="form-control ">
+
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="">Nama Lengkap</label>
+            <input type="text" name="nama" value="{{$dpt->nama_lengkap}}" required class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="">Jenjang</label>
+            <input type="text" name="jenjang" value="{{$dpt->jenjang}}" required class="form-control">
         </div>
         <div class="form-group col-md-6">
-            <label for="">Email</label>
-            <input type="text" name="email" value="{{ $contact->email }}" class="form-control">
-        </div>
-
-
-        <div class="form-group col-md-12">
-            <label for="">Nomor Whatsapp</label>
-            <textarea name="no_tlp" class="form-control" id="" cols="30" rows="1">{{$contact->no_tlp}}</textarea>
-            <small class="text-danger">Catatan: apabila nomor lebih dari 1, pisahkan dengan mengunakan tanda titik-koma (;) </small><br>
-            <small class="text-danger"> nomor telpon tidak menggunakan tanda +, contoh nomor 62812xxxxxxx </small>
-        </div>
-
-        <div class="form-group col-md-12">
-            <label for="">Running Text</label>
-            <textarea name="marquee" class="form-control" id="" cols="30" rows="3">{{$contact->marquee}}</textarea>
-            <small class="text-danger">Catatan: text bergerak yang ditampilkan pada halaman utama </small>
-        </div>
-
-
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="alert alert-warning">
-                <strong>Link Sosial Media</strong>
-            </div>
+            <label for="">Angkatan</label>
+            <input type="text" name="angkatan" value="{{$dpt->angkatan}}" required class="form-control">
         </div>
         <div class="form-group col-md-4">
-            <label for="">Facebook</label>
-            <input type="text" name="facebook" value="{{ $contact->facebook }}" class="form-control">
+            <label for="">Program Studi</label>
+            <input type="text" name="prodi" value="{{$dpt->prodi}}" required class="form-control">
         </div>
-
-        <div class="form-group col-md-4">
-            <label for="">Instagram</label>
-            <input type="text" name="instagram" value="{{ $contact->instagram }}" class="form-control">
+        <div class="form-group col-md-6">
+            <label for="">Fakultas</label>
+            <input type="text" name="fakultas" value="{{$dpt->nama_lengkap_fakultas}}" required class="form-control">
         </div>
-        <div class="form-group col-md-4">
-            <label for="">Twitter</label>
-            <input type="text" name="twitter" value="{{ $contact->twitter }}" class="form-control">
+        <div class="form-group col-md-2">
+            <label for="">Singkatan Fakultas</label>
+            <input type="text" name="singkatan_fakultas" value="{{$dpt->nama_singkat_fakultas}}" required class="form-control">
         </div>
-
-
 
     </div>
     <div class="row">
         <div class="col-md-12" style="text-align: center">
-            <a href="{{ route('contact') }}" class="btn btn-warning btn-sm btn-flat"><i class="fa fa-arrow-circle-left"></i>&nbsp; Kembali</a>
+            <a href="{{ route('dpt') }}" class="btn btn-warning btn-sm btn-flat"><i class="fa fa-arrow-circle-left"></i>&nbsp; Kembali</a>
             <button type="submit" class="btn btn-primary btn-sm btn-flat btnSubmit"><i class="fa fa-check-circle"></i>&nbsp; Simpan</button>
         </div>
     </div>

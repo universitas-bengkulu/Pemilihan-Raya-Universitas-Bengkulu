@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('halaman', 'Data DPT')
+@section('halaman', 'Jadwal Kegiatan Pemira')
 @section('sub-halaman')
     <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item active">Data DPT</li>
+    <li class="breadcrumb-item active">Jadwal Kegiatan Pemira</li>
 @endsection
 @section('content')
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Create Data DPT</h3>
+        <h3 class="box-title">Create Jadwal Kegiatan Pemira</h3>
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                     title="Collapse">
@@ -17,7 +17,10 @@
         </div>
     </div>
     <div class="box-body">
-        @livewire('form-dpt-livewire')
+        @include('jadwal_kegiatan._form-create')
     </div>
 </div>
 @endsection
+@push('scripts')
+    @include('jadwal_kegiatan._js')
+@endpush

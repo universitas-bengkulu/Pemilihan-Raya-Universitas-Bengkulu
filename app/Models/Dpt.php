@@ -10,7 +10,7 @@ class Dpt extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'primary_key';
+    protected $primaryKey = 'npm';
     public $incrementing = false;
     protected $keyType = 'string'; // Tipe data primary key
 

@@ -17,7 +17,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class=" font-[Poppins]        overflow-hidden   ">
+<body class=" font-[Poppins]            ">
 
     <!-- Preloader Start -->
     <div x-data="{ show: false }" x-transition:enter="transition duration-700" style="z-index: 99;" x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="bg-white rounded p-4" x-show="show">
@@ -33,8 +33,8 @@
     <!-- Preloader Start -->
 
     <section class="  items-center w-full   duration-300 transform ">
-        <div class="    mx-auto z-10 overflow-hidden h-screen justify-center relative   bg-[#E73530] pattern">
-            <div class="h-[46vh]     grid">
+        <div class="    mx-auto z-10   min-h-screen justify-center relative   bg-[#E73530] pattern">
+            <div class="min-h-[40vh]     grid">
                 <div class="place-self-center grid">
                     <div class="flex space-x-2 mx-auto place-self-center">
                         <img src="{{ asset('assets/frontend/Logo.svg') }}" alt="logo" class="h-28  2xl:h-40 mr-4">
@@ -46,13 +46,13 @@
                         digital untuk membuat surat suara, memberikan suara, menghitung perolehan suara. </p>
                 </div>
             </div>
-            <div class="h-[55vh]   relative -mt-[5vh] rounded-t-[50px] md:rounded-t-[100px] overflow-hidden
+            <div class="min-h-[60vh]   relative   rounded-t-[50px] md:rounded-t-[100px]
                 bg-white pattern2 md:shadow-[inset_10px_0px_20px_2px_#000] shadow-[inset_5px_0px_10px_0px_#000] grid ">
                 <div class="  max-w-xl w-full   text-gray-800  mx-4 md:mx-auto    place-self-center  -mt-10  py-10  px-10  ">
                     @if ($jadwal)
                     @if ($message = Session::get('error'))
                     <div class="p-3   mt-3 text-sm text-red-800 rounded-lg bg-red-300 dark:bg-gray-800 dark:text-red-400" role="alert">
-                        <span class="font-medium">Error!</span> {{ $message }}
+                        <span class="font-medium">Error!</span> {!! $message !!}
                     </div>
                     @else
                     <div class="p-3   mt-3 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">

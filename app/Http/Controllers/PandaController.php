@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dpt;
 use App\Models\Jadwal;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -111,17 +112,22 @@ class PandaController extends Controller
                         'isLogin' => 1,
                     ];
 
-                    Session::put($sessionData);
+                        Session::put($sessionData);
 
-                    // Perhatikan perubahan di baris berikut
-                    if (Session::get('isLogin', 0) == 1) {
-                        return redirect()->route('mahasiswa.dashboard');
+                        // Perhatikan perubahan di baris berikut
+                        if (Session::get('isLogin', 0) == 1) {
+                            return redirect()->route('mahasiswa.dashboard');
+                        } else {
+                            return redirect()->route('panda.login')->with(['error' => 'NPM dan Password Salah !!']);
+                        }
                     } else {
-                        return redirect()->route('panda.login')->with(['error' => 'NPM dan Password Salah !!']);
+                        return redirect()->route('panda.login')->with(['error'    => 'Data anda tidak aktif !! !!']);
                     }
-                } else {
-                    return redirect()->route('panda.login')->with(['error'    => 'Data anda tidak aktif !! !!']);
+
+                }else{
+                    return redirect()->route('panda.login')->with(['error'    => 'Anda Tidak Terdaftar pada daftar pemilih tetap, jika anda masih sebagai mahasiswa aktif silakan hubungi <a href="/#contact" class="text-blue-500 font-bold">contact</a> !!']);
                 }
+
             } else {
                 return redirect('panda.login')->with(['error'    => 'Anda tidak memiliki akses sebagai mahasiswa !!']);
             }
