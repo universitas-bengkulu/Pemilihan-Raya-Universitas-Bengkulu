@@ -465,7 +465,7 @@
 
             </p>
         </div>
-        <div class="grid gap-8 row-gap-0 lg:grid-cols-4">
+        <!-- <div class="grid gap-8 row-gap-0 lg:grid-cols-4">
             <div data-aos="fade-right" class="relative text-center">
                 <div class="flex items-center justify-center   mx-auto mb-4    ">
                     <svg class=" lg:w-20  lg:h-20 w-14 h-14 fill-white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
@@ -527,6 +527,50 @@
                 <p class="max-w-md mx-auto mb-3 text-lg text-yellow-300 sm:mx-auto">
                     9 April 2023
                 </p>
+            </div>
+        </div> -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6  ">
+            <div class="col-span-1 ">
+                <ol>
+                    @foreach ($jadwal_kegiatans as $jadwal_kegiatan)
+                    <li class="border-l-2 border-white">
+                        <div class="md:flex flex-start">
+                            <div class="bg-white w-8 h-8 flex items-center justify-center rounded-full -ml-4">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fas" class="text-orange-500 w-4 h-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path fill="currentColor" d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm64-192c0-8.8 7.2-16 16-16h288c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16v-64zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"></path>
+                                </svg>
+                            </div>
+                            <div class="  px-4 py-2 rounded-lg   bg-gray-100   ml-6 md:mb-5 text-left md:w-full shadow-inner shadow-gray-600  ">
+                                <div class="flex justify-between  ">
+                                    <a href="#!" class="font-bold text-orange-800 hover:text-orange-700 focus:text-orange-800 duration-300 transition ease-in-out text-base  ">{{ $jadwal_kegiatan->judul }}</a>
+
+                                </div>
+                                <a href="#!" class="font-medium text-gray-600 hover:text-gray-700 focus:text-gray-800 duration-300 transition ease-in-out text-sm">{{$jadwal_kegiatan->tgl}}</a>
+                                <p class="text-gray-700  text-sm">{{$jadwal_kegiatan->deskripsi}}</p>
+                            </div>
+                        </div>
+                    </li>
+                    @endforeach
+
+
+                </ol>
+            </div>
+            <script>
+                var elementPosition = $('#fixed').offset();
+
+                $(window).scroll(function() {
+                    if ($(window).scrollTop() > elementPosition.top) {
+                        $('#fixed').css('position', 'fixed').css('top', '0');
+                    } else {
+                        $('#fixed').css('position', 'static');
+                    }
+                });
+            </script>
+            <div class="col-span-1 px-8  ">
+                <div    >
+                    <img src="{{ asset('assets/frontend/undraw_online_calendar_re_wk3t.svg') }}" alt="img" class="w-full       mx-auto">
+                </div>
+
             </div>
         </div>
     </div>

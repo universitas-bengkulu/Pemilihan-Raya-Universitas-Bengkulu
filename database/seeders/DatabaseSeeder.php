@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
 use Database\Seeders\DptTableSeeder;
 
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
             DptTableSeeder::class,
             JadwalTableSeeder::class,
             ContactSeeder::class,
+            JadwalKegiatanSeeder::class,
             // tambahkan seeder lainnya di sini
         ]);
     }

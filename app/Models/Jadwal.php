@@ -15,4 +15,9 @@ class Jadwal extends Model
     {
         return $this->hasMany(Contact::class);
     }
+
+    public function jadwal_kegiatans()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }

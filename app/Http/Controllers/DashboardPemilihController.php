@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dpt;
 use App\Models\Jadwal;
 use App\Models\Contact;
+use App\Models\JadwalKegiatan;
 use App\Models\Kandidat;
 use App\Models\Rekapitulasi;
 use Illuminate\Http\Request;
@@ -14,11 +15,14 @@ class DashboardPemilihController extends Controller
 {
     public function welcome(Request $request)
     {
+
         $contact = Contact::orderBy('id', 'desc')->first();
         $count_kandidat = Kandidat::count();
         $count_dpt = Dpt::count();
+        $jadwal_aktif = Jadwal::where('status_jadwal', 1)->first();
+        $jadwal_kegiatans = JadwalKegiatan::where('jadwal_id',$jadwal_aktif->id )->get();
         $count_rekapitulasi = Rekapitulasi::count();
-        return view('welcome', compact('contact' , 'count_kandidat', 'count_dpt', 'count_rekapitulasi'));
+        return view('welcome', compact('contact' , 'jadwal_kegiatans', 'count_kandidat', 'count_dpt', 'count_rekapitulasi'));
     }
     public function dashboard(){
         if (Session::has('npm')) {

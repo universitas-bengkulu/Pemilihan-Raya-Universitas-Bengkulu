@@ -1,22 +1,23 @@
 <?php
 
-use App\Http\Controllers\CekDptController;
-use App\Http\Controllers\ContactController;
 use App\Models\Jadwal;
 use App\Models\Kandidat;
 use App\Models\Rekapitulasi;
 use Illuminate\Support\Facades\DB;
+use App\Livewire\QuickCountLivewire;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DptController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PandaController;
+use App\Http\Controllers\CekDptController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RekapitulasiController;
+use App\Http\Controllers\JadwalKegiatanController;
 use App\Http\Controllers\DashboardPemilihController;
-use App\Http\Controllers\DptController;
-use App\Livewire\QuickCountLivewire;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +81,15 @@ Route::controller(ContactController::class)->middleware(['auth', 'web'])->prefix
     Route::get('/{contact}/edit', 'edit')->name('contact.edit');
     Route::patch('/{contact}/edit', 'update')->name('contact.update');
     Route::delete('/{contact}/delete', 'destroy')->name('contact.destroy');
+});
+
+Route::controller(JadwalKegiatanController::class)->middleware(['auth', 'web'])->prefix('/jadwal_kegiatan')->group(function () {
+    Route::get('/', 'index')->name('jadwal_kegiatan');
+    Route::get('/create', 'create')->name('jadwal_kegiatan.create');
+    Route::post('/', 'store')->name('jadwal_kegiatan.store');
+    Route::get('/{jadwal_kegiatan}/edit', 'edit')->name('jadwal_kegiatan.edit');
+    Route::patch('/{jadwal_kegiatan}/edit', 'update')->name('jadwal_kegiatan.update');
+    Route::delete('/{jadwal_kegiatan}/delete', 'destroy')->name('jadwal_kegiatan.destroy');
 });
 
 Route::controller(DptController::class)->middleware(['auth', 'web'])->prefix('/data-dpt')->group(function () {

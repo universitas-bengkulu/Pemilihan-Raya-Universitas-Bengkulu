@@ -24,6 +24,12 @@
         <span>Jadwal Pemilihan</span>
     </a>
 </li>
+<li class="{{ set_active(['jadwal_kegiatan', 'jadwal_kegiatan.edit', 'jadwal_kegiatan.create']) }}">
+    <a href="{{ route('jadwal_kegiatan') }}">
+        <i class="fa fa-calendar-minus-o"></i>
+        <span>Jadwal Kegiatan</span>
+    </a>
+</li>
 
 <li class="{{ set_active(['contact', 'contact.edit', 'contact.create']) }}">
     <a href="{{ route('contact') }}">
