@@ -99,18 +99,21 @@ class PandaController extends Controller
         $accessData = $this->panda($query)['portallogin'];
         if ($accessData[0]['is_access'] == 1) {
             if ($accessData[0]['tusrThakrId'] == 1) {
-                $mahasiswaData = $this->panda($queryMahasiswa);
-                if ($mahasiswaData['mahasiswa'][0]['mhsTanggalLulus'] == null || $mahasiswaData['mahasiswa'][0]['mhsTanggalLulus'] == "") {
-                    $sessionData = [
-                        'npm' => $mahasiswaData['mahasiswa'][0]['mhsNiu'],
-                        'nama' => $mahasiswaData['mahasiswa'][0]['mhsNama'],
-                        'angkatan' => $mahasiswaData['mahasiswa'][0]['mhsAngkatan'],
-                        'prodi_nama' => $mahasiswaData['mahasiswa'][0]['prodi']['prodiNamaResmi'],
-                        'jenjang' => $mahasiswaData['mahasiswa'][0]['prodi']['prodiJjarKode'],
-                        'fakultas_nama' => $mahasiswaData['mahasiswa'][0]['prodi']['fakultas']['fakNamaResmi'],
-                        'jenis_kelamin' => $mahasiswaData['mahasiswa'][0]['mhsJenisKelamin'],
-                        'isLogin' => 1,
-                    ];
+                $cek_dpt = Dpt::where('npm', $username)->count();
+                if($cek_dpt !=0){
+                    $mahasiswaData = $this->panda($queryMahasiswa);
+                    // return $mahasiswaData;
+                    if ($mahasiswaData['mahasiswa'][0]['mhsTanggalLulus'] == null || $mahasiswaData['mahasiswa'][0]['mhsTanggalLulus'] == "") {
+                        $sessionData = [
+                            'npm' => $mahasiswaData['mahasiswa'][0]['mhsNiu'],
+                            'nama' => $mahasiswaData['mahasiswa'][0]['mhsNama'],
+                            'angkatan' => $mahasiswaData['mahasiswa'][0]['mhsAngkatan'],
+                            'prodi_nama' => $mahasiswaData['mahasiswa'][0]['prodi']['prodiNamaResmi'],
+                            'jenjang' => $mahasiswaData['mahasiswa'][0]['prodi']['prodiJjarKode'],
+                            'fakultas_nama' => $mahasiswaData['mahasiswa'][0]['prodi']['fakultas']['fakNamaResmi'],
+                            'jenis_kelamin' => $mahasiswaData['mahasiswa'][0]['mhsJenisKelamin'],
+                            'isLogin' => 1,
+                        ];
 
                         Session::put($sessionData);
 
