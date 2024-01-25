@@ -102,7 +102,6 @@ Route::controller(DptController::class)->middleware(['auth', 'web'])->prefix('/d
     Route::patch('/{dpt}/edit', 'update')->name('dpt.update');
     Route::delete('/{dpt}/delete', 'destroy')->name('dpt.destroy');
     Route::get('/cari', 'dptCari')->name('dpt.cari');
-
 });
 
 Route::controller(UserController::class)->middleware(['auth', 'web'])->prefix('/user')->group(function () {

@@ -38,7 +38,7 @@
                                 <h3
                                     class="md:text-xl text-xl  z-10  text-transparent bg-gradient-to-tl from-black to-green-500 font-bold  bg-clip-text">
                                     APLIKASI PEMILIHAN RAYA <br>
-                                    FMIPA UNIVERSITAS BENGKULU
+                                    UNIVERSITAS BENGKULU
                                 </h3>
                                 <div class="p-3 mx-6 mt-3 text-sm text-green-800 rounded-lg bg-green-50  " role="alert">
                                     <span class="font-medium">Perhatian!</span> Gunakan Email dan Password yang terdaftar
