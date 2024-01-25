@@ -3,6 +3,7 @@
         <table class="table table-striped table-bordered" id="table" style="width:100%;">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>Periode Pemilihan</th>
                     <th>Judul Kegiatan</th>
                     <th>Deskripsi Kegiatan</th>
@@ -15,6 +16,7 @@
                 @foreach ($jadwal_kegiatans as $index => $jadwal_kegiatan)
 
                 <tr>
+                    <td>{{ ++$index }}</td>
                     <td>{{ $jadwal_kegiatan->jadwal->tanggal }}</td>
                     <td>{{ $jadwal_kegiatan->judul	 }}</td>
                     <td>{{ $jadwal_kegiatan->deskripsi	 }}</td>

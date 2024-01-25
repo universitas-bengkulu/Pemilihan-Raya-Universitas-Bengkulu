@@ -1,6 +1,6 @@
 @extends('layouts.users')
 
-@section('voting','text-yellow-500')
+@section('voting','bg-black lg:shadow-inner shadow-gray-600 text-white')
 @section('content')
 <div class=" h-screen  absolute w-full     overflow-y-auto -mt-10 py-20
                 from-[#E73530] bg-gradient-to-t from-50%   grid

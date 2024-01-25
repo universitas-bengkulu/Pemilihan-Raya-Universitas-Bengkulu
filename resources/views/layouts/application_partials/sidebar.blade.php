@@ -59,6 +59,13 @@
     </a>
 </li>
 
+<li class="{{ set_active(['rekapitulasi_suara']) }}">
+    <a href="{{ route('rekapitulasi_suara') }}">
+        <i class="fa fa-clock-o"></i>
+        <span>Rekapitulasi Suara</span>
+    </a>
+</li>
+
 <!-- Authentication -->
 <li>
     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

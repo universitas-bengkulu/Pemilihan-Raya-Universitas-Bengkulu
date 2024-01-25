@@ -51,18 +51,17 @@
                 <div class="  max-w-xl w-full   text-gray-800  mx-4 md:mx-auto    place-self-center  -mt-10  py-10  px-10  ">
                     @if ($jadwal)
                     @if ($message = Session::get('error'))
-                    <div class="p-3   mt-3 text-sm text-red-800 rounded-lg bg-red-300 dark:bg-gray-800 dark:text-red-400" role="alert">
-                        <span class="font-medium">Error!</span> {!! $message !!}
+                    <div class="p-3   mt-3 text-sm text-red-800 rounded-lg bg-red-300  " role="alert">
+                        <span class="font-bold">Error! </span> {!! $message !!}
                     </div>
                     @else
-                    <div class="p-3   mt-3 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
-                        <span class="font-medium">Perhatian!</span> Gunakan Akun Login Portal Akademik
+                    <div class="p-3   mt-3 text-sm text-green-800 rounded-lg bg-green-200  " role="alert">
+                        <span class="font-bold">Perhatian! </span> Gunakan Akun Login Portal Akademik
                     </div>
                     @endif
                     @else
-                    <div class="p-3   mt-3 text-sm text-red-800 rounded-lg bg-red-300 dark:bg-gray-800 dark:text-red-400" role="alert">
-                        <span class="font-medium">Mohon Maaf!</span> Saat ini bukan jadwal pemilihan
-                        raya
+                    <div class="p-3   mt-3 text-sm text-red-800 rounded-lg bg-red-300  " role="alert">
+                        <span class="font-bold">Mohon Maaf! </span>Pemilihan dapat di lakukan pada tanggal <b class="font-bold  ">{{ $tgl_pilih->tanggal }}</b> pada jam <b class="font-bold  ">{{ $tgl_pilih->waktu_mulai }}</b> s/d <b class="font-bold  ">{{ $tgl_pilih->waktu_selesai }}</b>
                     </div>
                     @endif
                     <form action="{{ route('panda.login.post') }}" method="POST">
@@ -114,16 +113,15 @@
                             <span class="text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="mt-6 w-full ">
-
-                            @if ($jadwal->status_jadwal)
-                            <button type="submit" class=" h-full inline-block text-center rounded-lg border-2 mt-1 w-full bg-[#E73530]
+                        <div class="mt-4 w-full ">
+                            @if ($jadwal )
+                            <button type="submit" class=" h-full inline-block text-center rounded-lg border-2   w-full bg-[#E73530]
                                 hover:scale-[99%] focus:scale-95
                                 font-bold tracking-widest  text-white hover:bg-red-800 px-3 py-2
                               text-sm    transition-all duration-500 focus:shadow-[-2px_2px_10px_0px_#eab308]
                                 ">LOGIN</button>
                             @else
-                            <div class="  inline-block text-center rounded-lg border-2 mt-1 opacity-80  w-full bg-[#E73530] font-bold tracking-widest  text-white   px-3 py-2 cursor-not-allowed
+                            <div class="  inline-block text-center rounded-lg border-2   opacity-80  w-full bg-[#E73530] font-bold tracking-widest  text-white   px-3 py-2 cursor-not-allowed
                               text-sm    transition-all duration-500
                                 ">LOGIN</div>
                             @endif

@@ -10,12 +10,14 @@ class CekDptController extends Controller
 {
     public function cekDpt(){
         $contact = Contact::orderBy('id', 'desc')->first();
-
-        return view('cek_dpt', compact('contact'));
+        $showData  =false;
+        return view('cek_dpt', compact('contact' , 'showData'));
     }
 
     public function cekStatusDpt(Request $request){
         $dataDpt = Dpt::where('npm',$request->npm)->first();
-        return $dataDpt;
+        $showData  = true;
+
+        return view('cek_dpt', compact('dataDpt', 'showData'));
     }
 }

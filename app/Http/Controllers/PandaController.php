@@ -166,12 +166,18 @@ class PandaController extends Controller
 
     public function showLoginForm()
     {
-        $jadwal = Jadwal::first();
+
+        setlocale(LC_ALL, 'IND');
+        $now = now();
+        $jadwal = Jadwal::where('tanggal', $now->toDateString())
+        ->whereRaw('CURRENT_TIME BETWEEN waktu_mulai AND waktu_selesai')
+        ->first();
+        $tgl_pilih = Jadwal::first();
         if (!empty(Session::get('login')) && Session::get('login', 1)) {
             return redirect()->route('mahasiwa.dashboard');
         } else {
             return view('auth.login_mahasiswa', [
-                'jadwal'    =>  $jadwal,
+                'jadwal'    =>  $jadwal, 'tgl_pilih' => $tgl_pilih
             ]);
         }
     }

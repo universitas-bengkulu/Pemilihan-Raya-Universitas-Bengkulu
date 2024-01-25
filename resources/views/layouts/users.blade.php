@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pemira - Universitas Bengkulu</title>
-  <title>Pemira - Universitas Bengkulu</title>
   <link rel="shortcut icon" href="{{ asset('assets/frontend/Logo.svg') }}">
 
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -36,44 +35,52 @@
   <section class="  items-center w-full   duration-300 transform  overflow-x-hidden">
 
     <div class="    mx-auto z-10   min-h-screen justify-center relative  overflow-hidden   pattern2">
-      <header x-data="{isOpen: false }" class="  md:py-4 relative z-50   bg-white shadow-gray-300 mb-10   shadow-md md:mx-5 lg:mx-12 mt-2 mx-2  md:mt-4  duration-300 transform rounded-2xl ">
+      <header x-data="{isOpen: false }" class="   relative z-50     mb-10  bg-[#E73530]   md:px-5 lg:px-12   px-2     duration-300 transform   ">
         <div class="  flex items-center  justify-between h-full pr-3 md:pr-6 mx-auto text-gray-100  ">
-          <a href="{{route('welcome')}}" class="flex items-center text-black      mx-3 md:ml-6  ">
+          <a href="{{route('welcome')}}" class="flex items-center text-white  md:py-4    mx-3 md:ml-6  ">
             <img src="{{ asset('assets/frontend/Logo.svg') }}" class=" w-8 md:w-10 md:h-10">
 
             <div class="ml-1 text-slate-100 font-sans  ">
-              <strong class="text-xl md:text-3xl font-bold  text-black   uppercase">PEMIRA</strong>
-              <p class="text-sm md:text-[16px]   text-yellow-600  whitespace-nowrap    uppercase -mt-2
+              <strong class="text-xl md:text-3xl font-bold  text-white   uppercase">PEMIRA</strong>
+              <p class="text-sm md:text-[16px]   text-yellow-300  whitespace-nowrap    uppercase -mt-2
                                 relative">
                 UNIVERSITAS BENGKULU</p>
             </div>
 
           </a>
+          <div class="flex   flex-1  "></div>
 
-
-          <div class="flex   flex-1 lg:mr-32">
-
-          </div>
-          <ul class="flex items-center flex-shrink-0 space-x-6   mr-3 lg:mr-0  ">
-            <div class="     mt-20 md:mt-0 ">
-              <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']" class="absolute inset-x-0   w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white   md:bg-none menu-navbar text-white lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto
+          <div class="     mt-20 lg:mt-0 mr-20 ">
+            <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']" class="absolute inset-x-0   w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white   md:bg-none menu-navbar text-white lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto
                     lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center " id="list-menu">
-                <div class="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8 ">
-                  <a href="{{route('mahasiswa.dashboard')}}" class="px-3 py-2 mx-2 mt-2   text-[14px] transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-[#EAB308] whitespace-nowrap @yield('kandidat', 'text-gray-700')">Kandidat</a>
-                  <a href="{{route('mahasiswa.voting')}}" class="px-3 py-2 mx-2 mt-2   text-[14px] transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-[#EAB308] whitespace-nowrap @yield('voting', 'text-gray-700')">Voting</a>
-                  <!-- <a href="{{route('mahasiswa.quick-count')}}" class="px-3 py-2 mx-2 mt-2   text-[14px] transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-[#EAB308] whitespace-nowrap @yield('quick-count', 'text-gray-700')">Quick Count</a> -->
-                </div>
+              <div class="flex flex-col -mx-6 lg:flex-row   lg:mx-8 px-2">
+                <a href="{{route('mahasiswa.dashboard')}}" class="px-6  lg:mx-2   mt-2 w-full py-2 lg:py-[27px]  lg:w-32  lg:hover:text-white rounded-md lg:rounded-none   text-lg font-bold font-[arial] lg:text-center   text-[14px] transition-colors duration-300 transform   lg:mt-0  lg:hover:bg-black  hover:scale-[99%] active:scale-95 hover:shadow-gray-600 lg:active:bg-black active:shadow-gray-600 whitespace-nowrap @yield('kandidat', 'bg-white lg:shadow-inner shadow-gray-600 text-red-500')">Kandidat</a>
+                @if($cek_jadwal)
+                <a href="{{route('mahasiswa.voting')}}" class="px-6  lg:mx-2   mt-2 w-full py-2 lg:py-[27px]  lg:w-32  rounded-md lg:rounded-none   text-lg font-bold font-[arial] lg:text-center hover:scale-[99%] active:scale-95  text-[14px] transition-colors duration-300 transform   lg:mt-0 lg:hover:text-white  lg:hover:bg-black   hover:shadow-gray-600 lg:active:bg-black active:shadow-gray-600 whitespace-nowrap @yield('voting', 'bg-white lg:shadow-inner shadow-gray-600 text-red-500')">Voting</a>
 
+                @else
+                <button title="Voting hanya dapat di akses pada jadwal yang ditentukan" class="px-6  lg:mx-2   mt-2 w-full py-2 lg:py-[27px]  lg:w-32  rounded-md lg:rounded-none  opacity-90 cursor-not-allowed   text-lg font-bold font-[arial] lg:text-center    text-[14px] transition-colors duration-300 transform bg-white lg:shadow-inner shadow-gray-600 text-red-500  lg:mt-0   whitespace-nowrap  ">Voting</button>
+
+                @endif
+                <!-- <a href="{{route('mahasiswa.quick-count')}}" class="px-3 py-2 mx-2 mt-2   text-[14px] transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-[#EAB308] whitespace-nowrap @yield('quick-count', 'text-gray-700')">Quick Count</a> -->
               </div>
+
             </div>
+          </div>
+
+          <div class="flex   flex-1  "></div>
+
+
+
+          <ul class="flex items-center flex-shrink-0 space-x-6   mr-3 lg:mr-0 md:py-4  ">
 
             <!-- Profile menu -->
             <div x-data="{ isOpen: false }" class="relative inline-block  ">
               <button @click="isOpen = !isOpen" type="button" class="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
                 <img class="w-8 h-8 rounded-full ring-2 mr-1 ring-gray-300  " src="https://www.gravatar.com/avatar/{{ md5(Session::get('nama')) }}?d=https%3A%2F%2Fui-avatars.com%2Fapi%2F/{!! str_replace('+', ' ', Session::get('nama')) !!}/128" alt="Bordered avatar">
-                <!-- <h3 class="ml-1  text-gray-800 md:text-sm  text-xs hidden lg:block    capitalize">
-                                    nama mahasiswa
-                                </h3> -->
+                <h3 class="ml-1  text-white md:text-sm  text-xs hidden lg:block    capitalize">
+                  {{ Session::get('nama') }}
+                </h3>
               </button>
               <div x-show="isOpen" @click.away="isOpen = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90" class="absolute -right-5 z-20 py-2 mt-3 bg-black bg-opacity-80 rounded-md shadow-xl  min-w-60 w-72
                                 md:text-sm  text-xs ">
@@ -103,7 +110,7 @@
           </ul>
           <!-- Mobile menu button -->
           <div class="flex lg:hidden  ">
-            <button x-cloak @click="isOpen = !isOpen" type="button" class="text-gray-900 hover:text-gray-700 focus:outline-none focus:text-gray-600 " aria-label="toggle menu">
+            <button x-cloak @click="isOpen = !isOpen" type="button" class="text-gray-100 hover:text-gray-300 focus:outline-none focus:text-gray-300 " aria-label="toggle menu">
               <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
               </svg>

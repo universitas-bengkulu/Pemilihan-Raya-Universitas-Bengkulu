@@ -32,11 +32,12 @@ use App\Http\Controllers\StatistikController;
 */
 
 Route::get('/', [DashboardPemilihController::class, 'welcome'])->name('welcome');
+Route::get('/kandidat-presma', [DashboardPemilihController::class, 'guestKandidat'])->name('guest.kandidat');
 Route::get('/{kandidat}/visimisi', [DashboardPemilihController::class, 'guestVisiMisi'])->name('visimisi');
 
 Route::get('/cek_dpt', [CekDptController::class, 'cekDpt'])
     ->name('cekDpt');
-Route::get('/cek_status_dpt', [CekDptController::class, 'cekStatusDpt'])->name('cek_status_dpt');
+Route::post('/cek_status_dpt', [CekDptController::class, 'cekStatusDpt'])->name('cek_status_dpt');
 
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])
@@ -55,7 +56,7 @@ Route::get('/logout', [PandaController::class, 'pandaLogout'])->name('panda.logo
 
 
 // Route::get('/verifikasi-data', [DashboardPemilihController::class, 'verifikasiData'])->name('mahasiswa.verifikasi');
-Route::get('/quick-count', QuickCountLivewire::class)->name('mahasiswa.quick-count');
+Route::get('/rekaputulasi', QuickCountLivewire::class)->middleware(['auth', 'web'])->name('rekapitulasi_suara');
 
 Route::group(['prefix' => 'mahasiswa', 'middleware' => 'isPandaLogin'], function () {
     Route::get('/dashboard', [DashboardPemilihController::class, 'dashboard'])->name('mahasiswa.dashboard');

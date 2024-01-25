@@ -86,8 +86,8 @@
                         <a href="@yield('menu')#waktu" class="px-3 py-2 mx-2 mt-2  text-gray-100 text-[14px] transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-[#EAB308] ">Waktu Pelaksanaan</a>
                         <a href="{{ route('cekDpt') }}" class="px-3 py-2 mx-2 mt-2  @yield('cek-dpt', 'text-gray-100') text-[14px] transition-colors
                             duration-300 transform rounded-md lg:mt-0 hover:text-[#EAB308] ">Cek DPT</a>
-                        <a href="{{route('mahasiswa.quick-count')}}" class="px-3 py-2 mx-2 mt-2  @yield('quick-count', 'text-gray-100') text-[14px] transition-colors
-                            duration-300 transform rounded-md lg:mt-0 hover:text-[#EAB308] ">Quick Count</a>
+                        <a href="{{route('guest.kandidat')}}" class="px-3 py-2 mx-2 mt-2  @yield('guest_kandidat', 'text-gray-100') text-[14px] transition-colors
+                            duration-300 transform rounded-md lg:mt-0 hover:text-[#EAB308]  ">Kandidat</a>
                         @if(empty(Session::get('npm')))
                         <a href="{{ route('panda.login') }}" class=" py-2 mx-4 mt-2 text-white text-[14px] transition-colors duration-300 transform
                             lg:mt-0 bg-gradient-to-r from-orange-500 to-yellow-500 border border-white rounded-lg

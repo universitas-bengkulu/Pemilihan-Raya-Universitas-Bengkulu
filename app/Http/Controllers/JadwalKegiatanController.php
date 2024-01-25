@@ -31,14 +31,14 @@ class JadwalKegiatanController extends Controller
             'jadwal_id' => 'required',
             'tgl' => 'required',
             'judul' => 'required',
-            'deskripsi' => 'required',
+            // 'deskripsi' => 'required',
         ];
 
         $text = [
             'jadwal_id.required' => 'Jadwal harus diisi.',
             'tgl.required' => 'Tanggal Kegiatan harus diisi.',
             'judul.required' => 'Judul Kegiatan harus diisi.',
-            'deskripsi.required' => 'Deskripsi Kegiatan harus diisi.',
+            // 'deskripsi.required' => 'Deskripsi Kegiatan harus diisi.',
 
         ];
 
@@ -82,14 +82,14 @@ class JadwalKegiatanController extends Controller
             'jadwal_id' => 'required',
             'tgl' => 'required',
             'judul' => 'required',
-            'deskripsi' => 'required',
+            // 'deskripsi' => 'required',
         ];
 
         $text = [
             'jadwal_id.required' => 'Jadwal harus diisi.',
             'tgl.required' => 'Tanggal Kegiatan harus diisi.',
             'judul.required' => 'Judul Kegiatan harus diisi.',
-            'deskripsi.required' => 'Deskripsi Kegiatan harus diisi.',
+            // 'deskripsi.required' => 'Deskripsi Kegiatan harus diisi.',
 
         ];
 

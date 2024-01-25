@@ -1,8 +1,8 @@
 @extends('layouts.users')
 
-@section('kandidat','text-yellow-500')
+@section('kandidat','bg-black lg:shadow-inner shadow-gray-600 text-white')
 @section('content')
-<div class="min-h-[33vh]     grid">
+<div class="min-h-[33vh] pt-10    grid">
     <div class="place-self-center grid">
         <div class="flex space-x-2 mx-auto place-self-center ">
             <img src="{{ asset('assets/frontend/logo.webp') }}" alt="kotak-suara" style="filter: drop-shadow(2px 2px 5px #333);" class="h-40 rounded-full md:h-56 md:mt-10 animate-[bounce_3s_infinite]   ">
@@ -26,7 +26,7 @@
                     md:flex-row flex-col">
         @foreach ($kandidats as $kandidat)
         <div data-aos="fade-up">
-            <div class="rounded-md max-w-[240px] mx-auto md:mx-3  w-full bg-gray-100 hover:bg-opacity-80 hover:bg-black  shadow-black duration-300 transform content-div
+            <div class="rounded-md max-w-[240px] mx-auto md:mx-3  w-full bg-gray-100 hover:bg-opacity-80 hover:bg-black mb-8  shadow-black duration-300 transform content-div
                                       group shadow-lg hover:shadow-xl overflow-hidden hover:scale-110">
                 <div class="py-2  bg-black   w-full text-center font-bold text-white text-xl  "><b class="text-yellow-500 text-xs mr-3">Kandidat Nomor Urut</b>{{ $kandidat->nomor_urut }}
                 </div>

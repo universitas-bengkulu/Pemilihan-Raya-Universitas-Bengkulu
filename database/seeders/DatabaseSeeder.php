@@ -27,6 +27,14 @@ class DatabaseSeeder extends Seeder
             JadwalTableSeeder::class,
             ContactSeeder::class,
             JadwalKegiatanSeeder::class,
+            DptFebTableSeeder::class,
+            DptFHTableSeeder::class,
+            DptFisipTableSeeder::class,
+            DptFkikTableSeeder::class,
+            DptFkipTableSeeder::class,
+            DptFPTableSeeder::class,
+            DptFTTableSeeder::class,
+
             // tambahkan seeder lainnya di sini
         ]);
     }

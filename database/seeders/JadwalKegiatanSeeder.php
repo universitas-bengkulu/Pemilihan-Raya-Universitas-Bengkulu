@@ -89,7 +89,7 @@ class JadwalKegiatanSeeder extends Seeder
             ],
             [
                 "jadwal_id" => "1",
-                "judul" => "Masa Terang",
+                "judul" => "Masa Tenang",
                 "deskripsi" => "",
                 "tgl" => "18 - 19 Feb 2024"
             ],

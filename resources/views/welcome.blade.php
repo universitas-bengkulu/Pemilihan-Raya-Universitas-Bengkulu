@@ -298,12 +298,12 @@
 
 <!-- Tata Cara Pimilihan -->
 <section id="cara" class=" py-32 lg:py-20 pt-10 px-3 pb-20 ">
-    <section class="  dark:bg-gray-900">
+    <section class="   ">
         <div class="container flex flex-col items-center px-4   mx-auto  section-heading py-12  ">
             <h2 data-aos="fade-down" class="mb-6 text-center font-sans text-4xl lg:text-5xl font-bold text-[#E73530]   " style="text-shadow:5px 5px 5px #38383863;">
                 Tata Cara Pimilihan</h2>
 
-            <p data-aos="fade-down" class="  mt-2   text-sm text-gray-700 dark:text-gray-300   text-justify leading-8">
+            <p data-aos="fade-down" class="  mt-2   text-sm text-gray-700     text-justify leading-8">
                 Berikut tata cara menyalurkan hak suara pada Pemilihan Raya Universitas Bengkulu
             </p>
 
@@ -691,7 +691,7 @@
 <!-- end Footer -->
 <!-- back to top  -->
 <div class="" x-data="{scrollBackTop: false}" x-cloak>
-    <svg x-show="scrollBackTop" @click="window.scrollTo({top: 0, behavior: 'smooth'})" x-on:scroll.window="scrollBackTop = (window.pageYOffset > window.outerHeight * 0.5) ? true : false" aria-label="Back to top" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-up-circle-fill fixed bottom-0 right-0 mx-3 my-10 h-8 w-8 dark:fill-orange-700 fill-orange-500 shadow-lg    cursor-pointer hover:fill-orange-400 bg-white       rounded-full " viewBox="0 0 16 16">
+    <svg x-show="scrollBackTop" @click="window.scrollTo({top: 0, behavior: 'smooth'})" x-on:scroll.window="scrollBackTop = (window.pageYOffset > window.outerHeight * 0.5) ? true : false" aria-label="Back to top" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-up-circle-fill fixed bottom-0 right-0 mx-3 my-10 h-8 w-8   fill-orange-500 shadow-lg    cursor-pointer hover:fill-orange-400 bg-white       rounded-full " viewBox="0 0 16 16">
         <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
     </svg>
 </div>

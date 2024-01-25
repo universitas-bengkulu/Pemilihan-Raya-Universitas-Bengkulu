@@ -40,7 +40,7 @@
                                     APLIKASI PEMILIHAN RAYA <br>
                                     FMIPA UNIVERSITAS BENGKULU
                                 </h3>
-                                <div class="p-3 mx-6 mt-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                                <div class="p-3 mx-6 mt-3 text-sm text-green-800 rounded-lg bg-green-50  " role="alert">
                                     <span class="font-medium">Perhatian!</span> Gunakan Email dan Password yang terdaftar
                                 </div>
                             </div>
