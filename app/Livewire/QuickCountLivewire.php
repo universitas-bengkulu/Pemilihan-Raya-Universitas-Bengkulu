@@ -58,9 +58,9 @@ class QuickCountLivewire extends Component
                     'B' => 'FH',
                     'C' => 'FEB',
                     'D' => 'FISIP',
-                    'E' => 'Pertanian',
+                    'E' => 'FP',
                     'F' => 'FMIPA',
-                    'G' => 'Teknik',
+                    'G' => 'FT',
                     'H' => 'FKIK',
                 ];
 
@@ -127,9 +127,9 @@ class QuickCountLivewire extends Component
                     'B' => 'FH',
                     'C' => 'FEB',
                     'D' => 'FISIP',
-                    'E' => 'Pertanian',
+                    'E' => 'FP',
                     'F' => 'FMIPA',
-                    'G' => 'Teknik',
+                    'G' => 'FT',
                     'H' => 'FKIK',
                 ];
 

@@ -177,7 +177,7 @@
         <footer class="absolute bottom-0      z-50 bg-[#E73530]   w-full   ">
             <div class="px-12 mx-auto py-3   flex flex-wrap flex-col sm:flex-row    ">
                 <p class="text-white mx-auto  text-xs md:text-sm text-center sm:text-left">Copyright&copy; 2023 |
-                    <a href="#" class="text-yellow-500 font-bold">KPU UNIVERSITAS BENGKULU</a>. All rights reserved.
+                    <a href="#" class="text-yellow-500 font-bold">BIDANG KEMAHASISWAAN UNIVERSITAS BENGKULU</a>. All rights reserved.
                 </p>
             </div>
         </footer>
