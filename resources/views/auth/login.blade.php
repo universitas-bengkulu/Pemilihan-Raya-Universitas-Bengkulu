@@ -104,7 +104,7 @@
 </html>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+<!-- <script>
     $(document).on('submit','.form',function (event){
         event.preventDefault();
         $(".btnSubmit"). attr("disabled", true);
@@ -133,4 +133,4 @@
             }
         })
     });
-</script>
+</script> -->
