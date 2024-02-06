@@ -62,7 +62,6 @@
                 <button title="Voting hanya dapat di akses pada jadwal yang ditentukan" class="px-6  lg:mx-2   mt-2 w-full py-2 lg:py-[27px]  lg:w-32  rounded-md lg:rounded-none  opacity-90 cursor-not-allowed   text-lg font-bold font-[arial] lg:text-center    text-[14px] transition-colors duration-300 transform bg-white lg:shadow-inner shadow-gray-600 text-red-500  lg:mt-0   whitespace-nowrap  ">Voting</button>
 
                 @endif
-                <!-- <a href="{{route('mahasiswa.quick-count')}}" class="px-3 py-2 mx-2 mt-2   text-[14px] transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-[#EAB308] whitespace-nowrap @yield('quick-count', 'text-gray-700')">Quick Count</a> -->
               </div>
 
             </div>
