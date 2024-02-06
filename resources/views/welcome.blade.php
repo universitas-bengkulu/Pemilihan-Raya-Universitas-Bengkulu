@@ -13,12 +13,38 @@
             <!--Left Col-->
             <div data-aos="zoom-in-left" class="mt-16 w-full md:w-1/2 justify-center items-start md:px-5 text-center md:text-right order-last md:order-first
                       px-4   z-30">
-                 <img alt="img" src="{{ asset('assets/frontend/hero.svg') }}" class="w-full h-full mx-auto  ">
+                <img alt="img" src="{{ asset('assets/frontend/hero.svg') }}" class="w-full h-full mx-auto  ">
 
             </div>
             <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" class="   w-full  md:w-1/2   justify-center items-center md:px-5 text-center md:text-left
                       px-4   z-30 mt-20 md:mt-10">
-                <!--   <img alt="img" alt="img" src="/src/Head-UNIB-3.png" class="w-2/3 mx-auto md:ml-auto md:mr-0    mb-5"> -->
+                <div class="  flex items-center justify-center px-5   mb-10" x-data="beer()" x-init="start()">
+                    <div class="text-white" title="Waktu Pencobolsan">
+                        <!-- <h1 class="text-base lg:text-xl text-center mb-3 font-extrabold    ">Waktu Pencobolsan </h1> -->
+                        <div class="text-4xl md:text-6xl text-center flex w-full items-center justify-center px-5 pb-5">
+                            <img src="{{ asset('assets/frontend/Logo.svg') }}" alt="logo" class="min-w-[96px] mr-4 lg:block hidden " style="filter: drop-shadow(10px 10px 10px #000);">
+                            <div style="text-shadow: 3px 3px 5px red;" class="w-16 md:w-24 mx-1 p-2 bg-black text-red-500 font-extrabold shadow-lg shadow-black rounded-lg">
+                                <div class="font-mono leading-none" x-text="days">00</div>
+                                <div class="font-mono uppercase text-sm leading-none">Hari</div>
+                            </div>
+                            <div style="text-shadow: 3px 3px 5px red;" class="w-16 md:w-24 mx-1 p-2 bg-black text-red-500 font-extrabold shadow-lg shadow-black rounded-lg">
+                                <div class="font-mono leading-none" x-text="hours">00</div>
+                                <div class="font-mono uppercase text-sm leading-none">Jam</div>
+                            </div>
+                            <div style="text-shadow: 3px 3px 5px red;" class="w-16 md:w-24 mx-1 p-2 bg-black text-red-500 font-extrabold shadow-lg shadow-black rounded-lg">
+                                <div class="font-mono leading-none" x-text="minutes">00</div>
+                                <div class="font-mono uppercase text-sm leading-none">Menit</div>
+                            </div>
+                            <div style="text-shadow: 3px 3px 5px red;" class="w-16 md:w-24 mx-1 p-2 bg-black text-red-500 font-extrabold shadow-lg shadow-black rounded-lg">
+                                <div class="font-mono leading-none" x-text="seconds">00</div>
+                                <div class="font-mono uppercase text-sm leading-none">Detik</div>
+                            </div>
+                            <img src="{{ asset('assets/frontend/logo.webp') }}" alt="logo" class="w-24 rounded-full ml-4 lg:block hidden " style="filter: drop-shadow(10px 10px 10px #000);">
+
+                        </div>
+                    </div>
+                </div>
+
 
                 <p class="mt-2 text-2xl   lg:text-4xl   text-white text-center md:text-left font-[arial] font-extrabold
                             ">
@@ -41,17 +67,20 @@
                 @if(Session::has('npm'))
                 <a href="{{ route('mahasiswa.dashboard') }}" class=" h-full inline-block text-center   mt-1 w-full md:max-w-[250px] md:mx-4
                                 hover:scale-[99%] focus:scale-95
-                                font-bold tracking-widest text-white bg-gradient-to-r from-cyan-500 to-blue-500
+                                font-bold tracking-widest text-white bg-blue-500   hover:bg-blue-600
                                 border border-white rounded-lg
-                                hover:from-cyan-600 hover:to-blue-600 px-3 py-2
-                              text-sm    transition-all duration-500 focus:shadow-[-2px_2px_10px_0px_#eab308]
+                                  px-3 py-2
+                              text-sm    transition-all duration-500 focus:shadow-[-2px_2px_10px_0px_#0891b2]
                                 ">Kembali Dashboard</a>
-                                @endif
+                @endif
+
+
             </div>
         </div>
     </div>
 </section>
 <!-- end slider -->
+
 
 <!-- Tentang E-Voting Pemira -->
 <section id="about">
@@ -102,7 +131,7 @@
                 </ul>
             </div>
             <div>
-                 <img alt="img" data-aos="fade-down" src="{{ asset('assets/frontend/voting_nvu7.svg') }}" class="w-2/3 h-2/3 mx-auto  ">
+                <img alt="img" data-aos="fade-down" src="{{ asset('assets/frontend/voting_nvu7.svg') }}" class="w-2/3 h-2/3 mx-auto  ">
                 <div class="grid grid-cols-1 md:grid-cols-2  ">
                     <div data-aos="fade-right" class="  px-7 py-6   flex items-top justify-start space-x-4">
                         <svg class="w-16 h-16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" id="candidate">
@@ -330,7 +359,7 @@
                                 </g>
                             </svg></figure>
                         <p>
-                            <p class=" text-red-600 font-bold text-left text-base group-hover:text-orange-300">Verifikasi Data</p>
+                        <p class=" text-red-600 font-bold text-left text-base group-hover:text-orange-300">Verifikasi Data</p>
                         </p>
                         <div class="text-left line-clamp-2 text-sm group-hover:text-gray-200">Silahkan cek apakah
                             Anda terdaftar sebagai pemilih tetap atau klik <a href="{{ route('cekDpt') }}" class="text-blue-500 font-bold">Disini</a>.</div>
@@ -346,7 +375,7 @@
                                 <rect width="17" height="4.9" x="15.5" y="42" fill="#d85b53" class="color000000 svgShape"></rect>
                             </svg></figure>
                         <p>
-                            <p class=" text-red-600 font-bold text-left text-base group-hover:text-orange-300">Login</p>
+                        <p class=" text-red-600 font-bold text-left text-base group-hover:text-orange-300">Login</p>
                         </p>
                         <div class="text-left line-clamp-2 text-sm group-hover:text-gray-200">Silahkan login
                             menggunakan akun anda pada tombol Login atau klik <a href="{{ route('panda.login') }}" class="text-blue-500 font-bold">Disini</a>.</div>
@@ -361,7 +390,7 @@
                                 <path d="M6.71,10.29A1,1,0,0,0,5,11a1,1,0,1,0,1.92-.38A1,1,0,0,0,6.71,10.29ZM9.29,7.71A1,1,0,0,0,10,8a1,1,0,0,0,.71-.29,1.15,1.15,0,0,0,.21-.33A1,1,0,0,0,11,7a1.05,1.05,0,0,0-.29-.71l-.15-.12-.18-.09A.6.6,0,0,0,10.19,6a1,1,0,0,0-.9.27,1,1,0,0,0-.21.33.94.94,0,0,0,0,.76A1.15,1.15,0,0,0,9.29,7.71ZM6.56,6.17a.76.76,0,0,0-.18-.09L6.2,6a1,1,0,0,0-.91.27,1,1,0,0,0-.21.33.94.94,0,0,0,0,.76,1.15,1.15,0,0,0,.21.33,1.15,1.15,0,0,0,.33.21A.84.84,0,0,0,6,8a1,1,0,0,0,.71-.29,1.15,1.15,0,0,0,.21-.33A1,1,0,0,0,7,7a1.05,1.05,0,0,0-.29-.71Zm6.15,12.12a1,1,0,0,0-1.42,0l-2,2a1,1,0,0,0,1.42,1.42L12,20.41l1.29,1.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Zm6-8a1,1,0,0,0-1.42,0,1,1,0,0,0-.21.33,1,1,0,0,0,1.3,1.3,1.15,1.15,0,0,0,.33-.21A1,1,0,0,0,19,11a.84.84,0,0,0-.08-.38A1,1,0,0,0,18.71,10.29ZM14,10H10a1,1,0,0,0,0,2h4a1,1,0,0,0,0-2Zm6-8H4A3,3,0,0,0,1,5v8a3,3,0,0,0,3,3H20a3,3,0,0,0,3-3V5A3,3,0,0,0,20,2Zm1,11a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1ZM17.62,6.08a.93.93,0,0,0-.33.21A1.05,1.05,0,0,0,17,7a1,1,0,0,0,.08.38,1.15,1.15,0,0,0,.21.33A1,1,0,0,0,18,8a1,1,0,0,0,.71-.29,1.15,1.15,0,0,0,.21-.33A1,1,0,0,0,19,7a1.05,1.05,0,0,0-.29-.71A1,1,0,0,0,17.62,6.08Zm-3.06.09-.18-.09L14.2,6a1,1,0,0,0-.58.06.93.93,0,0,0-.33.21,1,1,0,0,0-.21.33.94.94,0,0,0,0,.76,1.15,1.15,0,0,0,.21.33A1,1,0,0,0,14,8a1,1,0,0,0,.71-.29,1.15,1.15,0,0,0,.21-.33A1,1,0,0,0,15,7a1.05,1.05,0,0,0-.29-.71Z" fill="#d85b53" class="color000000 svgShape"></path>
                             </svg></figure>
                         <p>
-                            <p class=" text-red-600 font-bold text-left text-base group-hover:text-orange-300">Username & Password</p>
+                        <p class=" text-red-600 font-bold text-left text-base group-hover:text-orange-300">Username & Password</p>
                         </p>
                         <div class="text-left line-clamp-2 text-sm group-hover:text-gray-200">Masukkan username dan
                             password Anda dengan benar</div>
@@ -385,8 +414,7 @@
                                 <polygon fill="#fad1c4" stroke="#e54125" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" points="57 33.8 24.8 24.8 33.8 57 40.2 45.4 54.4 59.6 59.6 54.4 45.4 40.2">
                                 </polygon>
                             </svg></figure>
-                        <p
-                            <p class=" text-red-600 font-bold text-left text-base group-hover:text-orange-300">Menu Kandidat </p>
+                        <p class=" text-red-600 font-bold text-left text-base group-hover:text-orange-300">Menu Kandidat </p>
                         </p>
                         <div class="text-left line-clamp-3 text-sm group-hover:text-gray-200">Silahkan klik menu
                             kandidat. kemudian pilih kandidat untuk menampilkan informasi kandidat beserta visi dan misi</div>
@@ -402,7 +430,7 @@
                                 <path d="M11.34 15.02c.39.39 1.02.39 1.41 0l6.36-6.36c.39-.39.39-1.02 0-1.41L14.16 2.3c-.38-.4-1.01-.4-1.4-.01L6.39 8.66c-.39.39-.39 1.02 0 1.41l4.95 4.95zm2.12-10.61L17 7.95l-4.95 4.95-3.54-3.54 4.95-4.95zm6.95 11l-2.12-2.12c-.18-.18-.44-.29-.7-.29h-.27l-2 2h1.91L19 17H5l1.78-2h2.05l-2-2h-.42c-.27 0-.52.11-.71.29l-2.12 2.12c-.37.38-.58.89-.58 1.42V20c0 1.1.9 2 2 2h14c1.1 0 2-.89 2-2v-3.17c0-.53-.21-1.04-.59-1.42z" fill="#d85b53" class="color000000 svgShape"></path>
                             </svg></figure>
                         <p>
-                            <p class=" text-red-600 font-bold text-left text-base group-hover:text-orange-300">Menu Voting</p>
+                        <p class=" text-red-600 font-bold text-left text-base group-hover:text-orange-300">Menu Voting</p>
                         </p>
                         <div class="text-left   text-sm group-hover:text-gray-200">Tempat untuk memilih pasangan calon presma, pada tahap ini silahkan pilih salah
                             satu calon yang anda yakini.</div>
@@ -417,7 +445,7 @@
                                 <path d="M5.762 26.977a3.09 3.09 0 0 0 4.348 0l.612-.613c.546.277 1.107.513 1.689.702v.863A3.085 3.085 0 0 0 15.482 31h1.033c1.686 0 3.078-1.385 3.078-3.071v-.871a11.537 11.537 0 0 0 1.684-.694l.612.613a3.09 3.09 0 0 0 4.348 0l.738-.734a3.095 3.095 0 0 0 0-4.352l-.612-.605c.277-.546.513-1.108.701-1.69h.863c1.687 0 3.071-1.393 3.071-3.079v-1.033c0-1.686-1.386-3.078-3.071-3.078h-.871a11.586 11.586 0 0 0-.693-1.683l.612-.613a3.09 3.09 0 0 0 0-4.348l-.738-.738a3.09 3.09 0 0 0-4.348 0l-.612.612a11.715 11.715 0 0 0-1.684-.694v-.864A3.097 3.097 0 0 0 16.515 1h-1.033c-1.686 0-3.071 1.393-3.071 3.078v.856c-.582.189-1.145.424-1.689.701l-.612-.612a3.09 3.09 0 0 0-4.348 0l-.732.739a3.094 3.094 0 0 0 0 4.348l.605.613a11.699 11.699 0 0 0-.693 1.683h-.864a3.095 3.095 0 0 0-3.077 3.078v1.033a3.097 3.097 0 0 0 3.077 3.079h.864c.189.581.416 1.146.693 1.69l-.605.605a3.097 3.097 0 0 0 0 4.352l.732.734zm9.72-23.975h1.033c.612 0 1.078.465 1.078 1.078v1.521a1 1 0 0 0 .76.967 9.73 9.73 0 0 1 2.658 1.1 1 1 0 0 0 1.218-.148l1.078-1.078a1.053 1.053 0 0 1 1.521 0l.73.738c.433.433.433 1.08 0 1.513l-1.07 1.078a.999.999 0 0 0-.154 1.226 9.726 9.726 0 0 1 1.106 2.658c.113.442.511.752.967.753h1.521c.611 0 1.07.465 1.07 1.078v1.033c0 .612-.459 1.078-1.07 1.078h-1.521a1.001 1.001 0 0 0-.974.76 9.694 9.694 0 0 1-1.101 2.657c-.232.394-.17.896.154 1.218l1.07 1.078a1.053 1.053 0 0 1 0 1.521l-.73.731a1.053 1.053 0 0 1-1.521 0l-1.078-1.078a1 1 0 0 0-1.218-.147 9.755 9.755 0 0 1-2.658 1.1 1 1 0 0 0-.76.975v1.521a1.05 1.05 0 0 1-1.078 1.07H15.48a1.05 1.05 0 0 1-1.078-1.07v-1.521a1 1 0 0 0-.753-.975 9.723 9.723 0 0 1-2.657-1.1 1.001 1.001 0 0 0-1.226.147l-1.07 1.078a1.053 1.053 0 0 1-1.521 0l-.738-.731a1.053 1.053 0 0 1 0-1.521l1.078-1.078a1 1 0 0 0 .146-1.218 9.799 9.799 0 0 1-1.1-2.657 1 1 0 0 0-.975-.76H4.074a1.057 1.057 0 0 1-1.077-1.078v-1.033c0-.612.608-.883 1.077-1.078.469-.194 1.521 0 1.521 0 .457-.001.854-.311.968-.753a9.742 9.742 0 0 1 1.1-2.658 1.003 1.003 0 0 0-.146-1.226L6.438 8.693a1.044 1.044 0 0 1 0-1.513l.738-.738a1.045 1.045 0 0 1 1.514 0L9.768 7.52a1 1 0 0 0 1.226.148 9.749 9.749 0 0 1 2.657-1.1.999.999 0 0 0 .753-.974V4.08c0-.613.466-1.078 1.078-1.078zm.518 7.33c-3.118 0-5.662 2.552-5.662 5.669 0 3.117 2.544 5.669 5.662 5.669 3.117 0 5.669-2.552 5.669-5.669 0-3.117-2.552-5.669-5.669-5.669zm0 2a3.656 3.656 0 0 1 3.669 3.669A3.656 3.656 0 0 1 16 19.67a3.649 3.649 0 0 1-3.661-3.669A3.65 3.65 0 0 1 16 12.332z" fill="#d85b53" class="color000000 svgShape"></path>
                             </svg></figure>
                         <p>
-                            <p class=" text-red-600 font-bold text-left text-base group-hover:text-orange-300">Logout</p>
+                        <p class=" text-red-600 font-bold text-left text-base group-hover:text-orange-300">Logout</p>
                         </p>
                         <div class="text-left line-clamp-2 text-sm group-hover:text-gray-200">Silakan logout jika
                             sudah menggunakan hak pilih Anda</div>
@@ -430,41 +458,13 @@
         </div>
     </section>
 
-
-    <div class="my-10 max-w-2xl mx-auto space-y-4 lg:space-y-6">
-
-        <template x-for="(item, index) in faq" :key="`item-{$index}`">
-
-            <div class="item bg-white shadow-md rounded-md p-3">
-                <div class="flex items-center cursor-pointer" @click="faq_selected !== index ? faq_selected = index : faq_selected = null">
-                    <div class="bg-indigo-100 text-indigo-400 w-8 h-8 md:w-10 md:h-10 rounded-md flex items-center justify-center font-bold text-lg font-display">
-                        <span x-text="index + 1"></span>
-                    </div>
-                    <div class="ml-3 md:ml-4 lg:ml-6 md:text-lg text-indigo-600">
-                        <span x-text="item.question"></span>
-                    </div>
-                </div>
-                <div class="relative overflow-hidden transition-all max-h-0 duration-700" x-bind:style="faq_selected === index ? `max-height:  ${ $el.scrollHeight }px` : ``">
-                    <div class="text-gray-700 ml-8 md:ml-10 pl-3 md:pl-4 lg:pl-6 py-2 space-y-3">
-
-                        <template x-for="(ans, index) in item.answer" :key="`item-ans-{$index}`">
-                            <p x-text="ans"></p>
-                        </template>
-
-                    </div>
-                </div>
-            </div>
-
-        </template>
-
-    </div>
 </section>
 <!-- end Tata Cara Pimilihan -->
 
 <!-- Waktu Pelaksanaan -->
 <section id="waktu" class="   bg-[#E73530]       py-32  lg:py-20 text-center">
     <div class="px-4 py-20    mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-        <div class="max-w-xl  mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+        <div class="max-w-xl  mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12 section-heading2">
 
             <h2 data-aos="fade-down" class="mb-6 text-center font-sans text-4xl lg:text-5xl font-bold text-white   " style="text-shadow:5px 5px 5px #38383863;">
                 Waktu Pelaksanaan</h2>
@@ -593,7 +593,7 @@
     <div class=" container px-5 pt-16 pb-16 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div class="lg:w-2/4   w-full flex-shrink-0 md:mx-0 mx-auto  ">
             <a href="/" class="flex items-center text-black   mx-4  ">
-                 <img alt="img" src="{{ asset('assets/frontend/Logo.svg') }}">
+                <img alt="img" src="{{ asset('assets/frontend/Logo.svg') }}">
                 <div class="ml-3  text-white">
                     <strong class="text-xl md:text-3xl font-bold  text-black   uppercase">PEMIRA</strong>
                     <p class="text-sm md:text-[16px]   text-yellow-600      uppercase -mt-2
@@ -693,7 +693,7 @@
 <div class="      z-50      w-full   bg-[#c23935]  ">
     <div class="px-12 mx-auto py-4   flex flex-wrap flex-col sm:flex-row    ">
         <p class="text-white mx-auto  text-xs md:text-sm  text-center sm:text-left">Copyright&copy; 2023 |
-            <a href="#" class="text-yellow-100 font-bold">BIDANG KEMAHASISWAAN UNIVERSITAS BENGKULU</a>. All rights reserved.
+            <a href="#" class="text-yellow-300 font-bold">BIDANG KEMAHASISWAAN UNIVERSITAS BENGKULU</a>. All rights reserved.
         </p>
     </div>
 </div>
@@ -704,4 +704,45 @@
         <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
     </svg>
 </div>
+<script>
+    function beer() {
+        return {
+            seconds: '00',
+            minutes: '00',
+            hours: '00',
+            days: '00',
+            distance: 0,
+            countdown: null,
+            beerTime: new Date('{{ $jadwal_aktif->tanggal }} {{ $jadwal_aktif->waktu_mulai }}').getTime(),
+            now: new Date().getTime(),
+            start: function() {
+                this.countdown = setInterval(() => {
+                    // Calculate time
+                    this.now = new Date().getTime();
+                    this.distance = this.beerTime - this.now;
+                    // Set Times
+                    this.days = this.padNum(Math.floor(this.distance / (1000 * 60 * 60 * 24)));
+                    this.hours = this.padNum(Math.floor((this.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+                    this.minutes = this.padNum(Math.floor((this.distance % (1000 * 60 * 60)) / (1000 * 60)));
+                    this.seconds = this.padNum(Math.floor((this.distance % (1000 * 60)) / 1000));
+                    // Stop
+                    if (this.distance < 0) {
+                        clearInterval(this.countdown);
+                        this.days = '00';
+                        this.hours = '00';
+                        this.minutes = '00';
+                        this.seconds = '00';
+                    }
+                }, 100);
+            },
+            padNum: function(num) {
+                var zero = '';
+                for (var i = 0; i < 2; i++) {
+                    zero += '0';
+                }
+                return (zero + num).slice(-2);
+            }
+        }
+    }
+</script>
 @endsection

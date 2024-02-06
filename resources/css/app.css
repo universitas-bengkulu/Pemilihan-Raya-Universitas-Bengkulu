@@ -188,6 +188,7 @@ html {
 
 
 .section-heading>h2:after{position:absolute;content:"";height:2px;width:70px;background-color:#E73530;bottom:-15px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}
+.section-heading2>h2:after{position:absolute;content:"";height:2px;width:70px;background-color:#fff;bottom:-15px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}
 
 
 .work-block {

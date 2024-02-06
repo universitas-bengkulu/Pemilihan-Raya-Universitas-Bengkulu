@@ -58,7 +58,7 @@
                             <!-- update  -->
 
                             <strong class="text-xl md:text-3xl font-bold  text-white   uppercase">PEMIRA</strong>
-                            <p class="text-sm md:text-[16px]   text-yellow-100      uppercase -mt-2
+                            <p class="text-sm md:text-[16px]   text-yellow-300      uppercase -mt-2
                                 relative">
                                 UNIVERSITAS BENGKULU</p>
                         </div>

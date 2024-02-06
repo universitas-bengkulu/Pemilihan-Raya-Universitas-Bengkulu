@@ -23,7 +23,7 @@ class DashboardPemilihController extends Controller
         $jadwal_aktif = Jadwal::where('status_jadwal', 1)->first();
         $jadwal_kegiatans = JadwalKegiatan::where('jadwal_id',$jadwal_aktif->id )->get();
         $count_rekapitulasi = Rekapitulasi::count();
-        return view('welcome', compact('contact' , 'jadwal_kegiatans', 'count_kandidat', 'count_dpt', 'count_rekapitulasi'));
+        return view('welcome', compact('contact' , 'jadwal_kegiatans', 'count_kandidat', 'count_dpt', 'count_rekapitulasi', 'jadwal_aktif'));
     }
     public function dashboard(){
         setlocale(LC_ALL, 'IND');

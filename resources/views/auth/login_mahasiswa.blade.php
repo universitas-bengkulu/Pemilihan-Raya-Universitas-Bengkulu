@@ -57,7 +57,8 @@
                     </div>
                     @else
                     <div class="p-3   mt-3 text-sm text-green-800 rounded-lg bg-green-200  " role="alert">
-                        <span class="font-bold">Perhatian! </span> Gunakan Akun Login Portal Akademik
+                        <span class="font-bold">Perhatian! </span> Gunakan Akun Login Portal Akademik<br>
+                        Pemilihan berlangsung pada jam <b class="font-bold  ">{{ $tgl_pilih->waktu_mulai }}</b> s/d <b class="font-bold  ">{{ $tgl_pilih->waktu_selesai }}</b>
                     </div>
                     @endif
                     @else
