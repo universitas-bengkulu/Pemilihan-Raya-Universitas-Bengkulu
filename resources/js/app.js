@@ -9,7 +9,7 @@ Alpine.start();
 
  window.onscroll = function () {
      scrollFunction();
-     navMobileHome();
+    //  navMobileHome();
  };
 
 function scrollFunction() {
@@ -33,17 +33,17 @@ function scrollFunction() {
     }
 }
 
-var startProductBarPos = -1;
-function navMobileHome() {
-    var bar = document.getElementById("mobile-nav");
-    if (startProductBarPos < 0) startProductBarPos = findPosY(bar);
+// var startProductBarPos = -1;
+// function navMobileHome() {
+//     var bar = document.getElementById("mobile-nav");
+//     if (startProductBarPos < 0) startProductBarPos = findPosY(bar);
 
-    if (pageYOffset > startProductBarPos) {
-        bar.style.position = "fixed";
-        bar.style.paddingTop = "0px";
-        bar.style.top = "65px";
-    } else {
-        bar.style.position = "absolute";
-        bar.style.paddingTop = "40px";
-    }
-}
+//     if (pageYOffset > startProductBarPos) {
+//         bar.style.position = "fixed";
+//         bar.style.paddingTop = "0px";
+//         bar.style.top = "65px";
+//     } else {
+//         bar.style.position = "absolute";
+//         bar.style.paddingTop = "40px";
+//     }
+// }

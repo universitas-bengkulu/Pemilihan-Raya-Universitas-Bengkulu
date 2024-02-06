@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pemira - Universitas Bengkulu</title>
+    <meta name="description" content="Pemira adalah suatu singkatan dari Pemilihan Raya atau apabila lingkupnya nasional biasa di sebut PEMILU atau Pemilihan Umum. PEMIRA ini adalah suatu ajang Pesta Demokrasi yang diadakan di Perguruan Tinggi yang ada di indonesia. PEMIRA ini juga adalah gambaran dari sistem Demokrasi yang ada di indonesia." />
   <link rel="shortcut icon" href="{{ asset('assets/frontend/Logo.svg') }}">
 
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">

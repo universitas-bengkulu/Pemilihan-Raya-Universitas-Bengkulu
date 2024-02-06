@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pemira - Universitas Bengkulu</title>
+    <meta name="description" content="Pemira adalah suatu singkatan dari Pemilihan Raya atau apabila lingkupnya nasional biasa di sebut PEMILU atau Pemilihan Umum. PEMIRA ini adalah suatu ajang Pesta Demokrasi yang diadakan di Perguruan Tinggi yang ada di indonesia. PEMIRA ini juga adalah gambaran dari sistem Demokrasi yang ada di indonesia." />
     <link rel="shortcut icon" href="{{ asset('assets/frontend/Logo.svg') }}">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -51,13 +52,13 @@
                 <div class="flex items-center justify-between">
                     <!-- logo -->
                     <a href="{{ route('welcome') }}" class="flex items-center text-black   mx-4 md:ml-6">
-                        <img src="{{ asset('assets/frontend/Logo.svg') }}">
+                        <img src="{{ asset('assets/frontend/Logo.svg') }}" alt="logo-unib">
 
                         <div class="ml-3  text-white">
                             <!-- update  -->
 
                             <strong class="text-xl md:text-3xl font-bold  text-white   uppercase">PEMIRA</strong>
-                            <p class="text-sm md:text-[16px]   text-yellow-300      uppercase -mt-2
+                            <p class="text-sm md:text-[16px]   text-yellow-100      uppercase -mt-2
                                 relative">
                                 UNIVERSITAS BENGKULU</p>
                         </div>

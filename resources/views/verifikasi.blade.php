@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pemira - Universitas Bengkulu</title>
+    <meta name="description" content="Pemira adalah suatu singkatan dari Pemilihan Raya atau apabila lingkupnya nasional biasa di sebut PEMILU atau Pemilihan Umum. PEMIRA ini adalah suatu ajang Pesta Demokrasi yang diadakan di Perguruan Tinggi yang ada di indonesia. PEMIRA ini juga adalah gambaran dari sistem Demokrasi yang ada di indonesia." />
+
     <link rel="shortcut icon" href="{{ asset('assets/frontend/Logo.svg') }}">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -49,7 +51,7 @@
                 <div class="flex items-center justify-between">
                     <!-- logo -->
                     <a href="{{ route('welcome') }}" class="flex items-center text-black   mx-4 md:ml-6">
-                        <img src="{{ asset('assets/frontend/Logo.svg') }}">
+                        <img alt="img" src="{{ asset('assets/frontend/Logo.svg') }}">
 
                         <div class="ml-3  text-white">
                             <!-- update  -->
@@ -86,40 +88,41 @@
                         <a href="{{ route('panda.login') }}" class=" py-2 mx-4 mt-2 text-white text-[14px] transition-colors duration-300 transform
                             lg:mt-0 bg-gradient-to-r from-orange-500 to-yellow-500 border border-white rounded-lg
                             hover:from-orange-600 hover:to-yellow-600 px-5 ">Login</a>
-                            @else
-                            <!-- Profile menu -->
-            <div x-data="{ isOpen: false }" class="relative inline-block ml-3 ">
-              <button @click="isOpen = !isOpen" type="button" class="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
-                <img class="w-8 h-8 rounded-full ring-2 mr-1 ring-gray-300  " src="https://www.gravatar.com/avatar/{{ md5(Session::get('nama')) }}?d=https%3A%2F%2Fui-avatars.com%2Fapi%2F/{!! str_replace('+', ' ', Session::get('nama')) !!}/128" alt="Bordered avatar">
-                <!-- <h3 class="ml-1  text-gray-800 md:text-sm  text-xs hidden lg:block    capitalize">
+                        @else
+                        <!-- Profile menu -->
+                        <div x-data="{ isOpen: false }" class="relative inline-block ml-3 ">
+                            <button @click="isOpen = !isOpen" type="button" class="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
+                                <img class="w-8 h-8 rounded-full ring-2 mr-1 ring-gray-300  " src="https://www.gravatar.com/avatar/{{ md5(Session::get('nama')) }}?d=https%3A%2F%2Fui-avatars.com%2Fapi%2F/{!! str_replace('+', ' ', Session::get('nama')) !!}/128" alt="Bordered avatar">
+                                <!-- <h3 class="ml-1  text-gray-800 md:text-sm  text-xs hidden lg:block    capitalize">
                                     nama mahasiswa
                                 </h3> -->
-              </button>
-              <div x-show="isOpen" @click.away="isOpen = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90" class="absolute -right-5 z-20 py-2 mt-3 bg-black bg-opacity-80 rounded-md shadow-xl  min-w-60 w-72
+                            </button>
+                            <div x-show="isOpen" @click.away="isOpen = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90" class="absolute -right-5 z-20 py-2 mt-3 bg-black bg-opacity-80 rounded-md shadow-xl  min-w-60 w-72
                                 md:text-sm  text-xs ">
-                <div class="flex items-center p-3 -mt-2 text-sm text-white transition-colors duration-300 transform hover:bg-black   ">
-                  <img class="w-8 h-8 rounded-full ring-2 ring-gray-300  " src="https://www.gravatar.com/avatar/{{ md5(Session::get('nama')) }}?d=https%3A%2F%2Fui-avatars.com%2Fapi%2F/{!! str_replace('+', ' ', Session::get('nama')) !!}/128" alt="Bordered avatar">
-                  <div class="ml-2">
-                    <h1 class="md:text-sm  text-xs  font-semibold capitalize  ">
-                      {{ Session::get('nama') }}
-                    </h1>
-                    <p class="md:text-sm  text-xs  text-gray-200  ">
-                      {{ Session::get('npm') }}</p>
-                  </div>
-                </div>
-                <hr class="border-gray-200 ">
-                <a href="{{ route('panda.logout') }}" class="flex items-center p-3   text-gray-200 capitalize transition-colors
+                                <div class="flex items-center p-3 -mt-2 text-sm text-white transition-colors duration-300 transform hover:bg-black   ">
+                                    <img class="w-8 h-8 rounded-full ring-2 ring-gray-300  " src="https://www.gravatar.com/avatar/{{ md5(Session::get('nama')) }}?d=https%3A%2F%2Fui-avatars.com%2Fapi%2F/{!! str_replace('+', ' ', Session::get('nama')) !!}/128" alt="Bordered avatar">
+                                    <div class="ml-2">
+                                        <h1 class="md:text-sm  text-xs  font-semibold capitalize  ">
+                                            {{ Session::get('nama') }}
+                                        </h1>
+                                        <p class="md:text-sm  text-xs  text-gray-200  ">
+                                            {{ Session::get('npm') }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <hr class="border-gray-200 ">
+                                <a href="{{ route('panda.logout') }}" class="flex items-center p-3   text-gray-200 capitalize transition-colors
                                     duration-300 transform hover:bg-black  hover:text-yellow-600">
-                  <svg class="w-[16px] h-[16px] mx-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 21H10C8.89543 21 8 20.1046 8 19V15H10V19H19V5H10V9H8V5C8 3.89543 8.89543 3 10 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21ZM12 16V13H3V11H12V8L17 12L12 16Z" fill="currentColor"></path>
-                  </svg>
-                  <span class="mx-1">
-                    Logout
-                  </span>
-                </a>
-              </div>
-            </div>
-            @endif
+                                    <svg class="w-[16px] h-[16px] mx-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19 21H10C8.89543 21 8 20.1046 8 19V15H10V19H19V5H10V9H8V5C8 3.89543 8.89543 3 10 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21ZM12 16V13H3V11H12V8L17 12L12 16Z" fill="currentColor"></path>
+                                    </svg>
+                                    <span class="mx-1">
+                                        Logout
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        @endif
                     </div>
 
                 </div>
@@ -129,7 +132,7 @@
     </nav>
     <!-- end navbar -->
 
-     <section class="  items-center w-full   duration-300 transform ">
+    <section class="  items-center w-full   duration-300 transform ">
         <div class="grid grid-cols-1 md:grid-cols-2  ">
             <div class="col-span-1    md:block hidden  ">
                 <div class="h-screen    justify-center grid">
@@ -140,15 +143,13 @@
             </div>
             <div class="col-span-1 grid h-screen">
                 <div class="place-self-center w-2/3">
-                    <h2 data-aos="fade-down"
-                        class="mb-6   font-sans text-2xl lg:text-3xl font-bold text-[#E73530]   "
-                        style="text-shadow:5px 5px 5px #38383863;">
+                    <h2 data-aos="fade-down" class="mb-6   font-sans text-2xl lg:text-3xl font-bold text-[#E73530]   " style="text-shadow:5px 5px 5px #38383863;">
                         Status Hak Suara</h2>
-                        <p class="text-[14px] leading-7 text-gray-700">
-                            Mahasiswa yang berhak menggunakan hak suaranya adalah mahasiswa aktif pada semester
-                            berjalan, Silahkan Masukkan <b>NPM</b> Anda Untuk Mengecek Hak Suara Anda
+                    <p class="text-[14px] leading-7 text-gray-700">
+                        Mahasiswa yang berhak menggunakan hak suaranya adalah mahasiswa aktif pada semester
+                        berjalan, Silahkan Masukkan <b>NPM</b> Anda Untuk Mengecek Hak Suara Anda
 
-                        </p>
+                    </p>
                     <form method="POST" action=" ">
                         <div class="my-2  ">
                             <label class=" after:content-['*'] after:text-red-500 font-semibold text-gray-800
