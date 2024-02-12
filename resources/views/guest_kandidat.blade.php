@@ -26,7 +26,7 @@
                                 <p class="line-clamp-1 font-bold">{{$kandidat->nama_calon_ketua}}</p>
                                 <p class="text-yellow-600">({{$kandidat->npm_calon_ketua}})</p>
                                 <p class="  font-bold">&</p>
-                                <p class="line-clamp-1 font-bold">{{ $kandidat->npm_calon_wakil_ketua }}</p>
+                                <p class="line-clamp-1 font-bold">{{ $kandidat->nama_calon_wakil_ketua }}</p>
                                 <p class="text-yellow-600">({{$kandidat->npm_calon_wakil_ketua}})</p>
                             </div>
                         </div>
