@@ -10,4 +10,9 @@ class Misi extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function kandidat()
+    {
+        return $this->belongsTo(Kandidat::class);
+    }
 }

@@ -6,7 +6,7 @@
     </a>
 </li>
 
-<li class="{{ set_active(['kandidat','kandidat.create','kandidat.edit','kandidat.createMisi']) }}">
+<li class="{{ set_active(['kandidat','kandidat.create','kandidat.edit','kandidat.createMisi','kandidat.editMisi','kandidat.detailMisi' ]) }}">
     <a href="{{ route('kandidat') }}">
         <i class="fa fa-users"></i>
         <span>Data Kandidat</span>
@@ -65,6 +65,23 @@
         <span>Rekapitulasi Suara</span>
     </a>
 </li>
+
+<li class="{{ set_active(['reset_rekapitulasi_suara']) }}" class="bg-danger">
+    <a href="{{ route('reset_rekapitulasi_suara') }}" class="bg-danger">
+        <i class="fa fa-warning"></i>
+        <span>Reset Rekapitulasi Suara</span>
+    </a>
+</li>
+
+<style>
+    .bg-danger {
+        background-color: #a61122 !important;
+    }
+
+    .bg-danger:hover {
+        background-color: #df4759 !important;
+    }
+</style>
 
 <!-- Authentication -->
 <li>

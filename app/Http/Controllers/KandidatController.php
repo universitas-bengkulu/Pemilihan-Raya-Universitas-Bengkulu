@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kandidat;
 use App\Models\Misi;
+use App\Models\Rekapitulasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,6 +14,15 @@ class KandidatController extends Controller
         $kandidats = Kandidat::with(['misis'])->withCount(['misis'])->get();
         return view('kandidat.index',[
             'kandidats' =>  $kandidats,
+        ]);
+    }
+
+    public function detailMisi(Request $request, $kandidat){
+        $misis = Misi::where('kandidat_id', $kandidat)->get();
+        $data = Kandidat::where('id', $kandidat)->first();
+        return view('kandidat.misi',[
+            'misis' =>  $misis,
+            'data' =>  $data,
         ]);
     }
 
@@ -226,9 +236,13 @@ class KandidatController extends Controller
         }
     }
 
-    public function destroy(Kandidat $kandidat){
-        $delete = $kandidat->delete();
-        if ($delete) {
+    public function destroy(Kandidat $kandidat, Misi  $misi){
+
+        $deleteMisi = Misi::where('kandidat_id', $kandidat->id)->delete();
+        $deleteRekap = Rekapitulasi::where('kandidat_id', $kandidat->id)->delete();
+        $deleteKandidat = $kandidat->delete();
+
+        if ($deleteKandidat) {
             $notification = array(
                 'message' => 'Kandidat berhasil dihapus!',
                 'alert-type' => 'success'
@@ -246,6 +260,13 @@ class KandidatController extends Controller
     public function createMisi(Kandidat $kandidat){
         return view('kandidat.create_misi',[
             'kandidat'  =>  $kandidat,
+        ]);
+    }
+    public function editMisi($misi)
+    {
+        $data = Misi::where('id', $misi)->first();
+        return view('kandidat.edit_misi', [
+            'data'  =>  $data,
         ]);
     }
 
@@ -271,10 +292,57 @@ class KandidatController extends Controller
         if ($create) {
             return response()->json([
                 'text'  =>  'Yeay, misi berhasil diinput',
-                'url'   =>  url('/kandidat/'),
+                'url'   =>  url('/kandidat/'. $kandidat->id.'/detail_misi/'),
             ]);
         }else{
             return response()->json(['text' =>  'Oopps, misi gagal diinput']);
+        }
+    }
+
+    public function storeEditMisi($kandidat, $misi, Request $request)
+    {
+        $rules = [
+            'misi' => 'required',
+        ];
+
+        $text = [
+            'misi.required' => 'Misi harus diisi.',
+        ];
+
+        $validasi = Validator::make($request->all(), $rules, $text);
+        if ($validasi->fails()) {
+            return response()->json(['error'  =>  0, 'text'   =>  $validasi->errors()->first()], 422);
+        }
+
+
+        $update = Misi::where('id', $misi)->update(['misi' => $request->input('misi')]);
+        if ($update) {
+            return response()->json([
+                'text'  =>  'Yeay, data kandidat berhasil diinput',
+                'url'   =>  url('/kandidat/'. $kandidat. '/detail_misi'),
+            ]);
+        } else {
+            return response()->json(['text' =>  'Oopps, data kandidat gagal diinput'
+            ]);
+
+        }
+    }
+
+    public function destroyMisi(Misi $misi)
+    {
+        $delete = $misi->delete();
+        if ($delete) {
+            $notification = array(
+                'message' => 'Misi Kandidat berhasil dihapus!',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+        } else {
+            $notification = array(
+                'message' => 'Misi Kandidat gagal dihapus!',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
         }
     }
 }

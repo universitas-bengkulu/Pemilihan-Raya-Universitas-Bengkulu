@@ -20,4 +20,6 @@ class Kandidat extends Model
     {
         return $this->hasMany(Rekapitulasi::class);
     }
+
+
 }

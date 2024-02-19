@@ -36,4 +36,32 @@ class RekapitulasiController extends Controller
             'rekapitulasis' =>  $rekapitulasis,
         ]);
     }
+
+    public function resetRekapSuara()
+    {
+        $rekapitulasis = Rekapitulasi::with(['kandidat', 'dpt'])->count();
+
+        return view('rekapitulasi.reset', [
+            'rekapitulasis' =>  $rekapitulasis,
+        ]);
+    }
+
+    public function RekapSuaraDestroy()
+    {
+        $delete = Rekapitulasi::truncate();
+
+        if ($delete) {
+            $notification = array(
+                'message' => 'Rekapitulasi Suara berhasil direset!',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+        } else {
+            $notification = array(
+                'message' => 'Rekapitulasi Suara gagal dihapus!',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
+    }
 }

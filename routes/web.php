@@ -73,7 +73,11 @@ Route::controller(KandidatController::class)->middleware(['auth', 'web'])->prefi
     Route::patch('/{kandidat}/edit', 'update')->name('kandidat.update');
     Route::delete('/{kandidat}/delete', 'destroy')->name('kandidat.destroy');
     Route::get('/{kandidat}/create_misi', 'createMisi')->name('kandidat.createMisi');
+    Route::get('/{kandidat}/detail_misi', 'detailMisi')->name('kandidat.detailMisi');
+    Route::get('/{misi}/editMisi', 'editMisi')->name('kandidat.editMisi');
+    Route::delete('/{misi}/deleteMisi', 'destroyMisi')->name('kandidat.destroyMisi');
     Route::post('/{kandidat}/store_misi', 'storeMisi')->name('kandidat.storeMisi');
+    Route::post('kandidat/{kandidat}/misi/{misi}/edit_misi', 'storeEditMisi')->name('kandidat.storeEditMisi');
 });
 
 Route::controller(ContactController::class)->middleware(['auth', 'web'])->prefix('/contact')->group(function () {
@@ -123,6 +127,9 @@ Route::controller(RekapitulasiController::class)->middleware(['auth', 'web'])->p
     Route::get('/', 'index')->name('rekapitulasi');
     Route::get('/_cari', 'rekapitulasiCari')->name('rekapitulasi.cari');
     Route::get('/download-excel', 'downloadExcel')->name('downloadExcel');
+    Route::get('/reset-rekapitulasi-suara', 'resetRekapSuara')->name('reset_rekapitulasi_suara');
+    Route::delete('/reset-rekapitulasi-suara-destroy', 'RekapSuaraDestroy')->name('rekapitulasi.destroy');
+
 });
 
 Route::controller(StatistikController::class)->middleware(['auth', 'web'])->prefix('/statistik')->group(function () {
