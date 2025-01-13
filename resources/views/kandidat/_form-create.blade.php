@@ -14,6 +14,7 @@
         <div class="form-group col-md-6">
             <label for="">Masukan Banner Surat Suara</label>
             <input type="file" name="banner" class="form-control">
+            <label class="text-danger text-sm">Max size file kurang dari 2MB</label>
         </div>
 
         <div class="form-group col-md-12">
@@ -74,6 +75,8 @@
         <div class="form-group col-md-12">
             <label for="">Masukan Foto Calon Presiden Mahasiswa</label>
             <input type="file" name="foto_ketua" class="form-control">
+            <label class="text-danger text-sm">Max size file kurang dari 2MB</label>
+
         </div>
     </div>
 
@@ -128,6 +131,8 @@
         <div class="form-group col-md-12">
             <label for="">Masukan Foto Calon Wakil Presiden Mahasiswa</label>
             <input type="file" name="foto_wakil_ketua" class="form-control">
+            <label class="text-danger text-sm  ">Max size file kurang dari 2MB</label>
+
         </div>
     </div>
 

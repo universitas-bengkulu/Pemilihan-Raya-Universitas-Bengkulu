@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use GuzzleHttp\Exception\BadResponseException;
+use Illuminate\Support\Facades\Validator;
 
 class PandaController extends Controller
 {
@@ -16,10 +17,10 @@ class PandaController extends Controller
     {
         $client = new Client();
 
-        $url = 'https://panda.unib.ac.id/api/login';
+        $url = config('panda.url');
         try {
-            $email = env('PANDA_EMAIL');
-            $password = env('PANDA_PASSWORD');
+            $email = config('panda.email');
+            $password = config('panda.password');
             $response = $client->request(
                 'POST',
                 $url,
@@ -67,6 +68,18 @@ class PandaController extends Controller
     {
         $username = $request->username;
         $password = $request->password;
+        $rules = [
+            'username' => 'required',
+            'password' => 'required',
+        ];
+        $text = [
+            'username.required' => 'username harus diisi.',
+            'password.required' => 'password harus diisi.',
+        ];
+        $validasi = Validator::make($request->all(), $rules, $text);
+        if ($validasi->fails()) {
+            return redirect()->route('panda.login')->with(['error'    => 'Harap isi Username dan password!!']);
+        }
         // $count =  preg_match_all( "/[0-9]/", $username );
         $query = '
 			{portallogin(username:"' . $username . '", password:"' . $password . '") {
@@ -100,7 +113,7 @@ class PandaController extends Controller
         if ($accessData[0]['is_access'] == 1) {
             if ($accessData[0]['tusrThakrId'] == 1) {
                 $cek_dpt = Dpt::where('npm', $username)->count();
-                if($cek_dpt !=0){
+                if ($cek_dpt != 0) {
                     $mahasiswaData = $this->panda($queryMahasiswa);
                     // return $mahasiswaData;
                     if ($mahasiswaData['mahasiswa'][0]['mhsTanggalLulus'] == null || $mahasiswaData['mahasiswa'][0]['mhsTanggalLulus'] == "") {
@@ -126,11 +139,9 @@ class PandaController extends Controller
                     } else {
                         return redirect()->route('panda.login')->with(['error'    => 'Data anda tidak aktif !! !!']);
                     }
-
-                }else{
+                } else {
                     return redirect()->route('panda.login')->with(['error'    => 'Anda Tidak Terdaftar pada daftar pemilih tetap, jika anda masih sebagai mahasiswa aktif silakan hubungi <a href="/#contact" class="text-blue-500 font-bold">contact</a> !!']);
                 }
-
             } else {
                 return redirect('panda.login')->with(['error'    => 'Anda tidak memiliki akses sebagai mahasiswa !!']);
             }
@@ -170,14 +181,15 @@ class PandaController extends Controller
         setlocale(LC_ALL, 'IND');
         $now = now();
         $jadwal = Jadwal::where('tanggal', $now->toDateString())
-        ->whereRaw('CURRENT_TIME BETWEEN waktu_mulai AND waktu_selesai')
-        ->first();
+            ->whereRaw('CURRENT_TIME BETWEEN waktu_mulai AND waktu_selesai')
+            ->first();
         $tgl_pilih = Jadwal::first();
         if (!empty(Session::get('login')) && Session::get('login', 1)) {
             return redirect()->route('mahasiwa.dashboard');
         } else {
             return view('auth.login_mahasiswa', [
-                'jadwal'    =>  $jadwal, 'tgl_pilih' => $tgl_pilih
+                'jadwal'    =>  $jadwal,
+                'tgl_pilih' => $tgl_pilih
             ]);
         }
     }

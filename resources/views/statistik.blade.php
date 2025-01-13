@@ -27,7 +27,7 @@
                 <div class="form-group col-md-4">
                     <label for="prodi">Pilih Prodi</label>
                     <select name="prodi" id="prodi" class="form-control">
-                        <option value="" selected disabled>Pilih Prodi</option>
+                        <option value="" selected >Pilih Prodi</option>
                         @foreach ($prodis as $prodi)
                             <option value="{{ $prodi }}" @if (isset($selectedProdi) && $selectedProdi == $prodi) selected @endif>{{ $prodi }}</option>
                         @endforeach
@@ -37,7 +37,7 @@
                 <div class="form-group col-md-4">
                     <label for="jenjang">Jenjang</label>
                     <select name="jenjang" id="jenjang" class="form-control">
-                        <option value="" selected disabled>Pilih Jenjang</option>
+                        <option value="" selected >Pilih Jenjang</option>
                         @foreach ($jenjangs as $jenjang)
                             <option value="{{ $jenjang }}" @if (isset($selectedJenjang) && $selectedJenjang == $jenjang) selected @endif>{{ $jenjang }}</option>
                         @endforeach
@@ -47,7 +47,7 @@
                 <div class="form-group col-md-4">
                     <label for="angkatan">Angkatan</label>
                     <select name="angkatan" id="angkatan" class="form-control">
-                        <option value="" selected disabled>Pilih Angkatan</option>
+                        <option value="" selected >Pilih Angkatan</option>
                         @foreach ($angkatans as $angkatan)
                             <option value="{{ $angkatan }}" @if (isset($selectedAngkatan) && $selectedAngkatan == $angkatan) selected @endif>{{ $angkatan }}</option>
                         @endforeach
@@ -72,6 +72,32 @@
 
                     @endsection
                     <div id="chartdiv"></div>
+
+                    <div class="col-md-12 table-responsive">
+                    <table class="table table-striped table-bordered" id="table" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Paselon</th>
+                                <th>Jumlah suara</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if($data2->isNotEmpty())
+                            @foreach ($data2 as $item)
+                            <tr>
+                                <td>{{ $item->nama_calon_ketua }} - {{ $item->nama_calon_wakil_ketua }}</td>
+                                <td>{{ $item->jumlah }}</td>
+                            </tr>
+                            @endforeach
+                            @else
+                            <tr>
+                                <td colspan="2">Tidak ada data tersedia.</td>
+                            </tr>
+                            @endif
+
+                        </tbody>
+                    </table>
+                </div>
                 </div>
             </div>
         </div>

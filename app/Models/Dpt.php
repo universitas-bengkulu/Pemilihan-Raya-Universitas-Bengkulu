@@ -14,6 +14,15 @@ class Dpt extends Model
     public $incrementing = false;
     protected $keyType = 'string'; // Tipe data primary key
 
+    protected $fillable = [
+        'npm',
+        'nama_lengkap',
+        'jenjang',
+        'angkatan',
+        'prodi',
+        'nama_singkat_fakultas',
+        'nama_lengkap_fakultas',
+    ];
     /**
      * Get the rekapitulasi associated with the Dpt
      *

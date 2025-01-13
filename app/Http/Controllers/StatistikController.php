@@ -38,7 +38,15 @@ class StatistikController extends Controller
             ->unique();
 
 
-        return view('statistik', compact('data','prodis','jenjangs','angkatans'));
+        $data2 =  DB::table('rekapitulasis')
+        ->leftJoin('kandidats', 'rekapitulasis.kandidat_id', '=', 'kandidats.id')
+        ->leftJoin('dpts', 'rekapitulasis.dpt_npm', '=', 'dpts.npm')
+        ->select('kandidats.nama_calon_ketua', 'kandidats.nama_calon_wakil_ketua', DB::raw('count(rekapitulasis.id) as jumlah'))
+        ->groupBy('kandidats.id', 'kandidats.nama_calon_ketua', 'kandidats.nama_calon_wakil_ketua')
+        ->get();
+
+
+        return view('statistik', compact('data', 'data2', 'prodis', 'jenjangs', 'angkatans'));
     }
 
     public function cari(Request $request)
@@ -95,6 +103,26 @@ class StatistikController extends Controller
             ->groupBy('kandidats.id')
             ->get();
 
-        return view('statistik', compact('data', 'selectedProdi', 'selectedJenjang', 'selectedAngkatan','prodis','jenjangs','angkatans'));
+        $query = DB::table('rekapitulasis')
+        ->leftJoin('kandidats', 'rekapitulasis.kandidat_id', '=', 'kandidats.id')
+        ->leftJoin('dpts', 'rekapitulasis.dpt_npm', '=', 'dpts.npm')
+        ->select('kandidats.nama_calon_ketua', 'kandidats.nama_calon_wakil_ketua', DB::raw('count(rekapitulasis.id) as jumlah'))
+        ->groupBy('kandidats.id', 'kandidats.nama_calon_ketua', 'kandidats.nama_calon_wakil_ketua');
+
+        if ($selectedProdi) {
+            $query->where('dpts.prodi', $selectedProdi);
+        }
+
+        if ($selectedJenjang) {
+            $query->where('dpts.jenjang', $selectedJenjang);
+        }
+
+        if ($selectedAngkatan) {
+            $query->where('dpts.angkatan', $selectedAngkatan);
+        }
+
+        $data2 = $query->get();
+
+        return view('statistik', compact('data', 'data2', 'selectedProdi', 'selectedJenjang', 'selectedAngkatan', 'prodis', 'jenjangs', 'angkatans'));
     }
 }

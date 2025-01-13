@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Dpt;
 
 use App\Models\Jadwal;
+use App\Imports\DptImport;
+use App\Models\Rekapitulasi;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 
 class DptController extends Controller
@@ -13,8 +16,10 @@ class DptController extends Controller
     public function index()
     {
         $dpts = Dpt::paginate(10);
+        $jumlah = Dpt::count();
         return view('dpt.index', [
             'dpts' =>  $dpts,
+            'jumlah' => $jumlah
         ]);
     }
 
@@ -102,14 +107,37 @@ class DptController extends Controller
         }
     }
 
-    public function dptCari(Request $request){
+    public function dptCari(Request $request)
+    {
         $nama_lengkap = $request->input('nama_lengkap');
 
         $dpts = Dpt::where('nama_lengkap', 'like', '%' . $nama_lengkap . '%')
-                ->paginate(10);
+            ->paginate(10);
 
-        return view('dpt.index',[
+        $jumlah = Dpt::count();
+        return view('dpt.index', [
             'dpts' =>  $dpts,
+            'jumlah' => $jumlah
         ]);
+
+    }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('excel_file');
+
+        $import = new DptImport;
+        Excel::import($import, $file);
+
+        //  $jumlahData = $import->getRowCount();
+
+        return redirect()->route('dpt')->with('success-dpt', 'Data berhasil diimport  ');
+    }
+
+    public function deleteAllDpts()
+    {
+        Rekapitulasi::query()->delete();
+        Dpt::query()->delete();
+        return redirect()->route('dpt')->with('delate-dpt', 'Berhasil menghapus data DPT.');
     }
 }

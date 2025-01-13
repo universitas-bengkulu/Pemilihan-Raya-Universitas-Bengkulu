@@ -106,7 +106,9 @@ Route::controller(DptController::class)->middleware(['auth', 'web'])->prefix('/d
     Route::patch('/{dpt}/edit', 'update')->name('dpt.update');
     Route::delete('/{dpt}/delete', 'destroy')->name('dpt.destroy');
     Route::get('/cari', 'dptCari')->name('dpt.cari');
+    Route::delete('/dpt/delete-all', 'deleteAllDpts')->name('delete-all-dpts');
 });
+Route::post('/dpt/import', [DptController::class, 'import'])->middleware(['auth', 'web'])->name('dpt.import');
 
 Route::controller(UserController::class)->middleware(['auth', 'web'])->prefix('/user')->group(function () {
     Route::get('/', 'index')->name('user');
