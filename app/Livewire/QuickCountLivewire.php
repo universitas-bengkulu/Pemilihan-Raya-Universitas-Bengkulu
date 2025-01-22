@@ -52,7 +52,7 @@ class QuickCountLivewire extends Component
                 $presentase_sudah_pilih = 0;
             }
 
-            if ($fakultas['fakKodeUniv'] != 'Z') {
+            if ($fakultas['fakKodeUniv'] != 'Z' and $fakultas['fakKodeUniv'] != null) {
                 $namaSingkatFakultas = [
                     'A' => 'FKIP',
                     'B' => 'FH',
@@ -121,7 +121,7 @@ class QuickCountLivewire extends Component
                 $presentase_sudah_pilih = 0;
             }
 
-            if ($fakultas['fakKodeUniv'] != 'Z') {
+            if ($fakultas['fakKodeUniv'] != 'Z' and $fakultas['fakKodeUniv'] != null) {
                 $namaSingkatFakultas = [
                     'A' => 'FKIP',
                     'B' => 'FH',
