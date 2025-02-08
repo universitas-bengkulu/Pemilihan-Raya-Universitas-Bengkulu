@@ -12,7 +12,7 @@ class StatistikController extends Controller
         $data = Rekapitulasi::join('kandidats', 'rekapitulasis.kandidat_id', '=', 'kandidats.id')
         ->join('dpts', 'rekapitulasis.dpt_npm', '=', 'dpts.npm')
         ->select('kandidats.nama_calon_ketua', 'kandidats.nama_calon_wakil_ketua', DB::raw('count(rekapitulasis.id) as jumlah'))
-        ->groupBy('kandidats.id')
+        ->groupBy('kandidats.id', 'kandidats.nama_calon_ketua', 'kandidats.nama_calon_wakil_ketua')
         ->get();
 
         $prodis = Rekapitulasi::join('kandidats', 'rekapitulasis.kandidat_id', '=', 'kandidats.id')
@@ -100,7 +100,7 @@ class StatistikController extends Controller
         $data = $query->join('kandidats', 'rekapitulasis.kandidat_id', '=', 'kandidats.id')
             ->join('dpts', 'rekapitulasis.dpt_npm', '=', 'dpts.npm')
             ->select('kandidats.nama_calon_ketua', 'kandidats.nama_calon_wakil_ketua', DB::raw('count(rekapitulasis.id) as jumlah'))
-            ->groupBy('kandidats.id')
+            ->groupBy('kandidats.id', 'kandidats.nama_calon_ketua', 'kandidats.nama_calon_wakil_ketua')
             ->get();
 
         $query = DB::table('rekapitulasis')

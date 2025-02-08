@@ -111,7 +111,7 @@ class DptController extends Controller
     {
         $nama_lengkap = $request->input('nama_lengkap');
 
-        $dpts = Dpt::where('nama_lengkap', 'like', '%' . $nama_lengkap . '%')
+        $dpts = Dpt::where('nama_lengkap', 'like', '%' . $nama_lengkap . '%')->orWhere('npm', 'like', '%' . $nama_lengkap . '%')
             ->paginate(10);
 
         $jumlah = Dpt::count();

@@ -57,10 +57,9 @@
             <label for="">Masukan Jenjang Prodi Calon Presiden Mahasiswa</label>
             <select name="jenjang_prodi_calon_ketua" class="form-control" id="">
                 <option disabled selected>-- pilih jenjang prodi --</option>
-                <option {{ $kandidat->jenjang_prodi_calon_ketua == "DI" ? 'selected' : ''}} value="DI">DI</option>
-                <option {{ $kandidat->jenjang_prodi_calon_ketua == "DII" ? 'selected' : ''}} value="DII">DII</option>
-                <option {{ $kandidat->jenjang_prodi_calon_ketua == "DIII" ? 'selected' : ''}} value="DIII">DIII</option>
-                <option {{ $kandidat->jenjang_prodi_calon_ketua == "DIV" ? 'selected' : ''}} value="DIV">DIV</option>
+
+                <option {{ $kandidat->jenjang_prodi_calon_ketua == "D3" ? 'selected' : ''}} value="D3">D3</option>
+                <option {{ $kandidat->jenjang_prodi_calon_ketua == "D4" ? 'selected' : ''}} value="D4">D4</option>
                 <option {{ $kandidat->jenjang_prodi_calon_ketua == "S1" ? 'selected' : ''}} value="S1">S1</option>
                 <option {{ $kandidat->jenjang_prodi_calon_ketua == "S2" ? 'selected' : ''}} value="S2">S2</option>
                 <option {{ $kandidat->jenjang_prodi_calon_ketua == "S3" ? 'selected' : ''}} value="S3">S3</option>
@@ -113,10 +112,9 @@
             <label for="">Masukan Jenjang Prodi Calon Wakil Presiden Mahasiswa</label>
             <select name="jenjang_prodi_calon_wakil_ketua" value="{{ $kandidat->jenjang_prodi_calon_wakil_ketua }}" class="form-control" id="">
                 <option disabled selected>-- pilih jenjang prodi --</option>
-                <option {{ $kandidat->jenjang_prodi_calon_wakil_ketua == "DI" ? 'selected' : ''}} value="DI">DI</option>
-                <option {{ $kandidat->jenjang_prodi_calon_wakil_ketua == "DII" ? 'selected' : ''}} value="DII">DII</option>
-                <option {{ $kandidat->jenjang_prodi_calon_wakil_ketua == "DIII" ? 'selected' : ''}} value="DIII">DIII</option>
-                <option {{ $kandidat->jenjang_prodi_calon_wakil_ketua == "DIV" ? 'selected' : ''}} value="DIV">DIV</option>
+
+                <option {{ $kandidat->jenjang_prodi_calon_wakil_ketua == "D3" ? 'selected' : ''}} value="D3">D3</option>
+                <option {{ $kandidat->jenjang_prodi_calon_wakil_ketua == "D4" ? 'selected' : ''}} value="D4">D4</option>
                 <option {{ $kandidat->jenjang_prodi_calon_wakil_ketua == "S1" ? 'selected' : ''}} value="S1">S1</option>
                 <option {{ $kandidat->jenjang_prodi_calon_wakil_ketua == "S2" ? 'selected' : ''}} value="S2">S2</option>
                 <option {{ $kandidat->jenjang_prodi_calon_wakil_ketua == "S3" ? 'selected' : ''}} value="S3">S3</option>

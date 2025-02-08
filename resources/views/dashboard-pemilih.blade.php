@@ -30,7 +30,7 @@
                                       group shadow-lg hover:shadow-xl overflow-hidden hover:scale-110">
                 <div class="py-2  bg-black   w-full text-center font-bold text-white text-xl  "><b class="text-yellow-500 text-xs mr-3">Kandidat Nomor Urut</b>{{ $kandidat->nomor_urut }}
                 </div>
-                <img class=" relative flex items-end overflow-hidden    group-hover:opacity-25 duration-300 transform h-48 object-cover  mx-auto   " src="{{ Storage::url('public/') }}{{ $kandidat->banner }}" alt="Img" />
+                <img class=" relative flex items-end overflow-hidden    group-hover:opacity-25 duration-300 transform h-48 object-cover  mx-auto   " src="{{ asset('storage/' . $kandidat->banner) }}" alt="Img" />
                 <div class="   duration-200 transform    ">
                     <div class=" flex items-end justify-between border-t-gray-800 group-hover:border-t-gray-300 border-t-2 px-2">
                         <div class="text-gray-900 group-hover:text-gray-200 py-2 text-xs w-full md:text-sm  text-center  ">

@@ -27,7 +27,8 @@ class RekapitulasiController extends Controller
 
         $rekapitulasis = Rekapitulasi::with(['kandidat', 'dpt'])
             ->whereHas('dpt', function ($query) use ($nama_lengkap) {
-                $query->where('nama_lengkap', 'like', '%' . $nama_lengkap . '%');
+                $query->where('nama_lengkap', 'like', '%' . $nama_lengkap . '%')
+                      ->orWhere('npm', 'like', '%' . $nama_lengkap . '%');
             })
             ->orderBy('created_at', 'desc')
             ->paginate(10);

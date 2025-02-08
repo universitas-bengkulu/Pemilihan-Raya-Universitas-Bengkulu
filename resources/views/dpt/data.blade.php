@@ -2,7 +2,7 @@
     <form action="{{ route('dpt.cari') }}" method="GET">
         {{ csrf_field() }} {{ method_field('GET') }}
         <div class="form-group col-md-12">
-            <label for="">Masukan Nama DPT</label>
+            <label for="">Masukan Nama / NPM DPT</label>
             <input type="text" name="nama_lengkap" @if (isset($nama_lengkap))
                 value="{{ $nama_lengkap }}"
             @endif class="form-control">
@@ -10,6 +10,7 @@
 
         <div class="col-md-12" style="margin-bottom:5px !important">
             <button type="submit" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-search"></i>&nbsp; Cari Data</button>
+            <a href="{{ route('dpt') }}" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-refresh"></i>Refresh</a>
         </div>
     </form>
     <div class="col-md-12 table-responsive">
@@ -22,7 +23,7 @@
                     <th>Jenjang</th>
                     <th>Angkatan</th>
                     <th>Prodi</th>
-                    <th>Fakultas</th>
+                    <th>Fakultas </th>
                     <th style="text-align:center">Aksi</th>
                 </tr>
             </thead>
@@ -30,7 +31,7 @@
 
                 @foreach ($dpts as $index => $dpt)
                 <tr>
-                    <td>{{ ++$index }}</td>
+                    <td>{{ (request()->query('page', 1) * 10) + (++$index) - 10 }}</td>
                     <td>{{ $dpt->npm }}</td>
                     <td>{{ $dpt->nama_lengkap }}</td>
                     <td>
@@ -59,6 +60,6 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $dpts->appends(['nama_lengkap' => isset($nama_lengkap) ? $nama_lengkap : ''])->links("pagination::bootstrap-4") }}
+        {{ $dpts->appends(['nama_lengkap' => request()->query('nama_lengkap', '')])->links("pagination::bootstrap-4") }}
     </div>
 </div>

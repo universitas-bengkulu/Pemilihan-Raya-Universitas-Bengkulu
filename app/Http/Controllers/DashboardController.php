@@ -25,11 +25,11 @@ class DashboardController extends Controller
 
         $rekapitulasiData = Rekapitulasi::join('kandidats', 'rekapitulasis.kandidat_id', '=', 'kandidats.id')
             ->select('kandidats.nomor_urut','kandidats.nama_calon_ketua','kandidats.nama_calon_wakil_ketua', DB::raw('count(rekapitulasis.id) as jumlah'))
-            ->groupBy('kandidats.id')
+            ->groupBy('kandidats.id','kandidats.nomor_urut','kandidats.nama_calon_ketua','kandidats.nama_calon_wakil_ketua')
             ->get();
 
         return view('dashboard', [
-            'jadwalPemilihan' => $jadwalPemilihan,
+             'jadwalPemilihan' => $jadwalPemilihan,
             'jumlahKandidat' => $jumlahKandidat,
             'jadwalPemilihan' => $jadwalPemilihan,
             'totalDpts' => $totalDpts,

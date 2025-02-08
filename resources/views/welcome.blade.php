@@ -335,7 +335,7 @@
 <!-- end Tentang E-Voting Pemira -->
 
 <!-- Tata Cara Pimilihan -->
-<section id="cara" class=" py-32 lg:py-20 pt-10 px-3 pb-20 ">
+<section id="cara" class=" py-32 lg:py-20 pt-10 px-3 pb-20  mt-36 md:-mt-10 lg:-mt-20">
     <section class="   ">
         <div class="container flex flex-col items-center px-4   mx-auto  section-heading py-12  ">
             <h2 data-aos="fade-down" class="mb-6 text-center font-sans text-4xl lg:text-5xl font-bold text-[#E73530]   " style="text-shadow:5px 5px 5px #38383863;">
