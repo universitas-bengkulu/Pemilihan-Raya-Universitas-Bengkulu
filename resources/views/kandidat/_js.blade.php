@@ -1,4 +1,4 @@
-<script>
+{--<script>
     $(document).on('submit','.form',function (event){
         event.preventDefault();
         $(".btnSubmit"). attr("disabled", true);
@@ -27,4 +27,4 @@
             }
         })
     });
-</script>
+</script>--}
