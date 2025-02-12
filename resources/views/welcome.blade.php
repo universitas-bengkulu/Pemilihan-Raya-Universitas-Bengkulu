@@ -120,7 +120,7 @@
                 <ul class="list-decimal pl-5">
                     <li><b>Langsung</b> berarti pemilih diharuskan memberikan suaranya secara langsung dan tidak boleh
                         diwakilkan.</li>
-                    <li><b>Umum</b> berarti pemilihan umum dapat diikuti seluruh warga negara yang sudah memiliki
+                    <li><b>Umum</b> berarti pemilihan raya dapat diikuti seluruh mahasiswa aktif Universitas Bengkulu yang sudah memiliki
                         hak menggunakan
                         suara.</li>
                     <li><b>Bebas</b> berarti pemilih diharuskan memberikan suaranya tanpa ada paksaan dari pihak
@@ -334,12 +334,12 @@
 </section>
 <!-- end Tentang E-Voting Pemira -->
 
-<!-- Tata Cara Pimilihan -->
+<!-- Tata Cara Pemilihan -->
 <section id="cara" class=" py-32 lg:py-20 pt-10 px-3 pb-20  mt-36 md:-mt-10 lg:-mt-20">
     <section class="   ">
         <div class="container flex flex-col items-center px-4   mx-auto  section-heading py-12  ">
             <h2 data-aos="fade-down" class="mb-6 text-center font-sans text-4xl lg:text-5xl font-bold text-[#E73530]   " style="text-shadow:5px 5px 5px #38383863;">
-                Tata Cara Pimilihan</h2>
+                Tata Cara Pemilihan</h2>
 
             <p data-aos="fade-down" class="  mt-2   text-sm text-gray-700     text-justify leading-8">
                 Berikut tata cara menyalurkan hak suara pada Pemilihan Raya Universitas Bengkulu
@@ -470,7 +470,7 @@
                 Waktu Pelaksanaan</h2>
 
             <p data-aos="fade-down" class="text-[14px]   text-center   text-gray-300">Berikut Waktu dan Tahapan
-                Pelaksanaan Pemilu.
+                Pelaksanaan Pemira Universitas Bengkulu.
 
             </p>
         </div>
@@ -532,7 +532,7 @@
                         <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z" />
                     </svg>
                 </div>
-                <h6 class="mb-2 text-base font-extrabold text-white">Pengumuman Pemenang Pemilu</h6>
+                <h6 class="mb-2 text-base font-extrabold text-white">Pengumuman Pemenang Pemira Universitas Bengkulu</h6>
                 <p class="max-w-md mx-auto mb-3 text-lg text-yellow-300 sm:mx-auto">
                     9 April 2023
                 </p>
@@ -687,6 +687,7 @@
 
         </div>
     </div>
+
 
 
 </footer>

@@ -44,7 +44,7 @@ class UserController extends Controller
             'password.confirmed' => 'Konfirmasi password tidak cocok.',
             'password.regex' => 'Password harus mengandung setidaknya 1 huruf besar, 1 huruf kecil, 1 angka, dan 1 karakter khusus.',
         ];
-        
+
         $validasi = Validator::make($request->all(), $rules, $text);
         if ($validasi->fails()) {
             return response()->json(['error'  =>  0, 'text'   =>  $validasi->errors()->first()],422);
@@ -55,7 +55,7 @@ class UserController extends Controller
             $fileName = $file->store('banners', 'public');
             $user['banner'] = $fileName;
         }
-        
+
         $create = User::create([
             'name'  =>  $request->name,
             'email' =>  $request->email,
@@ -89,7 +89,7 @@ class UserController extends Controller
             'email.email' => 'Email harus berupa alamat email yang valid.',
             'email.unique' => 'Email sudah digunakan.',
         ];
-        
+
         $validasi = Validator::make($request->all(), $rules, $text);
         if ($validasi->fails()) {
             return response()->json(['error'  =>  0, 'text'   =>  $validasi->errors()->first()],422);
@@ -144,12 +144,12 @@ class UserController extends Controller
             'password.confirmed' => 'Konfirmasi password tidak cocok.',
             'password.regex' => 'Password harus mengandung setidaknya 1 huruf besar, 1 huruf kecil, 1 angka, dan 1 karakter khusus.',
         ];
-        
+
         $validasi = Validator::make($request->all(), $rules, $text);
         if ($validasi->fails()) {
             return response()->json(['error'  =>  0, 'text'   =>  $validasi->errors()->first()],422);
         }
-        
+
         $updatePassword = User::where('id',$request->id)->update([
             'password'  =>  Hash::make($request->password),
         ]);

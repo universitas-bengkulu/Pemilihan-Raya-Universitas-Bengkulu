@@ -2,34 +2,6 @@
 
 @section('kandidat', 'bg-black lg:shadow-inner shadow-gray-600 text-white')
 @section('content')
-<div class="lg:fixed mb-20 md:mb-10 lg:mb-0 lg:top-32 lg:right-4 bg-white rounded-lg border-2 border-gray-300 mx-4 p-3">
-    <div  class=" text-center   font-mono text-gray-700 font-extrabold">
-        Sisa Waktu Pencoblosan
-    </div>
-    <div class="  flex items-center justify-center px-5    " x-data="beer()" x-init="start()">
-
-        <div class="text-white" title="Waktu Pencobolsan">
-            <!-- <h1 class="text-base lg:text-xl text-center mb-3 font-extrabold    ">Waktu Pencobolsan </h1> -->
-            <div class="text-2xl md:text-3xl text-center flex w-full items-center justify-center px-3 pb-3">
-
-                <div  class=" p-2  text-gray-700 font-extrabold ">
-                    <div class="font-mono leading-none" x-text="hours">00</div>
-                    <div class="font-mono capitalize text-sm leading-none">Jam</div>
-                </div>
-                <div  class=" p-2  text-gray-700 font-extrabold ">
-                    <div class="font-mono leading-none" x-text="minutes">00</div>
-                    <div class="font-mono capitalize text-sm leading-none">Menit</div>
-                </div>
-                <div  class=" p-2  text-gray-700 font-extrabold ">
-                    <div class="font-mono leading-none" x-text="seconds">00</div>
-                    <div class="font-mono capitalize text-sm leading-none">Detik</div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
     <div class="min-h-[33vh] pt-10    grid">
         <div class="place-self-center grid">
             <div class="flex space-x-2 mx-auto place-self-center ">
@@ -178,7 +150,7 @@
                         </h2>
                         <div class="md:inline-flex w-full mt-6 space-x-1 lg:space-x-4 sm:w-auto">
                             <img src="{{ asset('assets/frontend/download-removebg-preview.png') }}" alt="img" class="absolute z-50 w-28 translate-x-full transform ml-32 group-hover:ml-10 mx-auto -mt-24
-                        md:group-hover:-mt-14 group-hover:-mt-[75px] group-active:ml-10 group-active:-mt-10
+                        group-hover:-mt-14 group-active:ml-10 group-active:-mt-10
                           duration-300">
                             <a href="{{route('mahasiswa.voting')}}"
                                 class="  py-2  mt-2  text-black font-semibold text-[14px] transition-colors  group-hover:bg-yellow-500 group-hover:text-white    lg:mt-0  duration-300 transfrom   bg-white shadow-[inset_0px_0px_10px_2px_#333] border border-slate-50 rounded-lg     px-12  mx-auto">COBLOS
@@ -187,8 +159,6 @@
 
                     </div>
 
-
-
                 </div>
             </div>
 
@@ -196,45 +166,5 @@
 
 
     </div>
-    <script>
-        function beer() {
-            return {
-                seconds: '00',
-                minutes: '00',
-                hours: '00',
-                days: '00',
-                distance: 0,
-                countdown: null,
-                beerTime: new Date('{{ $jadwal_aktif->tanggal }} {{ $jadwal_aktif->waktu_selesai }}').getTime(),
-                now: new Date().getTime(),
-                start: function() {
-                    this.countdown = setInterval(() => {
-                        // Calculate time
-                        this.now = new Date().getTime();
-                        this.distance = this.beerTime - this.now;
-                        // Set Times
-                        this.days = this.padNum(Math.floor(this.distance / (1000 * 60 * 60 * 24)));
-                        this.hours = this.padNum(Math.floor((this.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-                        this.minutes = this.padNum(Math.floor((this.distance % (1000 * 60 * 60)) / (1000 * 60)));
-                        this.seconds = this.padNum(Math.floor((this.distance % (1000 * 60)) / 1000));
-                        // Stop
-                        if (this.distance < 0) {
-                            clearInterval(this.countdown);
-                            this.days = '00';
-                            this.hours = '00';
-                            this.minutes = '00';
-                            this.seconds = '00';
-                        }
-                    }, 100);
-                },
-                padNum: function(num) {
-                    var zero = '';
-                    for (var i = 0; i < 2; i++) {
-                        zero += '0';
-                    }
-                    return (zero + num).slice(-2);
-                }
-            }
-        }
-    </script>
+
 @endsection

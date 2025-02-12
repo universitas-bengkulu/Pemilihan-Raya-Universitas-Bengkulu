@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('halaman', 'Data Kandidat')
+@section('halaman', 'Jadwal Pemilihan')
 @section('sub-halaman')
     <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item active">Data Kandidat</li>
+    <li class="breadcrumb-item active">Jadwal Pemilihan</li>
 @endsection
 @section('content')
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Data Kandidat</h3>
+        <h3 class="box-title">Jadwal Pemilihan</h3>
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                     title="Collapse">

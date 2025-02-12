@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('halaman','Dashboard')
+@section('halaman','Statistik Hasil Rekapitulasi')
 @push('styles')
     <style>
         #chartdiv {

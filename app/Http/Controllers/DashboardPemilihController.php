@@ -36,7 +36,10 @@ class DashboardPemilihController extends Controller
             $sudah = Rekapitulasi::where('dpt_npm',$npm)->first();
             $jadwal = Jadwal::count();
             $kandidats = Kandidat::with(['misis'])->get();
-            return view('dashboard-pemilih',compact('kandidats','sudah','jadwal', 'cek_jadwal'));
+        $contact = Contact::orderBy('id', 'desc')->first();
+        $jadwal_aktif = Jadwal::where('status_jadwal', 1)->first();
+
+            return view('dashboard-pemilih',compact('kandidats','sudah','jadwal', 'cek_jadwal', 'jadwal_aktif', 'contact'));
         }else{
             Session::flush();
             return redirect()->route('panda.login')->with(['error' => 'Mohon maaf, anda tidak memiliki akses halaman ini']);
